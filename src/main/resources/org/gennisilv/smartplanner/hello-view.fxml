@@ -3,12 +3,24 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="org.gennisilv.smartplanner.HelloController">
+<VBox alignment="CENTER" prefHeight="594.0" prefWidth="279.0" spacing="20.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.gennisilv.smartplanner.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-
-    <Label fx:id="welcomeText" />
-    <Button onAction="#onHelloButtonClick" text="Mostra Utenti" />
+   <Pane prefHeight="195.0" prefWidth="242.0">
+      <children>
+          <Button layoutX="12.0" layoutY="37.0" onAction="#onHelloButtonClick" prefHeight="63.0" prefWidth="219.0" style="-fx-background-color: #514d4d; -fx-background-radius: 78;" text="Login" textFill="WHITE">
+            <font>
+               <Font size="29.0" />
+            </font>
+         </Button>
+         <Button contentDisplay="CENTER" layoutX="12.0" layoutY="116.0" onAction="#onHelloButtonClick" prefHeight="63.0" prefWidth="219.0" style="-fx-background-color: #514d4d; -fx-background-radius: 78;" text="Registrazione" textFill="WHITE">
+            <font>
+               <Font size="29.0" />
+            </font>
+         </Button>
+      </children>
+   </Pane>
 </VBox>

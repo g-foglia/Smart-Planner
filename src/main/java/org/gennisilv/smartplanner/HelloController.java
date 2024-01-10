@@ -2,6 +2,7 @@ package org.gennisilv.smartplanner;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import org.gennisilv.smartplanner.utils.ConPool;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

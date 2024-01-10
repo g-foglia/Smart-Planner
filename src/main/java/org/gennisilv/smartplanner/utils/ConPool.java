@@ -1,4 +1,4 @@
-package org.gennisilv.smartplanner;
+package org.gennisilv.smartplanner.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
