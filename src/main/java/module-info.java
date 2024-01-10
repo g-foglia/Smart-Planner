@@ -8,6 +8,7 @@ module org.gennisilv.smartplanner {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires java.sql;
 
     opens org.gennisilv.smartplanner to javafx.fxml;
     exports org.gennisilv.smartplanner;
