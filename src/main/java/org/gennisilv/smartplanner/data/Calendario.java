@@ -1,9 +1,12 @@
 package org.gennisilv.smartplanner.data;
 
 public class Calendario {
-    String codiceCalendario;
-    String nomeCalendario;
-    String coloreCalendario;
+    private String codiceCalendario;
+    private String nomeCalendario;
+    private String coloreCalendario;
+
+    public Calendario() {
+    }
 
     public Calendario(String codiceCalendario, String nomeCalendario, String coloreCalendario) {
         this.codiceCalendario = codiceCalendario;

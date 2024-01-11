@@ -3,12 +3,15 @@ package org.gennisilv.smartplanner.data;
 import java.util.GregorianCalendar;
 
 public class Utente {
-    String email;
-    String password;
-    String nome;
-    String cognome;
-    String username;
-    GregorianCalendar dataDiNascita;
+    private String email;
+    private String password;
+    private String nome;
+    private String cognome;
+    private String username;
+    private GregorianCalendar dataDiNascita;
+
+    public Utente() {
+    }
 
     public Utente(String email, String password, String nome, String cognome, String username) {
         this.email = email;
