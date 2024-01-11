@@ -29,12 +29,14 @@ CREATE TABLE Evento(
     orarioFine varchar(5) not null,
     emailE varchar(30) not null,
     FOREIGN KEY (emailE) REFERENCES Utente(email)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE Lista(
 	emailUL varchar(30) primary key,
     coloreLista varchar(6) not null,
     FOREIGN KEY (emailUL) REFERENCES Utente(email)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE Impegno(
@@ -50,6 +52,7 @@ CREATE TABLE Inserimento(
     PRIMARY KEY(codiceCalendarioI, codiceEventoI),
     FOREIGN KEY (codiceCalendarioI) REFERENCES Calendario(codiceCalendario),
     FOREIGN KEY (codiceEventoI) REFERENCES Evento(codiceEvento)
+    ON DELETE CASCADE
 );
 CREATE TABLE Creazione(
 	emailC varchar(30) not null,
@@ -57,4 +60,7 @@ CREATE TABLE Creazione(
     PRIMARY KEY(emailC, codiceCalendarioC),
     FOREIGN KEY (emailC) REFERENCES Utente(email),
     FOREIGN KEY (codiceCalendarioC) REFERENCES Calendario(codiceCalendario)    
+    ON DELETE CASCADE
 );
+
+ 
