@@ -10,22 +10,29 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <ImageView fitHeight="163.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../../../images/LogoSenzaSfondo.png" />
-      </image></ImageView>
-   <Pane prefHeight="195.0" prefWidth="242.0">
-      <children>
-          <Button layoutX="12.0" layoutY="37.0" onAction="#onHelloButtonClick" prefHeight="63.0" prefWidth="219.0" style="-fx-background-color: #514d4d; -fx-background-radius: 78;" text="Login" textFill="WHITE">
-            <font>
-               <Font size="29.0" />
-            </font>
-         </Button>
-         <Button contentDisplay="CENTER" layoutX="12.0" layoutY="116.0" onAction="#onHelloButtonClick" prefHeight="63.0" prefWidth="219.0" style="-fx-background-color: #514d4d; -fx-background-radius: 78;" text="Registrazione" textFill="WHITE">
-            <font>
-               <Font size="29.0" />
-            </font>
-         </Button>
-      </children>
-   </Pane>
+   <BorderPane prefHeight="200.0" prefWidth="200.0">
+      <center>
+         <Pane prefHeight="195.0" prefWidth="242.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button layoutX="12.0" layoutY="37.0" onAction="#onHelloButtonClick" prefHeight="63.0" prefWidth="219.0" style="-fx-background-color: #514d4d; -fx-background-radius: 78;" text="Login" textFill="WHITE">
+                  <font>
+                     <Font size="29.0" />
+                  </font>
+               </Button>
+               <Button contentDisplay="CENTER" layoutX="12.0" layoutY="116.0" onAction="#onHelloButtonClick" prefHeight="63.0" prefWidth="219.0" style="-fx-background-color: #514d4d; -fx-background-radius: 78;" text="Registrazione" textFill="WHITE">
+                  <font>
+                     <Font size="29.0" />
+                  </font>
+               </Button>
+            </children>
+         </Pane>
+      </center>
+      <top>
+         <ImageView fitHeight="163.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+            <image>
+               <Image url="@../../../images/LogoSenzaSfondo.png" />
+            </image>
+         </ImageView>
+      </top>
+   </BorderPane>
 </VBox>
