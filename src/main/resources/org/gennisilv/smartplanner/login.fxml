@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <ImageView fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../../../images/LogoSenzaSfondo.png" />
+         </image>
+         <BorderPane.margin>
+            <Insets top="50.0" />
+         </BorderPane.margin></ImageView>
+   </top>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField alignment="CENTER" layoutX="49.0" layoutY="120.0" prefHeight="41.0" prefWidth="199.0" promptText="Inserisci password" />
+            <TextField alignment="CENTER" layoutX="50.0" layoutY="59.0" prefHeight="41.0" prefWidth="199.0" promptText="Inserisci email" />
+            <Button layoutX="52.0" layoutY="290.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="194.0" style="-fx-background-color: #A1D3E8; -fx-background-radius: 60;" text="Button" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
