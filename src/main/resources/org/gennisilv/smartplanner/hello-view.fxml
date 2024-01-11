@@ -10,9 +10,9 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <ImageView fitHeight="141.0" fitWidth="176.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="163.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@../../../images/sfondogrigio.png" />
+         <Image url="@../../../images/LogoSenzaSfondo.png" />
       </image></ImageView>
    <Pane prefHeight="195.0" prefWidth="242.0">
       <children>
