@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
@@ -18,44 +17,31 @@
    <left>
       <Pane prefHeight="400.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField layoutX="23.0" layoutY="86.0" prefHeight="25.0" prefWidth="115.0" />
-            <TextField layoutX="151.0" layoutY="86.0" prefHeight="25.0" prefWidth="114.0" />
-            <TextField layoutX="20.0" layoutY="224.0" prefHeight="25.0" prefWidth="209.0" />
-            <DatePicker layoutX="21.0" layoutY="155.0" />
-            <PasswordField layoutX="24.0" layoutY="291.0" prefHeight="25.0" prefWidth="114.0" />
-            <ProgressBar layoutX="21.0" layoutY="323.0" prefHeight="18.0" prefWidth="120.0" progress="0.0" />
-            <Pane layoutX="205.0" layoutY="149.0" prefHeight="200.0" prefWidth="200.0" />
-            <PasswordField layoutX="22.0" layoutY="374.0" prefHeight="25.0" prefWidth="118.0" />
-            <Label layoutX="22.0" layoutY="62.0" prefHeight="17.0" prefWidth="104.0" text="Inserisci nome:" textFill="#555555">
-               <font>
-                  <Font name="SansSerif Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="151.0" layoutY="62.0" text="Inserisci il cognome:" textFill="#555555">
-               <font>
-                  <Font name="SansSerif Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="21.0" layoutY="132.0" text="Inserisci la data di nascita:" textFill="#555555">
-               <font>
-                  <Font name="SansSerif Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="24.0" layoutY="206.0" text="Inserisci l'email:" textFill="#555555">
-               <font>
-                  <Font name="SansSerif Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="24.0" layoutY="274.0" text="Inserisci una password:" textFill="#555555">
-               <font>
-                  <Font name="SansSerif Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="24.0" layoutY="357.0" text="Conferma la password:" textFill="#555555">
-               <font>
-                  <Font name="SansSerif Bold" size="12.0" />
-               </font>
-            </Label>
+            <TextField layoutX="23.0" layoutY="86.0" prefHeight="30.0" prefWidth="115.0" promptText="Inserisci nome">
+               <effect>
+                  <InnerShadow height="2.5" radius="0.75" width="2.5" />
+               </effect></TextField>
+            <TextField layoutX="151.0" layoutY="86.0" prefHeight="30.0" prefWidth="127.0" promptText="Inserisci cognome">
+               <effect>
+                  <InnerShadow height="2.5" radius="0.75" width="2.5" />
+               </effect></TextField>
+            <TextField layoutX="23.0" layoutY="217.0" prefHeight="30.0" prefWidth="200.0" promptText="Inserisci e-mail">
+               <effect>
+                  <InnerShadow height="2.5" radius="0.75" width="2.5" />
+               </effect></TextField>
+            <DatePicker layoutX="21.0" layoutY="155.0" prefHeight="30.0" promptText="Inserisci data di nascita">
+               <effect>
+                  <InnerShadow height="2.5" radius="0.75" width="2.5" />
+               </effect></DatePicker>
+            <PasswordField layoutX="23.0" layoutY="277.0" prefHeight="30.0" prefWidth="134.0" promptText="Crea una password">
+               <effect>
+                  <InnerShadow height="2.5" radius="0.75" width="2.5" />
+               </effect></PasswordField>
+            <ProgressBar layoutX="21.0" layoutY="313.0" prefHeight="18.0" prefWidth="120.0" progress="0.0" />
+            <PasswordField layoutX="22.0" layoutY="345.0" prefHeight="30.0" prefWidth="134.0" promptText="Conferma password">
+               <effect>
+                  <InnerShadow height="2.5" radius="0.75" width="2.5" />
+               </effect></PasswordField>
          </children>
       </Pane>
    </left>
