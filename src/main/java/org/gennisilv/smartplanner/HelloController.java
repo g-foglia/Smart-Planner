@@ -1,35 +1,35 @@
 package org.gennisilv.smartplanner;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import org.gennisilv.smartplanner.utils.ConPool;
+import java.io.IOException;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 public class HelloController {
-    @FXML
-    private Label welcomeText;
 
-    @FXML
-    protected void onHelloButtonClick() throws SQLException {
-        Connection connection = ConPool.getConnection();
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
-        try{
-            String query = "select * from Utente;";
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-
-            while(resultSet.next())
-                welcomeText.setText(resultSet.getString(1)+" | "+resultSet.getString(2)+" | \n"+resultSet.getString(3)+" | "+resultSet.getString(4)+" | \n"+resultSet.getString(5)+" | "+resultSet.getString(6));
-            statement.close();
-            resultSet.close();
-        }
-        catch (SQLException e){
-            System.out.println(e);
-        }
-        //welcomeText.setText("Welcome to JavaFX Application!");
+    public void switchToHelloView(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
+
+    public void switchToRegistrazione(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Registrazione.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
 }
