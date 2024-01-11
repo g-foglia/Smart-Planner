@@ -1,8 +1,11 @@
 package org.gennisilv.smartplanner.data;
 
 public class Lista {
-    String emailUL;
-    String coloreLista;
+    private String emailUL;
+    private String coloreLista;
+
+    public Lista() {
+    }
 
     public Lista(String emailUL, String coloreLista) {
         this.emailUL = emailUL;
