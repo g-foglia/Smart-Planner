@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.Icon?>
+
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 
@@ -8,7 +8,5 @@
    <center>
       <Label text="CALENDARIO" BorderPane.alignment="CENTER" />
    </center>
-   <top>
-      <Icon content="BOOK" BorderPane.alignment="CENTER" />
-   </top>
+
 </BorderPane>
