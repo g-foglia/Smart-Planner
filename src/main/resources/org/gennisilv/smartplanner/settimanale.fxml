@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.Rectangle?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.gennisilv.smartplanner.settimanaleController">
+    <bottom>
+        <Pane prefHeight="80.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+            <children>
+                <Pane layoutY="22.0" prefHeight="58.0" prefWidth="300.0" style="-fx-background-color: #aaaaaa;">
+                    <children>
+                        <Button layoutX="255.0" layoutY="11.0" minWidth="48.0" mnemonicParsing="false" opacity="0.0" prefHeight="36.0" prefWidth="48.0" style="-fx-background-color: #bbbbbb;" text="Utente" />
+                        <Button layoutX="-3.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="46.0" mnemonicParsing="false" opacity="0.0" prefHeight="27.0" prefWidth="46.0" text="Indietro" />
+                        <Button layoutX="199.0" layoutY="14.0" minWidth="37.0" mnemonicParsing="false" opacity="0.0" prefHeight="29.0" prefWidth="37.0" text="Calendari" />
+                        <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="252.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../images/icons8-account-di-prova-64.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="36.0" fitWidth="40.0" layoutX="196.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../images/icons8-miniature-64.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="31.0" fitWidth="34.0" layoutX="8.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../images/icons8-indietro-64.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="31.0" fitWidth="58.0" layoutX="70.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../images/icons8-ricerca-64.png" />
+                            </image>
+                        </ImageView>
+                        <Button layoutX="123.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="53.0" mnemonicParsing="false" opacity="0.0" prefHeight="33.0" prefWidth="53.0" text="Home" />
+                        <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="132.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../images/icons8-home-page-64.png" />
+                            </image>
+                        </ImageView>
+                        <Button layoutX="59.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="46.0" mnemonicParsing="false" opacity="0.0" prefHeight="27.0" prefWidth="46.0" text="Ricerca" />
+                    </children>
+                </Pane>
+            </children>
+        </Pane>
+    </bottom>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0f0ff" height="288.0" layoutX="25.0" layoutY="179.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0">
+               <effect>
+                  <BoxBlur />
+               </effect>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444444" height="45.0" layoutX="15.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 100; -fx-arc-width: 30;" width="267.0" />
+            <Button layoutX="28.0" layoutY="110.0" mnemonicParsing="false" onAction="#lunedi" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="L" />
+            <Button layoutX="63.0" layoutY="110.0" mnemonicParsing="false" onAction="#martedi" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="M" />
+            <Button layoutX="100.0" layoutY="110.0" mnemonicParsing="false" onAction="#mercoledi" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="M" />
+            <Button layoutX="135.0" layoutY="110.0" mnemonicParsing="false" onAction="#giovedi" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="G" />
+            <Button layoutX="171.0" layoutY="110.0" mnemonicParsing="false" onAction="#venerdi" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="V" />
+            <Button layoutX="206.0" layoutY="110.0" mnemonicParsing="false" onAction="#sabato" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="S" />
+            <Button layoutX="241.0" layoutY="110.0" mnemonicParsing="false" onAction="#domenica" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="D" />
+            <Polygon fx:id="giorni" fill="#e0f0ff" layoutX="78.0" layoutY="225.0" points="-53.00000762939453, -43.99998474121094, -21.666667938232422, -43.99998474121094, -36.33335494995117, -73.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+               <effect>
+                  <BoxBlur />
+               </effect>
+            </Polygon>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
