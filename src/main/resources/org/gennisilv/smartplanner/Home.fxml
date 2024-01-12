@@ -17,28 +17,28 @@
                   <Button layoutX="199.0" layoutY="14.0" minWidth="37.0" mnemonicParsing="false" opacity="0.0" prefHeight="29.0" prefWidth="37.0" text="Calendari" />
                   <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="252.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../Downloads/icons8-account-di-prova-64.png" />
+                        <Image url="@../../../images/icons8-account-di-prova-64.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="36.0" fitWidth="40.0" layoutX="196.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../Downloads/icons8-miniature-64.png" />
+                        <Image url="@../../../images/icons8-miniature-64.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="31.0" fitWidth="34.0" layoutX="8.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../Downloads/icons8-indietro-64.png" />
+                        <Image url="@../../../images/icons8-indietro-64.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="31.0" fitWidth="58.0" layoutX="70.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../Downloads/icons8-ricerca-64.png" />
+                        <Image url="@../../../images/icons8-ricerca-64.png" />
                      </image>
                   </ImageView>
                   <Button layoutX="123.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="53.0" mnemonicParsing="false" opacity="0.0" prefHeight="33.0" prefWidth="53.0" text="Home" />
                   <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="132.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../Downloads/icons8-home-page-64.png" />
+                        <Image url="@../../../images/icons8-home-page-64.png" />
                      </image>
                   </ImageView>
                   <Button layoutX="59.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="46.0" mnemonicParsing="false" opacity="0.0" prefHeight="27.0" prefWidth="46.0" text="Ricerca" />
