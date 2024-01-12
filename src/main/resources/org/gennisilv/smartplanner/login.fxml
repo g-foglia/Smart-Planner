@@ -11,7 +11,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.gennisilv.smartplanner.HelloController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.gennisilv.smartplanner.CalendarioController">
    <top>
       <ImageView fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
@@ -32,7 +32,7 @@
                <effect>
                   <InnerShadow height="2.5" radius="0.75" width="2.5" />
                </effect></TextField>
-            <Button layoutX="52.0" layoutY="241.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="194.0" style="-fx-background-color: #a1d3e8; -fx-background-radius: 60;" text="Login" textFill="#555555">
+            <Button layoutX="52.0" layoutY="241.0" mnemonicParsing="false" onAction="#switchToCalendario" prefHeight="51.0" prefWidth="194.0" style="-fx-background-color: #a1d3e8; -fx-background-radius: 60;" text="Login" textFill="#555555">
                <effect>
                   <InnerShadow height="30.0" radius="17.75" width="43.0">
                      <color>
