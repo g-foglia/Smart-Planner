@@ -6,28 +6,39 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.shape.Polygon;
-import javafx.scene.shape.Polyline;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-
-
 public final class settimanaleController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private Polyline giorno;
-    private double x;
-    private double y;
+
     @FXML
     private Polygon giorni;
+
+
     public void switchTosettimanale(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("settimanale.fxml"));
+         Parent root = FXMLLoader.load(getClass().getResource("settimanale.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+    public void switchToHome (ActionEvent e) throws IOException
+    {
+         Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+        stage= (Stage) ((Node)e.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+  /*public void switchToHome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }*/
     public void lunedi(ActionEvent e) throws IOException{
     giorni.setTranslateX(0);
     }
@@ -49,6 +60,28 @@ public final class settimanaleController {
     public void domenica(ActionEvent e) throws IOException{
         giorni.setTranslateX(214);
     }
+    }
+    /*public void switchToAreaUtente(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("areaUtente.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void switchToListaCalendari(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("listaCalendari.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void switchToRicerca(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("ricercaEventi.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
     /*public void switchToRegistrazione(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Registrazione.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -66,4 +99,3 @@ public final class settimanaleController {
     }*/
 
 
-}

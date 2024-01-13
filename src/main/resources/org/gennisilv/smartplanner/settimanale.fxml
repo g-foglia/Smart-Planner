@@ -15,36 +15,50 @@
             <children>
                 <Pane layoutY="22.0" prefHeight="58.0" prefWidth="300.0" style="-fx-background-color: #aaaaaa;">
                     <children>
-                        <Button layoutX="255.0" layoutY="11.0" minWidth="48.0" mnemonicParsing="false" opacity="0.0" prefHeight="36.0" prefWidth="48.0" style="-fx-background-color: #bbbbbb;" text="Utente" />
-                        <Button layoutX="-3.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="46.0" mnemonicParsing="false" opacity="0.0" prefHeight="27.0" prefWidth="46.0" text="Indietro" />
-                        <Button layoutX="199.0" layoutY="14.0" minWidth="37.0" mnemonicParsing="false" opacity="0.0" prefHeight="29.0" prefWidth="37.0" text="Calendari" />
-                        <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="252.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../../images/icons8-account-di-prova-64.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="36.0" fitWidth="40.0" layoutX="196.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../../images/icons8-miniature-64.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="31.0" fitWidth="34.0" layoutX="8.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../../images/icons8-indietro-64.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="31.0" fitWidth="58.0" layoutX="70.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../../images/icons8-ricerca-64.png" />
-                            </image>
-                        </ImageView>
-                        <Button layoutX="123.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="53.0" mnemonicParsing="false" opacity="0.0" prefHeight="33.0" prefWidth="53.0" text="Home" />
-                        <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="132.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../../images/icons8-home-page-64.png" />
-                            </image>
-                        </ImageView>
-                        <Button layoutX="59.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="46.0" mnemonicParsing="false" opacity="0.0" prefHeight="27.0" prefWidth="46.0" text="Ricerca" />
+                        <Button fx:id="btnHome" blendMode="HARD_LIGHT" layoutX="124.0" layoutY="13.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="53.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #888888; -fx-background-radius: 90;">
+                     <graphic>
+                              <ImageView fitHeight="36.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="@../../../images/icons8-home-page-64.png" />
+                                  </image>
+                              </ImageView>
+                     </graphic></Button>
+                  <Button blendMode="HARD_LIGHT" layoutX="63.0" layoutY="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="53.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #888888; -fx-background-radius: 90;">
+                     <graphic>
+                              <ImageView fitHeight="31.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="@../../../images/icons8-ricerca-64.png" />
+                                  </image>
+                              </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button blendMode="HARD_LIGHT" layoutX="4.0" layoutY="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="53.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #888888; -fx-background-radius: 90;">
+                     <graphic>
+                              <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="@../../../images/icons8-indietro-64.png" />
+                                  </image>
+                              </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button blendMode="HARD_LIGHT" layoutX="184.0" layoutY="13.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="53.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #888888; -fx-background-radius: 90;">
+                     <graphic>
+                              <ImageView fitHeight="36.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="@../../../images/icons8-miniature-64.png" />
+                                  </image>
+                              </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button blendMode="HARD_LIGHT" layoutX="243.0" layoutY="13.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="53.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #888888; -fx-background-radius: 90;">
+                     <graphic>
+                              <ImageView fitHeight="36.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="@../../../images/icons8-account-di-prova-64.png" />
+                                  </image>
+                              </ImageView>
+                     </graphic>
+                  </Button>
                     </children>
                 </Pane>
             </children>
@@ -64,7 +78,7 @@
             <Button layoutX="100.0" layoutY="110.0" mnemonicParsing="false" onAction="#mercoledi" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="M" />
             <Button layoutX="135.0" layoutY="110.0" mnemonicParsing="false" onAction="#giovedi" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="G" />
             <Button layoutX="171.0" layoutY="110.0" mnemonicParsing="false" onAction="#venerdi" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="V" />
-            <Button layoutX="206.0" layoutY="110.0" mnemonicParsing="false" onAction="#sabato" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="S" />
+            <Button layoutX="206.0" layoutY="110.0" mnemonicParsing="false" onAction="#sabato" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: rgb(224,240,255);" text="S" />
             <Button layoutX="241.0" layoutY="110.0" mnemonicParsing="false" onAction="#domenica" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="D" />
             <Polygon fx:id="giorni" fill="#e0f0ff" layoutX="78.0" layoutY="225.0" points="-53.00000762939453, -43.99998474121094, -21.666667938232422, -43.99998474121094, -36.33335494995117, -73.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
                <effect>
