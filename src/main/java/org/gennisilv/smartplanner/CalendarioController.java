@@ -15,6 +15,7 @@ public class CalendarioController {
     private Scene scene;
     private Parent root;
 
+
     public void switchToCalendario(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("calendario.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

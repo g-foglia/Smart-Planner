@@ -2,12 +2,28 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.gennisilv.smartplanner.areaUtenteController">
+    <top>
+        <Pane prefHeight="68.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="101.0" fitWidth="144.0" layoutX="79.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../images/LogoSenzaSfondo.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+    </top>
     <bottom>
         <Pane prefHeight="80.0" prefWidth="300.0" BorderPane.alignment="CENTER">
             <children>
@@ -63,7 +79,62 @@
         </Pane>
     </bottom>
    <center>
-      <Label text="Area Personale Utente" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0f0ff" height="339.0" layoutX="34.0" layoutY="46.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="232.0">
+               <effect>
+                  <GaussianBlur />
+               </effect>
+            </Rectangle>
+            <Button layoutX="103.0" layoutY="348.0" mnemonicParsing="false" style="-fx-background-color: #e0f0ff;" text="Modifica Dati">
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.6575698256492615" green="0.7338098287582397" blue="0.7719298005104065" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="87.0" layoutY="415.0" mnemonicParsing="false" text="Cancella Account">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="48.0" layoutY="65.0" text="Informazioni Personali">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="48.0" layoutY="95.0" text="username:" />
+            <Label layoutX="48.0" layoutY="125.0" text="email:">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="48.0" layoutY="154.0" text="password:">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="48.0" layoutY="183.0" text="nome:">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="48.0" layoutY="212.0" text="cognome:">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="48.0" layoutY="242.0" text="data di nascita:">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </center>
-
 </BorderPane>

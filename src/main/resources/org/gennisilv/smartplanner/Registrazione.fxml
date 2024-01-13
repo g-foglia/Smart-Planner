@@ -14,7 +14,36 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: cccccc;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.gennisilv.smartplanner.CalendarioController">
-   <left>
+   <bottom>
+      <Pane prefHeight="95.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="50.0" layoutY="14.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #555555; -fx-background-radius: 60; -fx-border-radius: 60;" text="Registrati!" textFill="#a1d3e8">
+               <font>
+                  <Font name="SansSerif Bold" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow height="23.98" radius="14.267500000000002" width="35.09">
+                     <color>
+                        <Color red="0.05000000074505806" green="0.04800000041723251" blue="0.04800000041723251" opacity="0.6720890402793884" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Button>
+         </children>
+      </Pane>
+   </bottom>
+   <top>
+      <Pane prefHeight="70.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="102.0" fitWidth="149.0" layoutX="80.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/LogoSenzaSfondo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </top>
+   <center>
       <Pane prefHeight="400.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <TextField layoutX="23.0" layoutY="86.0" prefHeight="30.0" prefWidth="115.0" promptText="Inserisci nome">
@@ -44,34 +73,5 @@
                </effect></PasswordField>
          </children>
       </Pane>
-   </left>
-   <bottom>
-      <Pane prefHeight="95.0" prefWidth="300.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button layoutX="50.0" layoutY="14.0" mnemonicParsing="false"  prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #555555; -fx-background-radius: 60; -fx-border-radius: 60;" text="Registrati!" textFill="#a1d3e8">
-               <font>
-                  <Font name="SansSerif Bold" size="18.0" />
-               </font>
-               <effect>
-                  <InnerShadow height="23.98" radius="14.267500000000002" width="35.09">
-                     <color>
-                        <Color red="0.05000000074505806" green="0.04800000041723251" blue="0.04800000041723251" opacity="0.6720890402793884" />
-                     </color>
-                  </InnerShadow>
-               </effect>
-            </Button>
-         </children>
-      </Pane>
-   </bottom>
-   <top>
-      <Pane prefHeight="70.0" prefWidth="300.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="102.0" fitWidth="149.0" layoutX="80.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/LogoSenzaSfondo.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-   </top>
+   </center>
 </BorderPane>
