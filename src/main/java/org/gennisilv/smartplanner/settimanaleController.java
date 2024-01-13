@@ -32,13 +32,31 @@ public final class settimanaleController {
         stage.setScene(scene);
         stage.show();
     }
-  /*public void switchToHome(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+    public void switchToAreaUtente (ActionEvent e) throws IOException
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("areaUtente.fxml"));
+        stage= (Stage) ((Node)e.getSource()).getScene().getWindow();
+        scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
-    }*/
+    }
+    public void switchToListaCalendari (ActionEvent e) throws IOException
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("listaCalendari.fxml"));
+        stage= (Stage) ((Node)e.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void switchToRicerca (ActionEvent e) throws IOException
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("ricercaEventi.fxml"));
+        stage= (Stage) ((Node)e.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void lunedi(ActionEvent e) throws IOException{
     giorni.setTranslateX(0);
     }

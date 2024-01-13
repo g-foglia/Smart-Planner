@@ -23,7 +23,7 @@
                                   </image>
                               </ImageView>
                      </graphic></Button>
-                  <Button blendMode="HARD_LIGHT" layoutX="63.0" layoutY="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="53.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #888888; -fx-background-radius: 90;">
+                  <Button blendMode="HARD_LIGHT" layoutX="63.0" layoutY="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="53.0" mnemonicParsing="false" onAction="#switchToRicerca" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #888888; -fx-background-radius: 90;">
                      <graphic>
                               <ImageView fitHeight="31.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
@@ -41,7 +41,7 @@
                               </ImageView>
                      </graphic>
                   </Button>
-                  <Button blendMode="HARD_LIGHT" layoutX="184.0" layoutY="13.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="53.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #888888; -fx-background-radius: 90;">
+                  <Button blendMode="HARD_LIGHT" layoutX="184.0" layoutY="13.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="53.0" mnemonicParsing="false" onAction="#switchToListaCalendari" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #888888; -fx-background-radius: 90;">
                      <graphic>
                               <ImageView fitHeight="36.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
@@ -50,7 +50,7 @@
                               </ImageView>
                      </graphic>
                   </Button>
-                  <Button blendMode="HARD_LIGHT" layoutX="243.0" layoutY="13.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="53.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #888888; -fx-background-radius: 90;">
+                  <Button blendMode="HARD_LIGHT" layoutX="243.0" layoutY="13.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="53.0" mnemonicParsing="false" onAction="#switchToAreaUtente" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #888888; -fx-background-radius: 90;">
                      <graphic>
                               <ImageView fitHeight="36.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
