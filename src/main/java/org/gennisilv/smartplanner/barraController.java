@@ -9,10 +9,18 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class areaUtenteController extends barraController{
+public class barraController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    public void switchToListaCalendari (ActionEvent e) throws IOException
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("listaCalendari.fxml"));
+        stage= (Stage) ((Node)e.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
     public void switchTosettimanale(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("settimanale.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -36,10 +44,6 @@ public class areaUtenteController extends barraController{
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToListaCalendari (ActionEvent e) throws IOException
-    {
-        switchToListaCalendari(e);
-    }
     public void switchToRicerca (ActionEvent e) throws IOException
     {
         Parent root = FXMLLoader.load(getClass().getResource("ricercaEventi.fxml"));
@@ -48,4 +52,5 @@ public class areaUtenteController extends barraController{
         stage.setScene(scene);
         stage.show();
     }
+
 }
