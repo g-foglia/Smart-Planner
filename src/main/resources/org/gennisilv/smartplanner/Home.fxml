@@ -47,11 +47,11 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button blendMode="HARD_LIGHT" layoutX="4.0" layoutY="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="53.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #888888; -fx-background-radius: 90;">
+                  <Button blendMode="HARD_LIGHT" layoutX="4.0" layoutY="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="53.0" mnemonicParsing="false" onAction="#switchToAggiuntaEvento" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #888888; -fx-background-radius: 90;">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../images/icons8-indietro-64.png" />
+                              <Image url="@../../../images/icons8-aggiunta-64.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -99,8 +99,8 @@
                </effect>
             </Rectangle>
             <Text layoutX="23.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lista:" />
-            <Button layoutX="97.0" layoutY="318.0" mnemonicParsing="false" text="Aggiungi Evento" />
-            <Button layoutX="169.0" layoutY="425.0" mnemonicParsing="false" style="-fx-background-color: #e0f0ff;" text="Aggiungi Impegno">
+            <Button layoutX="97.0" layoutY="313.0" mnemonicParsing="false" text="Aggiungi Evento" />
+            <Button layoutX="163.0" layoutY="414.0" mnemonicParsing="false" style="-fx-background-color: #e0f0ff;" text="Aggiungi Impegno">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX">
                      <color>
@@ -109,7 +109,7 @@
                   </DropShadow>
                </effect>
             </Button>
-            <Button layoutX="20.0" layoutY="425.0" mnemonicParsing="false" style="-fx-background-color: #e0f0ff;" text="Organizza impegni">
+            <Button layoutX="23.0" layoutY="414.0" mnemonicParsing="false" style="-fx-background-color: #e0f0ff;" text="Organizza impegni">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX">
                      <color>

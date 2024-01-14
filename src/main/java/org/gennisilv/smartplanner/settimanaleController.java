@@ -40,6 +40,10 @@ public final class settimanaleController extends barraController{
     public void switchToRicerca(ActionEvent e) throws IOException {
         super.switchToRicerca(e);
     }
+    public void switchToAggiuntaEvento (ActionEvent e) throws IOException
+    {
+        super.switchToAggiuntaEvento(e);
+    }
     public void lunedi(ActionEvent e) throws IOException{
     giorni.setTranslateX(0);
     }

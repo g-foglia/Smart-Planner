@@ -42,4 +42,8 @@ public class HomeController extends barraController {
     public void switchToRicerca(ActionEvent e) throws IOException {
         super.switchToRicerca(e);
     }
+    public void switchToAggiuntaEvento (ActionEvent e) throws IOException
+    {
+        super.switchToAggiuntaEvento(e);
+    }
 }

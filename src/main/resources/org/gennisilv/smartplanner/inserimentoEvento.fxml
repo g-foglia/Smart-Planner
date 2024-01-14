@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.gennisilv.smartplanner.HelloController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.gennisilv.smartplanner.inserimentoEvento">
     <top>
         <Pane prefHeight="68.0" prefWidth="300.0" BorderPane.alignment="CENTER">
             <children>
@@ -49,11 +49,11 @@
                             </ImageView>
                         </graphic>
                     </Button>
-                    <Button blendMode="HARD_LIGHT" layoutX="4.0" layoutY="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="53.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #888888; -fx-background-radius: 90;">
+                    <Button blendMode="HARD_LIGHT" layoutX="4.0" layoutY="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="53.0" mnemonicParsing="false" onAction="#switchToAggiuntaEvento" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #888888; -fx-background-radius: 90;">
                         <graphic>
                             <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="@../../../images/icons8-indietro-64.png" />
+                                    <Image url="@../../../images/icons8-aggiunta-64.png" />
                                 </image>
                             </ImageView>
                         </graphic>
