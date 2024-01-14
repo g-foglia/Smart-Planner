@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class inserimentoEvento extends barraController{
+public class inserimentoEventoController extends barraController{
     private Stage stage;
     private Scene scene;
     private Parent root;
