@@ -11,50 +11,35 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-public class HomeController {
+public class HomeController extends barraController {
 
     private Stage stage;
     private Scene scene;
     private Parent root;
 
 
+    @Override
     public void switchTosettimanale(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("settimanale.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        super.switchTosettimanale(event);
     }
-    public void switchToHome (ActionEvent e) throws IOException
-    {
-        Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
-        stage= (Stage) ((Node)e.getSource()).getScene().getWindow();
-        scene=new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+
+    @Override
+    public void switchToHome(ActionEvent e) throws IOException {
+        super.switchToHome(e);
     }
-    public void switchToAreaUtente (ActionEvent e) throws IOException
-    {
-        Parent root = FXMLLoader.load(getClass().getResource("areaUtente.fxml"));
-        stage= (Stage) ((Node)e.getSource()).getScene().getWindow();
-        scene=new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+
+    @Override
+    public void switchToAreaUtente(ActionEvent e) throws IOException {
+        super.switchToAreaUtente(e);
     }
-    public void switchToListaCalendari (ActionEvent e) throws IOException
-    {
-        Parent root = FXMLLoader.load(getClass().getResource("listaCalendari.fxml"));
-        stage= (Stage) ((Node)e.getSource()).getScene().getWindow();
-        scene=new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+
+    @Override
+    public void switchToListaCalendari(ActionEvent e) throws IOException {
+        super.switchToListaCalendari(e);
     }
-    public void switchToRicerca (ActionEvent e) throws IOException
-    {
-        Parent root = FXMLLoader.load(getClass().getResource("ricercaEventi.fxml"));
-        stage= (Stage) ((Node)e.getSource()).getScene().getWindow();
-        scene=new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+
+    @Override
+    public void switchToRicerca(ActionEvent e) throws IOException {
+        super.switchToRicerca(e);
     }
 }

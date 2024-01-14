@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import java.io.IOException;
-public final class settimanaleController {
+public final class settimanaleController extends barraController{
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -16,47 +16,30 @@ public final class settimanaleController {
     @FXML
     private Polygon giorni;
 
-
+    @Override
     public void switchTosettimanale(ActionEvent event) throws IOException {
-         Parent root = FXMLLoader.load(getClass().getResource("settimanale.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void switchToHome (ActionEvent e) throws IOException
-    {
-         Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
-        stage= (Stage) ((Node)e.getSource()).getScene().getWindow();
-        scene=new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void switchToAreaUtente (ActionEvent e) throws IOException
-    {
-        Parent root = FXMLLoader.load(getClass().getResource("areaUtente.fxml"));
-        stage= (Stage) ((Node)e.getSource()).getScene().getWindow();
-        scene=new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void switchToListaCalendari (ActionEvent e) throws IOException
-    {
-        Parent root = FXMLLoader.load(getClass().getResource("listaCalendari.fxml"));
-        stage= (Stage) ((Node)e.getSource()).getScene().getWindow();
-        scene=new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void switchToRicerca (ActionEvent e) throws IOException
-    {
-        Parent root = FXMLLoader.load(getClass().getResource("ricercaEventi.fxml"));
-        stage= (Stage) ((Node)e.getSource()).getScene().getWindow();
-        scene=new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        super.switchTosettimanale(event);
     }
 
+    @Override
+    public void switchToHome(ActionEvent e) throws IOException {
+        super.switchToHome(e);
+    }
+
+    @Override
+    public void switchToAreaUtente(ActionEvent e) throws IOException {
+        super.switchToAreaUtente(e);
+    }
+
+    @Override
+    public void switchToListaCalendari(ActionEvent e) throws IOException {
+        super.switchToListaCalendari(e);
+    }
+
+    @Override
+    public void switchToRicerca(ActionEvent e) throws IOException {
+        super.switchToRicerca(e);
+    }
     public void lunedi(ActionEvent e) throws IOException{
     giorni.setTranslateX(0);
     }

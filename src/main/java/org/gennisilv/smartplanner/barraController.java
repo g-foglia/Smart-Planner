@@ -13,6 +13,7 @@ public class barraController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
     public void switchToListaCalendari (ActionEvent e) throws IOException
     {
         Parent root = FXMLLoader.load(getClass().getResource("listaCalendari.fxml"));

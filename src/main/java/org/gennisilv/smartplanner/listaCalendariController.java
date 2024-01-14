@@ -9,11 +9,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class listaCalendariController {
+public class listaCalendariController{
     private Stage stage;
     private Scene scene;
     private Parent root;
-    public void switchTosettimanale(ActionEvent event) throws IOException {
+   public void switchTosettimanale(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("settimanale.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -52,4 +52,6 @@ public class listaCalendariController {
         stage.setScene(scene);
         stage.show();
     }
+
+
 }
