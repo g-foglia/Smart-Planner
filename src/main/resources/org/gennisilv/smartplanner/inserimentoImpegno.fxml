@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.gennisilv.smartplanner.barraController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.gennisilv.smartplanner.inserimentoImpegnoController">
     <top>
         <Pane prefHeight="68.0" prefWidth="300.0" BorderPane.alignment="CENTER">
             <children>
@@ -75,9 +75,9 @@
                 </Rectangle>
                 <TextField layoutX="23.0" layoutY="75.0" prefHeight="25.0" prefWidth="175.0" promptText="Inserisci il nome dell'impegno" />
                 <TextField layoutX="23.0" layoutY="119.0" prefHeight="25.0" prefWidth="110.0" promptText="Inserisci la durata" />
-                <ChoiceBox layoutX="26.0" layoutY="299.0" prefHeight="25.0" prefWidth="113.0" />
+                <ChoiceBox fx:id="prioritaID" layoutX="26.0" layoutY="299.0" prefHeight="25.0" prefWidth="113.0" />
                 <Button layoutX="96.0" layoutY="388.0" mnemonicParsing="false" text="Inserisci impegno" />
-            <Label layoutX="26.0" layoutY="165.0" prefHeight="17.0" prefWidth="214.0" text="Inserisci la priorità dell'impegno:">
+            <Label fx:id="prioritaLabelID" layoutX="26.0" layoutY="165.0" prefHeight="17.0" prefWidth="214.0" text="Inserisci la priorità dell'impegno:">
                <font>
                   <Font name="SansSerif Regular" size="14.0" />
                </font>
