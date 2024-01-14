@@ -9,9 +9,9 @@ public class inserimentoEventoApplication extends Application {
     @Override
     public void start(Stage stage){
         try{
-            Parent root = FXMLLoader.load(getClass().getResource("inserimentoEvento.fxml"));
-            Scene inserimentoEvento = new Scene(root);
-            stage.setScene(inserimentoEvento);
+            Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+            Scene home = new Scene(root);
+            stage.setScene(home);
             stage.show();
         } catch (Exception e){
             e.printStackTrace();
