@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.gennisilv.smartplanner.inserimentoEvento">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.gennisilv.smartplanner.inserimentoEventoController">
     <top>
         <Pane prefHeight="68.0" prefWidth="300.0" BorderPane.alignment="CENTER">
             <children>
@@ -92,13 +93,14 @@
             <TextField layoutX="23.0" layoutY="59.0" prefHeight="25.0" prefWidth="165.0" promptText="Inserisci il nome dell'evento" />
             <TextArea layoutX="24.0" layoutY="101.0" prefHeight="34.0" prefWidth="200.0" promptText="Inserisci la descrizione dell'evento" />
             <DatePicker layoutX="24.0" layoutY="155.0" prefHeight="25.0" prefWidth="185.0" promptText="Inserisci la data dell'evento" />
-            <ColorPicker editable="true" layoutX="25.0" layoutY="261.0" prefHeight="25.0" prefWidth="109.0" promptText="Scegli colore" />
+            <ColorPicker editable="true" layoutX="160.0" layoutY="274.0" prefHeight="25.0" prefWidth="109.0" promptText="Scegli colore" />
             <TextField layoutX="24.0" layoutY="207.0" prefHeight="25.0" prefWidth="110.0" promptText="Ora Inizio" />
-            <RadioButton layoutX="20.0" layoutY="298.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="261.0" text="Vuoi ricevere notifiche per quest'evento?" />
-            <ChoiceBox layoutX="158.0" layoutY="261.0" prefHeight="25.0" prefWidth="113.0" />
+            <RadioButton layoutX="20.0" layoutY="308.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="261.0" text="Vuoi ricevere notifiche per quest'evento?" />
+            <ChoiceBox fx:id="periodicitaID" layoutX="23.0" layoutY="274.0" prefHeight="25.0" prefWidth="128.0" />
             <TextField layoutX="159.0" layoutY="207.0" prefHeight="25.0" prefWidth="110.0" promptText="Ora Fine" />
             <Button layoutX="102.0" layoutY="394.0" mnemonicParsing="false" text="Inserisci Evento" />
-            <ComboBox layoutX="75.0" layoutY="346.0" prefWidth="150.0" promptText="Calendari" />
+            <ComboBox layoutX="75.0" layoutY="357.0" prefWidth="150.0" promptText="Calendari" />
+            <Label fx:id="periodicitaLabelID" layoutX="24.0" layoutY="254.0" prefHeight="17.0" prefWidth="121.0" text="Inserisci la periodicità:" />
          </children></Pane>
    </center>
 
