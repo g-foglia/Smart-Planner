@@ -13,6 +13,8 @@ public class loginController extends barraController{
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    //metodo che effettua il login (controllo di email e password per mezzo di UtenteDAO)
     public void switchToHome (ActionEvent e) throws IOException
     {
         Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
@@ -21,6 +23,7 @@ public class loginController extends barraController{
         stage.setScene(scene);
         stage.show();
     }
+
     public void switchToPaginaIniziale (ActionEvent e) throws IOException
     {
         Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
@@ -29,4 +32,6 @@ public class loginController extends barraController{
         stage.setScene(scene);
         stage.show();
     }
+
+
 }

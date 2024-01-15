@@ -7,7 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.gennisilv.smartplanner.data.Evento;
+import org.gennisilv.smartplanner.data.EventoDAO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,6 +21,8 @@ public class inserimentoEventoController extends barraController implements Init
     private Scene scene;
     private Parent root;
 
+    @FXML
+    private TextField nomeEvento;
     @FXML
     private Label periodicitaLabelID;
     @FXML
@@ -56,5 +61,21 @@ public class inserimentoEventoController extends barraController implements Init
     public void switchToAggiuntaEvento (ActionEvent e) throws IOException
     {
         super.switchToAggiuntaEvento(e);
+    }
+
+    @FXML
+    public void Aggiunta(ActionEvent e) throws IOException {
+        Evento evento = new Evento();
+        evento.setNomeEvento(nomeEvento.getText());
+
+        /*
+        .
+        .
+        .
+         */
+
+        EventoDAO.doSaveEvento(evento);
+
+        switchToHome(e);
     }
 }

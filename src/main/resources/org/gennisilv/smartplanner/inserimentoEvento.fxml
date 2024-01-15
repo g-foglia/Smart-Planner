@@ -90,7 +90,7 @@
                   <GaussianBlur />
                </effect>
             </Rectangle>
-            <TextField layoutX="23.0" layoutY="59.0" prefHeight="25.0" prefWidth="165.0" promptText="Inserisci il nome dell'evento" />
+            <TextField fx:id="nomeEvento" layoutX="23.0" layoutY="59.0" prefHeight="25.0" prefWidth="165.0" promptText="Inserisci il nome dell'evento" />
             <TextArea layoutX="24.0" layoutY="101.0" prefHeight="34.0" prefWidth="200.0" promptText="Inserisci la descrizione dell'evento" />
             <DatePicker layoutX="24.0" layoutY="155.0" prefHeight="25.0" prefWidth="185.0" promptText="Inserisci la data dell'evento" />
             <ColorPicker editable="true" layoutX="160.0" layoutY="274.0" prefHeight="25.0" prefWidth="109.0" promptText="Scegli colore" />

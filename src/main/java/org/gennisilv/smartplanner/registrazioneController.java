@@ -13,6 +13,8 @@ public class registrazioneController extends barraController{
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    //metodo che effettua la registrazione (acquisisce i valori e registra il nuovo utente)
     public void switchToHome (ActionEvent e) throws IOException
     {
         Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));

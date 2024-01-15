@@ -29,7 +29,6 @@ public class EventoDAO {
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
