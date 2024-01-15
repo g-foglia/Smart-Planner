@@ -8,7 +8,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.gennisilv.smartplanner.data.Impegno;
+import org.gennisilv.smartplanner.data.ListaDAO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,9 +27,22 @@ public class inserimentoImpegnoController extends barraController implements Ini
     private Label prioritaLabelID;
     @FXML
     private ChoiceBox<String> prioritaID;
-
+    @FXML
+    private TextField nomeImpegno;
+    @FXML
+    private TextField durataImpegno;
     private String[] priorita = {"1", "2", "3", "4", "5"};
 
+    public void inserisciImpegno(ActionEvent event){
+        /*
+        Impegno impegno = new Impegno();
+        impegno.setNomeImpegno(nomeImpegno.getText());
+        impegno.setDurataImpegno((Integer.parseInt(durataImpegno.getText())));
+        impegno.setPrioritaImpegno((Integer.parseInt(prioritaID.getValue())));
+        ListaDAO.doAddImpegno(impegno, EMAIL UTENTE);
+        switchToHome(event);
+         */
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

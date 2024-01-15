@@ -73,8 +73,8 @@
                         <GaussianBlur />
                     </effect>
                 </Rectangle>
-                <TextField layoutX="23.0" layoutY="75.0" prefHeight="25.0" prefWidth="175.0" promptText="Inserisci il nome dell'impegno" />
-                <TextField layoutX="23.0" layoutY="119.0" prefHeight="25.0" prefWidth="110.0" promptText="Inserisci la durata" />
+                <TextField fx:id="nomeImpegno" layoutX="23.0" layoutY="75.0" prefHeight="25.0" prefWidth="175.0" promptText="Inserisci il nome dell'impegno" />
+                <TextField fx:id="duranteImpegno" layoutX="23.0" layoutY="119.0" prefHeight="25.0" prefWidth="110.0" promptText="Inserisci la durata" />
                 <ChoiceBox fx:id="prioritaID" layoutX="26.0" layoutY="299.0" prefHeight="25.0" prefWidth="113.0" />
                 <Button layoutX="96.0" layoutY="388.0" mnemonicParsing="false" text="Inserisci impegno" />
             <Label fx:id="prioritaLabelID" layoutX="26.0" layoutY="165.0" prefHeight="17.0" prefWidth="214.0" text="Inserisci la priorità dell'impegno:">
