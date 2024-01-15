@@ -24,11 +24,11 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField alignment="CENTER" layoutX="49.0" layoutY="120.0" prefHeight="40.0" prefWidth="200.0" promptText="Inserisci password">
+            <TextField fx:id="passwordLogin" alignment="CENTER" layoutX="49.0" layoutY="120.0" prefHeight="40.0" prefWidth="200.0" promptText="Inserisci password">
                <effect>
                   <InnerShadow height="2.5" radius="0.75" width="2.5" />
                </effect></TextField>
-            <TextField alignment="CENTER" layoutX="50.0" layoutY="59.0" prefHeight="40.0" prefWidth="200.0" promptText="Inserisci email">
+            <TextField fx:id="emailLogin" alignment="CENTER" layoutX="50.0" layoutY="59.0" prefHeight="40.0" prefWidth="200.0" promptText="Inserisci email">
                <effect>
                   <InnerShadow height="2.5" radius="0.75" width="2.5" />
                </effect></TextField>
