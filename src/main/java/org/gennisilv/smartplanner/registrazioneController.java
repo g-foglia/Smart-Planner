@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.gennisilv.smartplanner.data.Utente;
 import org.gennisilv.smartplanner.data.UtenteDAO;
+import org.gennisilv.smartplanner.utils.UtenteHolder;
 
 import java.io.IOException;
 
@@ -34,7 +35,6 @@ public class registrazioneController extends barraController{
 
 
     //metodo che effettua la registrazione (acquisisce i valori e registra il nuovo utente)
-
     public void registrazione (ActionEvent e)throws IOException
     {
         Utente utente= new Utente();
@@ -44,7 +44,9 @@ public class registrazioneController extends barraController{
         utente.setCognome(cognomeReg.getText());
         utente.setUsername(usernameReg.getText());
         UtenteDAO.doAddUtente(utente);
-        //passare utente all'app
+
+        sendUser(utente);
+
         switchToHome(e);
     }
     public void switchToHome (ActionEvent e) throws IOException
@@ -64,4 +66,9 @@ public class registrazioneController extends barraController{
         stage.show();
     }
 
+    //assegna l'utente a una variabile recuperabile in tutta l'applicazione
+    private void sendUser(Utente utente){
+        UtenteHolder utenteHolder = UtenteHolder.getIstanza();
+        utenteHolder.setUtente(utente);
+    }
 }

@@ -1,8 +1,6 @@
 package org.gennisilv.smartplanner.data;
 
 
-import org.gennisilv.smartplanner.utils.ConPool;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

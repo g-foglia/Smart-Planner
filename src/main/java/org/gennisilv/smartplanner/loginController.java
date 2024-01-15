@@ -12,6 +12,7 @@ import org.gennisilv.smartplanner.data.Evento;
 import org.gennisilv.smartplanner.data.EventoDAO;
 import org.gennisilv.smartplanner.data.Utente;
 import org.gennisilv.smartplanner.data.UtenteDAO;
+import org.gennisilv.smartplanner.utils.UtenteHolder;
 
 import java.io.IOException;
 
@@ -32,9 +33,9 @@ public class loginController extends barraController{
 
         utente = UtenteDAO.login(emailLogin.getText(), passwordLogin.getText());
         if(utente == NULL){
-            //pagina errore
+            pagina errore
         }else{
-            //passaggio dell'oggetto utente
+            sendUser(utente);
             switchToHome(e);
         }
 
@@ -56,5 +57,10 @@ public class loginController extends barraController{
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void sendUser(Utente utente){
+        UtenteHolder utenteHolder = UtenteHolder.getIstanza();
+        utenteHolder.setUtente(utente);
     }
 }
