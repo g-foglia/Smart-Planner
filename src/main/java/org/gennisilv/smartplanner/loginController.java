@@ -32,7 +32,7 @@ public class loginController extends barraController{
 
         utente = UtenteDAO.login(emailLogin.getText(), passwordLogin.getText());
         /*if(utente == NULL){
-
+            //pagina errore
         }else{
             //passaggio dell'oggetto utente
             switchToHome(e);
