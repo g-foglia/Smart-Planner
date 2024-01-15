@@ -19,8 +19,5 @@ public class HelloApplication extends Application {
         } catch (Exception e){
             e.printStackTrace();
         }
-
     }
-
-
 }

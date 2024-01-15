@@ -28,22 +28,15 @@ public class ListaDAO {
     }
 
     //aggiunge un impegno a una lista
-
-    /*AGGIUNGERE
-      EMAILUI
-      APPENA
-      MESSA
-      NEL
-      DB
-     */
     public static void doAddImpegno(Impegno impegno, String emailUL){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO impegno (codiceImpegno, nomeImpegno, durataImpegno, prioritaImpegno) VALUES(?,?,?,?)");
+                    "INSERT INTO impegno (codiceImpegno, nomeImpegno, durataImpegno, prioritaImpegno, emailUI) VALUES(?,?,?,?,?)");
             ps.setString(1, impegno.getCodiceImpegno());
             ps.setString(2, impegno.getNomeImpegno());
             ps.setInt(3,impegno.getDurataImpegno());
             ps.setInt(4,impegno.getPrioritaImpegno());
+            ps.setString(5, impegno.getEmailUI());
 
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
