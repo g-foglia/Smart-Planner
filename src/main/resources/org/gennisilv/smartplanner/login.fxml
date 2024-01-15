@@ -43,6 +43,15 @@
                <font>
                   <Font name="SansSerif Bold" size="20.0" />
                </font></Button>
+            <Button layoutX="130.0" mnemonicParsing="false" onAction="#switchToPaginaIniziale" prefHeight="31.0" prefWidth="34.0">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/icons8-indietro-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </Pane>
    </center>

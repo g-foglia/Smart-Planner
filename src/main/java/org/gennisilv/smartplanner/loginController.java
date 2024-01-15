@@ -21,4 +21,12 @@ public class loginController extends barraController{
         stage.setScene(scene);
         stage.show();
     }
+    public void switchToPaginaIniziale (ActionEvent e) throws IOException
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+        stage= (Stage) ((Node)e.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
