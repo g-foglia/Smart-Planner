@@ -27,18 +27,18 @@ public class loginController extends barraController{
 
     //metodo che effettua il login (controllo di email e password per mezzo di UtenteDAO)
 
-    public void login (ActionEvent e) throws IOException {
+    /*public void login (ActionEvent e) throws IOException {
         Utente utente = new Utente();
 
         utente = UtenteDAO.login(emailLogin.getText(), passwordLogin.getText());
-        /*if(utente == NULL){
+        if(utente == NULL){
             //pagina errore
         }else{
             //passaggio dell'oggetto utente
             switchToHome(e);
         }
-        */
-    }
+
+    }*/
 
     public void switchToHome (ActionEvent e) throws IOException
     {

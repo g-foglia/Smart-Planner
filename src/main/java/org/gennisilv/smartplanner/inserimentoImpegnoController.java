@@ -33,16 +33,16 @@ public class inserimentoImpegnoController extends barraController implements Ini
     private TextField durataImpegno;
     private String[] priorita = {"1", "2", "3", "4", "5"};
 
-    public void inserisciImpegno(ActionEvent event){
-        /*
+    /*public void inserisciImpegno(ActionEvent event){
+
         Impegno impegno = new Impegno();
         impegno.setNomeImpegno(nomeImpegno.getText());
         impegno.setDurataImpegno((Integer.parseInt(durataImpegno.getText())));
         impegno.setPrioritaImpegno((Integer.parseInt(prioritaID.getValue())));
         ListaDAO.doAddImpegno(impegno, EMAIL UTENTE);
         switchToHome(event);
-         */
-    }
+
+    }  */
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

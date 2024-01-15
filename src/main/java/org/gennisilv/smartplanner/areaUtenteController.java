@@ -15,13 +15,13 @@ public class areaUtenteController extends barraController{
     private Scene scene;
     private Parent root;
 
-    public void cancellaUtente(ActionEvent event){
-        /*
+    /*public void cancellaUtente(ActionEvent event){
+
         UtenteDAO.doCancUtente();
         //cancellare utente dall'app
         switchToHelloView(event);
-        */
-    }
+
+    }*/
 
     public void switchToHelloView(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));

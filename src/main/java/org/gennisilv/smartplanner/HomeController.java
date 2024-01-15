@@ -17,14 +17,14 @@ public class HomeController extends barraController {
     private Scene scene;
     private Parent root;
 
-    public void switchToinserimentoImpegno (ActionEvent e) throws IOException
+    /*public void switchToinserimentoImpegno (ActionEvent e) throws IOException
     {
         Parent root = FXMLLoader.load(getClass().getResource("inserimentoImpegno.fxml"));
         stage= (Stage) ((Node)e.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
-    }
+    }*/
 
     @Override
     public void switchTosettimanale(ActionEvent event) throws IOException {
