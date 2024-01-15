@@ -46,28 +46,28 @@
    <center>
       <Pane prefHeight="400.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField layoutX="23.0" layoutY="86.0" prefHeight="30.0" prefWidth="115.0" promptText="Inserisci nome">
+            <TextField fx:id="nomeReg" layoutX="16.0" layoutY="86.0" prefHeight="30.0" prefWidth="115.0" promptText="Inserisci nome">
                <effect>
                   <InnerShadow height="2.5" radius="0.75" width="2.5" />
                </effect></TextField>
-            <TextField layoutX="151.0" layoutY="86.0" prefHeight="30.0" prefWidth="127.0" promptText="Inserisci cognome">
+            <TextField fx:id="cognomeReg" layoutX="151.0" layoutY="86.0" prefHeight="30.0" prefWidth="127.0" promptText="Inserisci cognome">
                <effect>
                   <InnerShadow height="2.5" radius="0.75" width="2.5" />
                </effect></TextField>
-            <TextField layoutX="23.0" layoutY="217.0" prefHeight="30.0" prefWidth="200.0" promptText="Inserisci e-mail">
+            <TextField fx:id="emailReg" layoutX="16.0" layoutY="217.0" prefHeight="30.0" prefWidth="200.0" promptText="Inserisci e-mail">
                <effect>
                   <InnerShadow height="2.5" radius="0.75" width="2.5" />
                </effect></TextField>
-            <DatePicker layoutX="21.0" layoutY="155.0" prefHeight="30.0" promptText="Inserisci data di nascita">
+            <DatePicker fx:id="dataReg" layoutX="16.0" layoutY="156.0" prefHeight="30.0" promptText="Inserisci data di nascita">
                <effect>
                   <InnerShadow height="2.5" radius="0.75" width="2.5" />
                </effect></DatePicker>
-            <PasswordField layoutX="23.0" layoutY="277.0" prefHeight="30.0" prefWidth="134.0" promptText="Crea una password">
+            <PasswordField fx:id="passwordReg" layoutX="16.0" layoutY="313.0" prefHeight="30.0" prefWidth="134.0" promptText="Crea una password">
                <effect>
                   <InnerShadow height="2.5" radius="0.75" width="2.5" />
                </effect></PasswordField>
-            <ProgressBar layoutX="21.0" layoutY="313.0" prefHeight="18.0" prefWidth="120.0" progress="0.0" />
-            <PasswordField layoutX="22.0" layoutY="345.0" prefHeight="30.0" prefWidth="134.0" promptText="Conferma password">
+            <ProgressBar layoutX="14.0" layoutY="357.0" prefHeight="18.0" prefWidth="139.0" progress="0.0" />
+            <PasswordField fx:id="confermaPasswordReg" layoutX="16.0" layoutY="391.0" prefHeight="30.0" prefWidth="134.0" promptText="Conferma password">
                <effect>
                   <InnerShadow height="2.5" radius="0.75" width="2.5" />
                </effect></PasswordField>
@@ -80,6 +80,11 @@
                   </ImageView>
                </graphic>
             </Button>
+            <TextField fx:id="usernameReg" layoutX="19.0" layoutY="267.0" prefHeight="30.0" prefWidth="127.0" promptText="Inserisci username">
+               <effect>
+                  <InnerShadow height="2.5" radius="0.75" width="2.5" />
+               </effect>
+            </TextField>
          </children>
       </Pane>
    </center>
