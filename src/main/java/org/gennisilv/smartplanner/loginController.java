@@ -8,18 +8,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.gennisilv.smartplanner.data.Evento;
-import org.gennisilv.smartplanner.data.EventoDAO;
 import org.gennisilv.smartplanner.data.Utente;
 import org.gennisilv.smartplanner.data.UtenteDAO;
-import org.gennisilv.smartplanner.utils.UtenteHolder;
+import org.gennisilv.smartplanner.utils.UserHolder;
 
 import java.io.IOException;
 
 public class loginController extends barraController{
     private Stage stage;
     private Scene scene;
-    private Parent root;
 
     @FXML
     private TextField emailLogin;
@@ -27,19 +24,17 @@ public class loginController extends barraController{
     private TextField passwordLogin;
 
     //metodo che effettua il login (controllo di email e password per mezzo di UtenteDAO)
+    public void login (ActionEvent e) throws IOException {
+        Utente utente = UtenteDAO.login(emailLogin.getText(), passwordLogin.getText());
 
-    /*public void login (ActionEvent e) throws IOException {
-        Utente utente = new Utente();
-
-        utente = UtenteDAO.login(emailLogin.getText(), passwordLogin.getText());
-        if(utente == NULL){
-            pagina errore
+        if(utente == null){
+            //errore
         }else{
             sendUser(utente);
             switchToHome(e);
         }
 
-    }*/
+    }
 
     public void switchToHome (ActionEvent e) throws IOException
     {
@@ -60,7 +55,7 @@ public class loginController extends barraController{
     }
 
     private void sendUser(Utente utente){
-        UtenteHolder utenteHolder = UtenteHolder.getIstanza();
-        utenteHolder.setUtente(utente);
+        UserHolder userHolder = UserHolder.getIstanza();
+        userHolder.setUtente(utente);
     }
 }

@@ -6,6 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.gennisilv.smartplanner.data.Evento;
@@ -18,19 +21,28 @@ import java.util.List;
 public final class ricercaEventiController extends barraController{
     private Stage stage;
     private Scene scene;
-    private Parent root;
     @FXML
-    private TextField ricerca;
+    private TextField evento;
+    @FXML
+    private Button ricerca;
+    @FXML
+    private TextArea risultati;
 
     public void ricerca (ActionEvent e) throws IOException
     {
-        Evento evento;
-        String eventoRicercarto=ricerca.getText();
-        //EventoDAO.doRetrieveEventsByName(eventoRicercarto);
-        List<Evento> eventi=EventoDAO.doRetrieveEventsByName(eventoRicercarto);
-        /*for (eventi)
-        {}*/ //STAMPA
+        List<Evento> eventi = EventoDAO.doRetrieveEventsByName(evento.getText());
+
+        if(eventi.isEmpty()){
+            risultati.setText("Nessun evento trovato");
+        }
+        else{
+            for(Evento evento : eventi)
+                risultati.setText(evento.getNomeEvento() + "\n");
+        }
+
     }
+
+    @Override
     public void switchTosettimanale(ActionEvent event) throws IOException {
         super.switchTosettimanale(event);
     }
@@ -54,6 +66,8 @@ public final class ricercaEventiController extends barraController{
     public void switchToRicerca(ActionEvent e) throws IOException {
         super.switchToRicerca(e);
     }
+
+    @Override
     public void switchToAggiuntaEvento (ActionEvent e) throws IOException
     {
         super.switchToAggiuntaEvento(e);

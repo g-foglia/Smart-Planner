@@ -12,9 +12,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.gennisilv.smartplanner.data.Utente;
 import org.gennisilv.smartplanner.data.UtenteDAO;
-import org.gennisilv.smartplanner.utils.UtenteHolder;
+import org.gennisilv.smartplanner.utils.UserHolder;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.GregorianCalendar;
 
 public class registrazioneController extends barraController{
     private Stage stage;
@@ -23,12 +25,18 @@ public class registrazioneController extends barraController{
 
     @FXML
     private TextField nomeReg;
+    @FXML
     private TextField cognomeReg;
+    @FXML
     private TextField emailReg;
+    @FXML
     private TextField usernameReg;
 
+    @FXML
     private PasswordField passwordReg;
+    @FXML
     private PasswordField confermapasswordReg;
+    @FXML
     private DatePicker dataReg;
 
 
@@ -42,6 +50,7 @@ public class registrazioneController extends barraController{
         utente.setPassword(passwordReg.getText());
         utente.setNome(nomeReg.getText());
         utente.setCognome(cognomeReg.getText());
+        utente.setDataDiNascita(new GregorianCalendar(dataReg.getValue().getYear(),dataReg.getValue().getMonthValue()-1,dataReg.getValue().getDayOfMonth()));
         utente.setUsername(usernameReg.getText());
         UtenteDAO.doAddUtente(utente);
 
@@ -68,7 +77,7 @@ public class registrazioneController extends barraController{
 
     //assegna l'utente a una variabile recuperabile in tutta l'applicazione
     private void sendUser(Utente utente){
-        UtenteHolder utenteHolder = UtenteHolder.getIstanza();
-        utenteHolder.setUtente(utente);
+        UserHolder userHolder = UserHolder.getIstanza();
+        userHolder.setUtente(utente);
     }
 }

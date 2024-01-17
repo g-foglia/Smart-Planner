@@ -32,7 +32,7 @@
                <effect>
                   <InnerShadow height="2.5" radius="0.75" width="2.5" />
                </effect></TextField>
-            <Button layoutX="52.0" layoutY="241.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="51.0" prefWidth="194.0" style="-fx-background-color: #a1d3e8; -fx-background-radius: 60;" text="Login" textFill="#555555">
+            <Button layoutX="52.0" layoutY="241.0" mnemonicParsing="false" onAction="#login" prefHeight="51.0" prefWidth="194.0" style="-fx-background-color: #a1d3e8; -fx-background-radius: 60;" text="Login" textFill="#555555">
                <effect>
                   <InnerShadow height="30.0" radius="17.75" width="43.0">
                      <color>

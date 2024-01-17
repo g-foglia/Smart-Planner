@@ -12,7 +12,7 @@ public class DateConverter {
 
     public static String toString(GregorianCalendar date){
         SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yy");
-        String data = fmt.format(date);
+        String data = fmt.format(date.getTime());
         return data;
     }
 }

@@ -5,33 +5,74 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import org.gennisilv.smartplanner.data.CalendarioDAO;
 import org.gennisilv.smartplanner.data.Evento;
 import org.gennisilv.smartplanner.data.EventoDAO;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
 
 public class inserimentoEventoController extends barraController implements Initializable {
     private Stage stage;
     private Scene scene;
-    private Parent root;
 
     @FXML
     private TextField nomeEvento;
     @FXML
-    private Label periodicitaLabelID;
+    private TextArea descrizioneEvento;
+    @FXML
+    private DatePicker dataEvento;
+    @FXML
+    private TextField oraInizio;
+    @FXML
+    private TextField oraFine;
     @FXML
     private ChoiceBox<String> periodicitaID;
+    @FXML
+    private ColorPicker colore;
+    @FXML
+    private RadioButton notifiche;
+    @FXML
+    private ComboBox calendari;
+
     private String[] periodicita = {"0 - solo 1 volta;", "1 - 1 volta al giorno;", "2 - 1 volta a settimana;", "3 - 1 volta al mese;"};
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         periodicitaID.getItems().addAll(periodicita);
+    }
+
+    public void inserisciEvento(ActionEvent e){
+        Evento evento = new Evento();
+        evento.setCodiceEvento("a.1.3.4");
+        evento.setNomeEvento(nomeEvento.getText());
+        evento.setDescrizione(descrizioneEvento.getText());
+        evento.setDataEvento(new GregorianCalendar(dataEvento.getValue().getYear(),dataEvento.getValue().getMonthValue()-1,dataEvento.getValue().getDayOfMonth()));
+        evento.setOrarioInizio(oraInizio.getText());
+        evento.setOrarioFine(oraFine.getText());
+        evento.setColoreEvento(toHexString(colore.getValue()));
+        evento.setNotifiche(notifiche.isSelected());
+        switch (periodicitaID.getValue()){
+            case "0 - solo 1 volta;":
+                evento.setPeriodicita(0);
+            case "1 - 1 volta al giorno;":
+                evento.setPeriodicita(1);
+            case "2 - 1 volta a settimana;":
+                evento.setPeriodicita(2);
+            case "3 - 1 volta al mese;":
+                evento.setPeriodicita(3);
+        }
+
+        EventoDAO.doSaveEvento(evento);
+
+
+
+        //switch al calendario selezionato
     }
 
     @Override
@@ -63,21 +104,15 @@ public class inserimentoEventoController extends barraController implements Init
         super.switchToAggiuntaEvento(e);
     }
 
-    @FXML
-    public void Aggiunta(ActionEvent e) throws IOException {
-        Evento evento = new Evento();
-        evento.setNomeEvento(nomeEvento.getText());
-
-        /*
-        .
-        .
-        .
-         */
-
-        EventoDAO.doSaveEvento(evento);
-
-        switchToHome(e);
+    //due metodi per la conversione dell'oggetto Color in una stringa esadecimale.
+    //NON funzionano per TUTTI i colori possibili, ma sono abbastanza affidabili
+    private String format(double val) {
+        String in = Integer.toHexString((int) Math.round(val * 255));
+        return in.length() == 1 ? "0" + in : in;
     }
 
-
+    public String toHexString(Color value) {
+        return "#" + (format(value.getRed()) + format(value.getGreen()) + format(value.getBlue()) + format(value.getOpacity()))
+                .toUpperCase();
+    }
 }

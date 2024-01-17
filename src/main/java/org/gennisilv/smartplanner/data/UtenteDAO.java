@@ -57,7 +57,7 @@ public class UtenteDAO {
         }
     }
 
-    //cancellazione di un utente
+    //cancellazione di un utente e a cascata di tutti gli eventi e i calendati a lui associati
     public static void doCancUtente(String email){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.gennisilv.smartplanner.settimanaleController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.gennisilv.smartplanner.creazioneCalendarioController">
     <bottom>
         <Pane prefHeight="80.0" prefWidth="300.0" BorderPane.alignment="CENTER">
             <children>
@@ -84,9 +84,9 @@
                   <BoxBlur />
                </effect>
             </Rectangle>
-            <TextField layoutX="42.0" layoutY="88.0" promptText="Inserisci nome calendario" />
-            <ColorPicker layoutX="42.0" layoutY="140.0" />
-            <Button layoutX="99.0" layoutY="264.0" mnemonicParsing="false" text="Crea Calendario" />
+            <TextField fx:id="nome" layoutX="42.0" layoutY="88.0" promptText="Inserisci nome calendario" />
+            <ColorPicker fx:id="colore" layoutX="42.0" layoutY="140.0" />
+            <Button layoutX="99.0" layoutY="264.0" mnemonicParsing="false" onAction="#creaCalendario" text="Crea Calendario" />
          </children>
       </Pane>
    </center>

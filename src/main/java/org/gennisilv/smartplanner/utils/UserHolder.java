@@ -2,11 +2,11 @@ package org.gennisilv.smartplanner.utils;
 
 import org.gennisilv.smartplanner.data.Utente;
 
-public class UtenteHolder {
+public class UserHolder {
     private Utente utente;
-    private final static UtenteHolder ISTANZA = new UtenteHolder();
+    private final static UserHolder ISTANZA = new UserHolder();
 
-    private UtenteHolder(){}
+    private UserHolder(){}
 
     public Utente getUtente() {
         return utente;
@@ -16,7 +16,7 @@ public class UtenteHolder {
         this.utente = utente;
     }
 
-    public static UtenteHolder getIstanza(){
+    public static UserHolder getIstanza(){
         return ISTANZA;
     }
 }

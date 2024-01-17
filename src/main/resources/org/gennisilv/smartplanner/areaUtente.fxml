@@ -98,7 +98,7 @@
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="87.0" layoutY="415.0" mnemonicParsing="false" text="Cancella Account">
+            <Button layoutX="87.0" layoutY="415.0" mnemonicParsing="false" onAction="#cancellaUtente" text="Cancella Account">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
@@ -108,28 +108,28 @@
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="48.0" layoutY="95.0" text="username:" />
-            <Label layoutX="48.0" layoutY="125.0" text="email:">
+            <Label fx:id="username" layoutX="48.0" layoutY="95.0" text="username:" />
+            <Label fx:id="email" layoutX="48.0" layoutY="125.0" text="email:">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="48.0" layoutY="154.0" text="password:">
+            <Label fx:id="password" layoutX="48.0" layoutY="154.0" text="password:">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="48.0" layoutY="183.0" text="nome:">
+            <Label fx:id="nome" layoutX="48.0" layoutY="183.0" text="nome:">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="48.0" layoutY="212.0" text="cognome:">
+            <Label fx:id="cognome" layoutX="48.0" layoutY="212.0" text="cognome:">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="48.0" layoutY="242.0" text="data di nascita:">
+            <Label fx:id="dataNascita" layoutX="48.0" layoutY="242.0" text="data di nascita:">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
