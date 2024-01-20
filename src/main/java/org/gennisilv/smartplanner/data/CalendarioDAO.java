@@ -71,10 +71,28 @@ public class CalendarioDAO {
         }
     }
 
+    public static Calendario doRetrieveByNome(String nomeCalendario, String email){
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps =
+                    con.prepareStatement("SELECT * FROM calendario WHERE nomeCalendario=? AND codiceCalendario IN (SELECT codiceCalendarioC FROM creazione WHERE emailC=?)");
+            ps.setString(1, nomeCalendario);
+            ps.setString(2, email);
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()) {
+                return new Calendario(rs.getString(1), rs.getString(2), rs.getString(3));
+            }
+            return null;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static ArrayList<Calendario> doRetrieveByUtente(String email){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
-                    con.prepareStatement("SELECT * FROM calendario WHERE codiceCalendario in (SELECT codiceCalendario FROM creazione WHERE emailC=?)");
+                    con.prepareStatement("SELECT * FROM calendario WHERE codiceCalendario in (SELECT codiceCalendarioC FROM creazione WHERE emailC=?)");
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
 

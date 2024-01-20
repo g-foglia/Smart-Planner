@@ -8,12 +8,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import org.gennisilv.smartplanner.data.Calendario;
 import org.gennisilv.smartplanner.data.CalendarioDAO;
 import org.gennisilv.smartplanner.data.Evento;
 import org.gennisilv.smartplanner.data.EventoDAO;
+import org.gennisilv.smartplanner.utils.UserHolder;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
 
@@ -44,10 +47,17 @@ public class inserimentoEventoController extends barraController implements Init
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ArrayList<Calendario> lista = CalendarioDAO.doRetrieveByUtente(UserHolder.getIstanza().getUtente().getEmail());
+        ArrayList<String> nomi = new ArrayList<>();
+
+        for(Calendario calendario : lista)
+            nomi.add(calendario.getNomeCalendario());
+
+        calendari.getItems().addAll(nomi);
         periodicitaID.getItems().addAll(periodicita);
     }
 
-    public void inserisciEvento(ActionEvent e){
+    public void inserisciEvento(ActionEvent e) throws IOException {
         Evento evento = new Evento();
         evento.setCodiceEvento("a.1.3.4");
         evento.setNomeEvento(nomeEvento.getText());
@@ -69,10 +79,10 @@ public class inserimentoEventoController extends barraController implements Init
         }
 
         EventoDAO.doSaveEvento(evento);
+        Calendario calendario = CalendarioDAO.doRetrieveByNome((String) calendari.getValue(),UserHolder.getIstanza().getUtente().getEmail());
+        CalendarioDAO.doAddEvento(evento.getCodiceEvento(), calendario.getCodiceCalendario());
 
-
-
-        //switch al calendario selezionato
+        switchTosettimanale(e);
     }
 
     @Override

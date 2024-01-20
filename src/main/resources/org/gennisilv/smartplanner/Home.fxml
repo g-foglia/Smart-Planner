@@ -89,7 +89,7 @@
                </effect>
             </Rectangle>
             <Text layoutX="23.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lista:" />
-            <Button layoutX="97.0" layoutY="313.0" mnemonicParsing="false" text="Aggiungi Evento" />
+            <Button fx:id="aggEventoHome" layoutX="97.0" layoutY="313.0" mnemonicParsing="false" text="Aggiungi Evento" />
             <Button layoutX="163.0" layoutY="414.0" mnemonicParsing="false" style="-fx-background-color: #e0f0ff;" text="Aggiungi Impegno">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX">
@@ -108,7 +108,7 @@
                   </DropShadow>
                </effect>
             </Button>
-            <GridPane gridLinesVisible="true" layoutX="11.0" layoutY="91.0" prefHeight="193.0" prefWidth="279.0">
+            <GridPane fx:id="calendarioHome" gridLinesVisible="true" layoutX="11.0" layoutY="91.0" prefHeight="193.0" prefWidth="279.0">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

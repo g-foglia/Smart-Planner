@@ -11,7 +11,6 @@ import java.io.IOException;
 public final class settimanaleController extends barraController{
     private Stage stage;
     private Scene scene;
-    private Parent root;
 
     @FXML
     private Polygon giorni;

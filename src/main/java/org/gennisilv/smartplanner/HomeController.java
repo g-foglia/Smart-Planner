@@ -2,20 +2,52 @@ package org.gennisilv.smartplanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
+import org.gennisilv.smartplanner.data.Calendario;
+import org.gennisilv.smartplanner.data.CalendarioDAO;
+import org.gennisilv.smartplanner.data.Utente;
+import org.gennisilv.smartplanner.utils.UserHolder;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 
-public class HomeController extends barraController {
+public class HomeController extends barraController implements Initializable {
 
     private Stage stage;
     private Scene scene;
-    private Parent root;
+
+    @FXML
+    private GridPane calendarioHome;
+    @FXML
+    private Button aggEventoHome;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Utente utente = UserHolder.getIstanza().getUtente();
+        ArrayList<Calendario> calendari = CalendarioDAO.doRetrieveByUtente(utente.getEmail());
+        if(calendari.isEmpty()){
+            calendarioHome.setVisible(false);
+            aggEventoHome.setVisible(false);
+        }
+        else{
+            Calendario calendario = calendari.get(1);
+            /*
+            aggiunta degli eventi alle righe della colonna
+            IDEA.....fare si che nella home escano gli impegni prossimi ad avvenire
+             */
+        }
+
+    }
 
     /*public void switchToinserimentoImpegno (ActionEvent e) throws IOException
     {

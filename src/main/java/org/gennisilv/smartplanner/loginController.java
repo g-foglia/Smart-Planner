@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.gennisilv.smartplanner.data.Utente;
@@ -28,12 +29,12 @@ public class loginController extends barraController{
         Utente utente = UtenteDAO.login(emailLogin.getText(), passwordLogin.getText());
 
         if(utente == null){
-            //errore
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,"La combinazione di email e password è sbagliata");
+            alert.showAndWait();
         }else{
-            sendUser(utente);
+            UserHolder.getIstanza().setUtente(utente);
             switchToHome(e);
         }
-
     }
 
     public void switchToHome (ActionEvent e) throws IOException
@@ -52,10 +53,5 @@ public class loginController extends barraController{
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
-    }
-
-    private void sendUser(Utente utente){
-        UserHolder userHolder = UserHolder.getIstanza();
-        userHolder.setUtente(utente);
     }
 }
