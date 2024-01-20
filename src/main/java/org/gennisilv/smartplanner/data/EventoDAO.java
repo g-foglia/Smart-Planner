@@ -58,14 +58,15 @@ public class EventoDAO {
     }
 
     //restituisce tutti gli eventi corrispondenti a un certo nome
-    public static List<Evento> doRetrieveEventsByName(String nomeEvento){
+    public static ArrayList<Evento> doRetrieveEventsByName(String nomeEvento, String email){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
-                    con.prepareStatement("SELECT * FROM evento WHERE nomeEvento=?");
+                    con.prepareStatement("SELECT * FROM evento WHERE nomeEvento=? AND emailE=?");
             ps.setString(1, nomeEvento);
+            ps.setString(2, email);
             ResultSet rs = ps.executeQuery();
 
-            List<Evento> eventi = new ArrayList<>();
+            ArrayList<Evento> eventi = new ArrayList<>();
             while(rs.next()) {
                 Evento evento = new Evento();
                 evento.setCodiceEvento(rs.getString(1));

@@ -1,6 +1,9 @@
 package org.gennisilv.smartplanner.data;
 
+import org.gennisilv.smartplanner.utils.DateConverter;
+
 import java.sql.*;
+import java.util.ArrayList;
 
 
 //si occupa delle operazioni che riguardano il calendario (inserimento e cancellazione di un evento, creazione modifica e cancellazione di un calendario)
@@ -63,6 +66,28 @@ public class CalendarioDAO {
             }
             return null;
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static ArrayList<Calendario> doRetrieveByUtente(String email){
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps =
+                    con.prepareStatement("SELECT * FROM calendario WHERE codiceCalendario in (SELECT codiceCalendario FROM creazione WHERE emailC=?)");
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+
+            ArrayList<Calendario> calendari = new ArrayList<>();
+            while(rs.next()) {
+                Calendario calendario = new Calendario();
+                calendario.setCodiceCalendario(rs.getString(1));
+                calendario.setNomeCalendario(rs.getString(2));
+                calendario.setColoreCalendario(rs.getString(3));
+
+                calendari.add(calendario);
+            }
+            return calendari;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
