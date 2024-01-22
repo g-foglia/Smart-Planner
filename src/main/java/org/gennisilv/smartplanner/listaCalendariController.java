@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -50,6 +51,9 @@ public class listaCalendariController extends barraController implements Initial
                         throw new RuntimeException(ex);
                     }
                 });
+
+                button.setStyle("-fx-background-color:" + calendario.getColoreCalendario());
+
                 bottoni.add(button);
             }
             //aggiungo la lista di bottoni al contenitore

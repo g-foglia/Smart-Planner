@@ -39,13 +39,13 @@ public class HomeController extends barraController implements Initializable {
             calendarioHome.setVisible(false);
             aggEventoHome.setVisible(false);
         }
-        else{
+        /*else{
             Calendario calendario = calendari.get(1);
-            /*
+
             aggiunta degli eventi alle righe della colonna
             IDEA.....fare si che nella home escano gli impegni prossimi ad avvenire
-             */
-        }
+
+        } */
 
     }
 

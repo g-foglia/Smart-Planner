@@ -3,26 +3,33 @@ package org.gennisilv.smartplanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.gennisilv.smartplanner.data.Utente;
 import org.gennisilv.smartplanner.data.UtenteDAO;
 import org.gennisilv.smartplanner.utils.UserHolder;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class loginController extends barraController{
+public class loginController extends barraController {
     private Stage stage;
     private Scene scene;
 
     @FXML
     private TextField emailLogin;
     @FXML
-    private TextField passwordLogin;
+    private PasswordField passwordLogin;
+
 
     //metodo che effettua il login (controllo di email e password per mezzo di UtenteDAO)
     public void login (ActionEvent e) throws IOException {
@@ -54,4 +61,5 @@ public class loginController extends barraController{
         stage.setScene(scene);
         stage.show();
     }
+
 }

@@ -39,7 +39,17 @@ public class areaUtenteController extends barraController implements Initializab
     //cancella un utente ed effettua il logout
     public void cancellaUtente(ActionEvent event) throws IOException{
         UtenteDAO.doCancUtente(UserHolder.getIstanza().getUtente().getEmail());
-        sendUser(null);
+        UserHolder userHolder = UserHolder.getIstanza();
+        userHolder.setUtente(null);
+
+        switchToHelloView(event);
+    }
+
+    //logout
+    public void logout(ActionEvent event) throws IOException{
+
+        UserHolder userHolder = UserHolder.getIstanza();
+        userHolder.setUtente(null);
 
         switchToHelloView(event);
     }
@@ -95,9 +105,7 @@ public class areaUtenteController extends barraController implements Initializab
         super.switchToAggiuntaEvento(e);
     }
 
-    //cambia il valore dell'oggetto utente condiviso in tutta l'app
-    private void sendUser(Utente utente){
-        UserHolder userHolder = UserHolder.getIstanza();
-        userHolder.setUtente(utente);
-    }
+
+
+
 }
