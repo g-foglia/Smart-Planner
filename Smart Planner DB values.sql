@@ -34,13 +34,13 @@ INSERT INTO Evento VALUES
 INSERT INTO Calendario VALUES
 /*codice calendario, nome , colore*/
 (null, "Lavoro","e69138"),
-(null, "Lavoro Bar","45e638"),
-(null, "Casa","45e638"),
+(null, "Lavoro Bar","d5a6bd"),
+(null, "Casa","a2c4c9"),
 (null, "Studio","d5a6bd"),
 (null, "Tempo Libero","ffe599"),
-(null, "Lavoro", "f44336"),
-(null, "Studio", "3636f4"),
-(null, "Ufficio", "36f484"),
+(null, "Lavoro", "A24A68"),
+(null, "Studio", "d0e0e3"),
+(null, "Ufficio", "cc0000"),
 (null, "Personale", "fc006f"),
 (null, "Casa", "f1c232");
 
