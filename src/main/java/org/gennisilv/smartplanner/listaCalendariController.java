@@ -42,18 +42,14 @@ public class listaCalendariController extends barraController implements Initial
             //per ogni calendario creo un bottone che si chiama come il calendario e lo aggiungo alla lista
             for(Calendario calendario : calendari) {
                 Button button = new Button(calendario.getNomeCalendario());
-                button.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent e) {
-                        try {
-                            DataHolder.getIstanza().setData(button.getText());
-                            switchTosettimanale(e);
-                        } catch (IOException ex) {
-                            throw new RuntimeException(ex);
-                        }
+                button.setOnAction(e -> {
+                    try {
+                        DataHolder.getIstanza().setData(button.getText());
+                        switchTosettimanale(e);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
                     }
                 });
-
                 bottoni.add(button);
             }
             //aggiungo la lista di bottoni al contenitore

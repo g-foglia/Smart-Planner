@@ -1,7 +1,7 @@
 package org.gennisilv.smartplanner.data;
 
 public class Impegno {
-    private String codiceImpegno;
+    private int codiceImpegno;
     private String nomeImpegno;
     private int durataImpegno;
     private int prioritaImpegno;
@@ -10,19 +10,18 @@ public class Impegno {
     public Impegno() {
     }
 
-    public Impegno(String codiceImpegno, String nomeImpegno, int durataImpegno, int prioritaImpegno, String emailUI) {
-        this.codiceImpegno = codiceImpegno;
+    public Impegno(String nomeImpegno, int durataImpegno, int prioritaImpegno, String emailUI) {
         this.nomeImpegno = nomeImpegno;
         this.durataImpegno = durataImpegno;
         this.prioritaImpegno = prioritaImpegno;
         this.emailUI = emailUI;
     }
 
-    public String getCodiceImpegno() {
+    public int getCodiceImpegno() {
         return codiceImpegno;
     }
 
-    public void setCodiceImpegno(String codiceImpegno) {
+    public void setCodiceImpegno(int codiceImpegno) {
         this.codiceImpegno = codiceImpegno;
     }
 

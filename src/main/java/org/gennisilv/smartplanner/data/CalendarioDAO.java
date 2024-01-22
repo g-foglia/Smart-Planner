@@ -13,17 +13,17 @@ public class CalendarioDAO {
     public static void doSaveCalendario(Calendario calendario, String emailC) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Calendario (codiceCalendario, nomeCalendario, coloreCalendario) VALUES(?,?,?)");
-            ps.setString(1, calendario.getCodiceCalendario());
-            ps.setString(2,calendario.getNomeCalendario());
-            ps.setString(3, calendario.getColoreCalendario());
+                    "INSERT INTO Calendario (codiceCalendario, nomeCalendario, coloreCalendario) VALUES(null,?,?)");
+            ps.setString(1,calendario.getNomeCalendario());
+            ps.setString(2, calendario.getColoreCalendario());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
+            ResultSet rs = ps.getGeneratedKeys();
 
             ps = con.prepareStatement("INSERT INTO creazione (emailC, codiceCalendarioC) VALUES(?,?)");
             ps.setString(1, emailC);
-            ps.setString(2, calendario.getCodiceCalendario());
+            ps.setInt(2, rs.getInt(1));
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
@@ -34,34 +34,34 @@ public class CalendarioDAO {
     }
 
     //cancella un calendario dal db (e con esso tutti gli eventi associati a meno che non appaiano anche in altri calendari)
-    public static void doCancCalendario(String codiceCalendario){
+    public static void doCancCalendario(int codiceCalendario, String email){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "DELETE FROM Calendario where codiceCalendario=?");
-            ps.setString(1, codiceCalendario);
+                    "DELETE FROM Calendario where codiceCalendario=? AND codiceCalendario in (SELECT codiceCalendarioC from creazione WHERE emailC=?)");
+            ps.setInt(1, codiceCalendario);
+            ps.setString(2, email);
 
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("DELETE error.");
             }
-            ResultSet rs = ps.getGeneratedKeys();
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     //restituisce un calendario cercato per codice, se esiste
-    public static Calendario doRetrieveByCodice(String codiceCalendario){
+    public static Calendario doRetrieveByCodice(int codiceCalendario){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
                     con.prepareStatement("SELECT nomeCalendario, coloreCalendario FROM calendario WHERE codiceCalendario=?");
-            ps.setString(1, codiceCalendario);
+            ps.setInt(1, codiceCalendario);
             ResultSet rs = ps.executeQuery();
 
             if(rs.next()) {
-                String nomeCalendario = rs.getString(1);
-                String coloreCalendario = rs.getString(2);
-                Calendario calendario = new Calendario(codiceCalendario, nomeCalendario, coloreCalendario);
+                Calendario calendario = new Calendario();
+                calendario.setCodiceCalendario(codiceCalendario);
+                calendario.setNomeCalendario(rs.getString(1));
+                calendario.setColoreCalendario(rs.getString(2));
                 return calendario;
             }
             return null;
@@ -80,7 +80,11 @@ public class CalendarioDAO {
             ResultSet rs = ps.executeQuery();
 
             if(rs.next()) {
-                return new Calendario(rs.getString(1), rs.getString(2), rs.getString(3));
+                Calendario calendario = new Calendario();
+                calendario.setCodiceCalendario(rs.getInt(1));
+                calendario.setNomeCalendario(rs.getString(2));
+                calendario.setColoreCalendario(rs.getString(3));
+                return calendario;
             }
             return null;
 
@@ -99,7 +103,7 @@ public class CalendarioDAO {
             ArrayList<Calendario> calendari = new ArrayList<>();
             while(rs.next()) {
                 Calendario calendario = new Calendario();
-                calendario.setCodiceCalendario(rs.getString(1));
+                calendario.setCodiceCalendario(rs.getInt(1));
                 calendario.setNomeCalendario(rs.getString(2));
                 calendario.setColoreCalendario(rs.getString(3));
 
@@ -119,7 +123,7 @@ public class CalendarioDAO {
 
             ps.setString(1, calendario.getNomeCalendario());
             ps.setString(2, calendario.getColoreCalendario());
-            ps.setString(3, calendario.getCodiceCalendario());
+            ps.setInt(3, calendario.getCodiceCalendario());
 
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("UPDATE error.");
@@ -130,12 +134,12 @@ public class CalendarioDAO {
     }
 
     //aggiunge un evento al calendario
-    public static void doAddEvento(String codiceEvento, String codiceCalendario){
+    public static void doAddEvento(int codiceEvento, int codiceCalendario){
         try(Connection con = ConPool.getConnection()){
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO inserimento (codiceCalendarioI, codiceEventoI) VALUES (?,?)");
-            ps.setString(1,codiceCalendario);
-            ps.setString(2,codiceEvento);
+            ps.setInt(1,codiceCalendario);
+            ps.setInt(2,codiceEvento);
 
             if(ps.executeUpdate() != 1){
                 throw new RuntimeException("INSERT error.");
@@ -147,12 +151,12 @@ public class CalendarioDAO {
     }
 
     //rimuove un evento da uno specifico calendario
-    public static void doRemoveEvento(String codiceEvento, String codiceCalendario){
+    public static void doRemoveEvento(int codiceEvento, int codiceCalendario){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "DELETE FROM inserimento where codiceCalendarioI=? AND codiceEventoI=?");
-            ps.setString(1, codiceCalendario);
-            ps.setString(2, codiceEvento);
+            ps.setInt(1, codiceCalendario);
+            ps.setInt(2, codiceEvento);
 
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("DELETE error.");

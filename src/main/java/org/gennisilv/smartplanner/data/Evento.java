@@ -3,7 +3,7 @@ package org.gennisilv.smartplanner.data;
 import java.util.GregorianCalendar;
 
 public class Evento {
-    private String codiceEvento;
+    private int codiceEvento;
     private String nomeEvento;
     private String descrizione;
     private String coloreEvento;
@@ -17,8 +17,7 @@ public class Evento {
     public Evento() {
     }
 
-    public Evento(String codiceEvento, String nomeEvento, String descrizione, String coloreEvento, int periodicita, boolean notifiche, GregorianCalendar dataEvento, String orarioInizio, String orarioFine, String emailE) {
-        this.codiceEvento = codiceEvento;
+    public Evento(String nomeEvento, String descrizione, String coloreEvento, int periodicita, boolean notifiche, GregorianCalendar dataEvento, String orarioInizio, String orarioFine, String emailE) {
         this.nomeEvento = nomeEvento;
         this.descrizione = descrizione;
         this.coloreEvento = coloreEvento;
@@ -30,11 +29,11 @@ public class Evento {
         this.emailE = emailE;
     }
 
-    public String getCodiceEvento() {
+    public int getCodiceEvento() {
         return codiceEvento;
     }
 
-    public void setCodiceEvento(String codiceEvento) {
+    public void setCodiceEvento(int codiceEvento) {
         this.codiceEvento = codiceEvento;
     }
 

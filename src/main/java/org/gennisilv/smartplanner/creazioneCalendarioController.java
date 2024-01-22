@@ -25,7 +25,7 @@ public class creazioneCalendarioController extends barraController{
     private ColorPicker colore;
 
     public void creaCalendario(ActionEvent e){
-        Calendario calendario = new Calendario(".a.a.a.a",nome.getText(),toHexString(colore.getValue()));
+        Calendario calendario = new Calendario(nome.getText(),toHexString(colore.getValue()));
 
         CalendarioDAO.doSaveCalendario(calendario, UserHolder.getIstanza().getUtente().getEmail());
         //switch alla pagina del calendario
@@ -71,5 +71,4 @@ public class creazioneCalendarioController extends barraController{
         return "#" + (format(value.getRed()) + format(value.getGreen()) + format(value.getBlue()) + format(value.getOpacity()))
                 .toUpperCase();
     }
-
 }

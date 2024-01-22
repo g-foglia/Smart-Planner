@@ -26,15 +26,14 @@ public class ListaDAO {
     }
 
     //aggiunge un impegno a una lista
-    public static void doAddImpegno(Impegno impegno, String emailUL){
+    public static void doAddImpegno(Impegno impegno){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO impegno (codiceImpegno, nomeImpegno, durataImpegno, prioritaImpegno, emailUI) VALUES(?,?,?,?,?)");
-            ps.setString(1, impegno.getCodiceImpegno());
-            ps.setString(2, impegno.getNomeImpegno());
-            ps.setInt(3,impegno.getDurataImpegno());
-            ps.setInt(4,impegno.getPrioritaImpegno());
-            ps.setString(5, impegno.getEmailUI());
+                    "INSERT INTO impegno (null, nomeImpegno, durataImpegno, prioritaImpegno, emailUI) VALUES(?,?,?,?,?)");
+            ps.setString(1, impegno.getNomeImpegno());
+            ps.setInt(2,impegno.getDurataImpegno());
+            ps.setInt(3,impegno.getPrioritaImpegno());
+            ps.setString(4, impegno.getEmailUI());
 
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
@@ -46,11 +45,11 @@ public class ListaDAO {
     }
 
     //rimuove un impegno
-    public static void doCancImpegno(String codiceImpegno){
+    public static void doCancImpegno(int codiceImpegno){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "DELETE  FROM impegno WHERE codiceImpegno=?");
-            ps.setString(1, codiceImpegno);
+            ps.setInt(1, codiceImpegno);
 
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("DELETE error.");
@@ -62,14 +61,14 @@ public class ListaDAO {
     }
 
     //svuota la lista
-    public void doClearLista(){
+    public void doClearLista(String email){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "TRUNCATE impegno");
+                    "DELETE FROM impegno WHERE emailUI=?");
+            ps.setString(1, email);
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

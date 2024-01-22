@@ -13,17 +13,16 @@ public class EventoDAO {
     public static void doSaveEvento(Evento evento){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Evento (codiceEvento, nomeEvento, descrizione, coloreEvento, periodicita, notifiche, dataEvento, orarioInizio, orarioFine, emailE) VALUES(?,?,?,?,?,?,?,?,?,?)");
-            ps.setString(1, evento.getCodiceEvento());
-            ps.setString(2, evento.getNomeEvento());
-            ps.setString(3, evento.getDescrizione());
-            ps.setString(4, evento.getColoreEvento());
-            ps.setInt(5, evento.getPeriodicita());
-            ps.setBoolean(6, evento.isNotifiche());
-            ps.setString(7, DateConverter.toString(evento.getDataEvento()));
-            ps.setString(8, evento.getOrarioInizio());
-            ps.setString(9, evento.getOrarioFine());
-            ps.setString(10, evento.getEmailE());
+                    "INSERT INTO Evento (null, nomeEvento, descrizione, coloreEvento, periodicita, notifiche, dataEvento, orarioInizio, orarioFine, emailE) VALUES(?,?,?,?,?,?,?,?,?)");
+            ps.setString(1, evento.getNomeEvento());
+            ps.setString(2, evento.getDescrizione());
+            ps.setString(3, evento.getColoreEvento());
+            ps.setInt(4, evento.getPeriodicita());
+            ps.setBoolean(5, evento.isNotifiche());
+            ps.setString(6, DateConverter.toString(evento.getDataEvento()));
+            ps.setString(7, evento.getOrarioInizio());
+            ps.setString(8, evento.getOrarioFine());
+            ps.setString(9, evento.getEmailE());
 
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
@@ -46,7 +45,7 @@ public class EventoDAO {
             ps.setString(6, DateConverter.toString(evento.getDataEvento()));
             ps.setString(7, evento.getOrarioInizio());
             ps.setString(8, evento.getOrarioFine());
-            ps.setString(9, evento.getCodiceEvento());
+            ps.setInt(9, evento.getCodiceEvento());
 
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("UPDATE error.");
@@ -69,7 +68,7 @@ public class EventoDAO {
             ArrayList<Evento> eventi = new ArrayList<>();
             while(rs.next()) {
                 Evento evento = new Evento();
-                evento.setCodiceEvento(rs.getString(1));
+                evento.setCodiceEvento(rs.getInt(1));
                 evento.setNomeEvento(rs.getString(2));
                 evento.setDescrizione(rs.getString(3));
                 evento.setColoreEvento(rs.getString(4));
@@ -89,16 +88,16 @@ public class EventoDAO {
     }
 
     //restituisce l'evento corrispondente a un certo codice, se esiste
-    public static Evento doRetrieveEventByCode(String codiceEvento){
+    public static Evento doRetrieveEventByCode(int codiceEvento){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
                     con.prepareStatement("SELECT * FROM evento WHERE codiceEvento=?");
-            ps.setString(1, codiceEvento);
+            ps.setInt(1, codiceEvento);
             ResultSet rs = ps.executeQuery();
 
             if(rs.next()) {
                 Evento evento = new Evento();
-                evento.setCodiceEvento(rs.getString(1));
+                evento.setCodiceEvento(rs.getInt(1));
                 evento.setNomeEvento(rs.getString(2));
                 evento.setDescrizione(rs.getString(3));
                 evento.setColoreEvento(rs.getString(4));
@@ -118,11 +117,11 @@ public class EventoDAO {
     }
 
     //rimuove un evento da tutti i calendari
-    public static void doCancEvento(String codiceEvento){
+    public static void doCancEvento(int codiceEvento){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "DELETE FROM evento where codiceEvento=?");
-            ps.setString(1, codiceEvento);
+            ps.setInt(1, codiceEvento);
 
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("DELETE error.");
