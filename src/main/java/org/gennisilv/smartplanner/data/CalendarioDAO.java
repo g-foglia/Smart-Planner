@@ -12,23 +12,31 @@ public class CalendarioDAO {
     //salva un nuovo calendario nel db
     public static void doSaveCalendario(Calendario calendario, String emailC) {
         try (Connection con = ConPool.getConnection()) {
+
+            //aggiungo il calendario alla tabella calendario
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Calendario (codiceCalendario, nomeCalendario, coloreCalendario) VALUES(null,?,?)", Statement.RETURN_GENERATED_KEYS);
+                    "INSERT INTO Calendario (codiceCalendario, nomeCalendario, coloreCalendario) VALUES(null,?,?)",Statement.RETURN_GENERATED_KEYS);
             ps.setString(1,calendario.getNomeCalendario());
             ps.setString(2, calendario.getColoreCalendario());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
+
+            //mi faccio restituire la riga della tabella che corrisponde al nuovo calendario
             ResultSet rs = ps.getGeneratedKeys();
 
-
-            ps = con.prepareStatement("INSERT INTO creazione (emailC, codiceCalendarioC) VALUES(?,?)");
-            ps.setString(1, emailC);
-            ps.setInt(2, rs.getInt(1));
-            if (ps.executeUpdate() != 1) {
+            //aggiungo l'associaizone tra il codice del nuovo calendario e l'utente che lo ha creato
+            if(rs.next()) {
+                ps = con.prepareStatement("INSERT INTO creazione (emailC, codiceCalendarioC) VALUES(?,?)");
+                ps.setString(1, emailC);
+                ps.setInt(2, rs.getInt(1));
+                if (ps.executeUpdate() != 1) {
+                    throw new RuntimeException("INSERT error.");
+                }
+            }
+            else{
                 throw new RuntimeException("INSERT error.");
             }
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
