@@ -127,6 +127,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
+            <Button fx:id="aggCalendario" layoutX="123.0" layoutY="57.0" mnemonicParsing="false" text="Button" />
          </children>
       </Pane>
    </center>
