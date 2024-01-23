@@ -13,13 +13,14 @@ public class CalendarioDAO {
     public static void doSaveCalendario(Calendario calendario, String emailC) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Calendario (codiceCalendario, nomeCalendario, coloreCalendario) VALUES(null,?,?)");
+                    "INSERT INTO Calendario (codiceCalendario, nomeCalendario, coloreCalendario) VALUES(null,?,?)", Statement.RETURN_GENERATED_KEYS);
             ps.setString(1,calendario.getNomeCalendario());
             ps.setString(2, calendario.getColoreCalendario());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
             ResultSet rs = ps.getGeneratedKeys();
+
 
             ps = con.prepareStatement("INSERT INTO creazione (emailC, codiceCalendarioC) VALUES(?,?)");
             ps.setString(1, emailC);
