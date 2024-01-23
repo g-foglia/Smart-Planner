@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,7 +20,6 @@ import org.gennisilv.smartplanner.data.Evento;
 import org.gennisilv.smartplanner.data.Utente;
 import org.gennisilv.smartplanner.utils.DataHolder;
 import org.gennisilv.smartplanner.utils.UserHolder;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -56,10 +54,9 @@ public class listaCalendariController extends barraController implements Initial
                 });
 
                 button.setStyle("-fx-background-color:" + calendario.getColoreCalendario());
-                button.setPrefSize(130, 50);
-                lista.setAlignment(Pos.CENTER);
+
                 bottoni.add(button);
-                VBox.setMargin(button, new Insets(0, 10, 10, 10));
+                VBox.setMargin(button, new Insets(10, 10, 10, 10));
                 lista.setSpacing(5);
             }
 

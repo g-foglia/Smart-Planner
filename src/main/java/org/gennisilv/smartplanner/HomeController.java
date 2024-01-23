@@ -41,7 +41,6 @@ public class HomeController extends barraController implements Initializable {
         if(calendari.isEmpty()){
             calendarioHome.setVisible(false);
             aggEventoHome.setVisible(false);
-
             aggCalendario.setText("Crea un calendario");
             aggCalendario.setOnAction(e -> {
                 try {

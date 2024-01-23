@@ -57,6 +57,7 @@ public class inserimentoEventoController extends barraController implements Init
         periodicitaID.getItems().addAll(periodicita);
     }
 
+
     public void inserisciEvento(ActionEvent e) throws IOException {
         Evento evento = new Evento();
         evento.setNomeEvento(nomeEvento.getText());
