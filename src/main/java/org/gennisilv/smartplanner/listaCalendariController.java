@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.gennisilv.smartplanner.data.Calendario;
 import org.gennisilv.smartplanner.data.CalendarioDAO;
@@ -29,7 +30,7 @@ public class listaCalendariController extends barraController implements Initial
     private Stage stage;
     private Scene scene;
     @FXML
-    private FlowPane lista;
+    private VBox lista;
 
 
     @Override
@@ -55,7 +56,10 @@ public class listaCalendariController extends barraController implements Initial
                 button.setStyle("-fx-background-color:" + calendario.getColoreCalendario());
 
                 bottoni.add(button);
+                VBox.setMargin(button, new Insets(10, 10, 10, 10));
+                lista.setSpacing(5);
             }
+
             //aggiungo la lista di bottoni al contenitore
             boolean util = lista.getChildren().addAll(bottoni);
         }
