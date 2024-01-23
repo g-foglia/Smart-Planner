@@ -59,7 +59,6 @@ public class inserimentoEventoController extends barraController implements Init
 
     public void inserisciEvento(ActionEvent e) throws IOException {
         Evento evento = new Evento();
-        evento.setCodiceEvento("a.1.3.4");
         evento.setNomeEvento(nomeEvento.getText());
         evento.setDescrizione(descrizioneEvento.getText());
         evento.setDataEvento(new GregorianCalendar(dataEvento.getValue().getYear(),dataEvento.getValue().getMonthValue()-1,dataEvento.getValue().getDayOfMonth()));
