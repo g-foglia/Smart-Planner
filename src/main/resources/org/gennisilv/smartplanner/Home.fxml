@@ -81,7 +81,7 @@
       </Pane>
    </bottom>
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="aggCalendario" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0f0ff" height="106.0" layoutX="10.0" layoutY="350.0" stroke="TRANSPARENT" strokeType="INSIDE" width="281.0">
                <effect>
@@ -89,7 +89,7 @@
                </effect>
             </Rectangle>
             <Text layoutX="23.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lista:" />
-            <Button fx:id="aggEventoHome" layoutX="97.0" layoutY="313.0" mnemonicParsing="false" text="Aggiungi Evento" />
+            <Button fx:id="aggEventoHome" layoutX="101.0" layoutY="314.0" mnemonicParsing="false" text="Crea calendario" />
             <Button layoutX="163.0" layoutY="414.0" mnemonicParsing="false" style="-fx-background-color: #e0f0ff;" text="Aggiungi Impegno">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX">
@@ -127,7 +127,6 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
-            <Button fx:id="aggCalendario" layoutX="123.0" layoutY="57.0" mnemonicParsing="false" text="Button" />
          </children>
       </Pane>
    </center>

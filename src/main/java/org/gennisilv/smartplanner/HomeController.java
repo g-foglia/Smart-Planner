@@ -30,8 +30,6 @@ public class HomeController extends barraController implements Initializable {
     @FXML
     private GridPane calendarioHome;
     @FXML
-    private Button aggEventoHome;
-    @FXML
     private Button aggCalendario;
 
     @Override
@@ -40,7 +38,6 @@ public class HomeController extends barraController implements Initializable {
         ArrayList<Calendario> calendari = CalendarioDAO.doRetrieveByUtente(utente.getEmail());
         if(calendari.isEmpty()){
             calendarioHome.setVisible(false);
-            aggEventoHome.setVisible(false);
             aggCalendario.setText("Crea un calendario");
             aggCalendario.setOnAction(e -> {
                 try {
@@ -49,10 +46,8 @@ public class HomeController extends barraController implements Initializable {
                     throw new RuntimeException(ex);
                 }
             });
-            aggCalendario.setVisible(true);
         }
         else{
-            aggCalendario.setVisible(false);
             //stampa di altre cose
         }
 
