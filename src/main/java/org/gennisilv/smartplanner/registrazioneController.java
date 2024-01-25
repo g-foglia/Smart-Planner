@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.gennisilv.smartplanner.data.Utente;
 import org.gennisilv.smartplanner.data.UtenteDAO;
+import org.gennisilv.smartplanner.logic.UtenteLogic;
 import org.gennisilv.smartplanner.utils.UserHolder;
 
 import java.io.IOException;
@@ -45,16 +46,19 @@ public class registrazioneController extends barraController{
     //metodo che effettua la registrazione (acquisisce i valori e registra il nuovo utente)
     public void registrazione (ActionEvent e)throws IOException
     {
-        Utente utente= new Utente();
-        utente.setEmail(emailReg.getText());
-        utente.setPassword(passwordReg.getText());
-        utente.setNome(nomeReg.getText());
-        utente.setCognome(cognomeReg.getText());
-        utente.setDataDiNascita(new GregorianCalendar(dataReg.getValue().getYear(),dataReg.getValue().getMonthValue()-1,dataReg.getValue().getDayOfMonth()));
-        utente.setUsername(usernameReg.getText());
-        UtenteDAO.doAddUtente(utente);
+        String email = emailReg.getText();
+        String password = passwordReg.getText();
+        String nome = nomeReg.getText();
+        String cognome = cognomeReg.getText();
+        GregorianCalendar nascita = new GregorianCalendar(dataReg.getValue().getYear(),dataReg.getValue().getMonthValue()-1,dataReg.getValue().getDayOfMonth());
+        String username = usernameReg.getText();
 
-        sendUser(utente);
+        /*
+        CONTROLLI SUI CAMPI
+         */
+
+
+        UtenteLogic.registrazione(email,password,nome,cognome,nascita,username);
 
         switchToHome(e);
     }
@@ -73,11 +77,5 @@ public class registrazioneController extends barraController{
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
-    }
-
-    //assegna l'utente a una variabile recuperabile in tutta l'applicazione
-    private void sendUser(Utente utente){
-        UserHolder userHolder = UserHolder.getIstanza();
-        userHolder.setUtente(utente);
     }
 }

@@ -12,6 +12,8 @@ import org.gennisilv.smartplanner.data.Calendario;
 import org.gennisilv.smartplanner.data.CalendarioDAO;
 import org.gennisilv.smartplanner.data.Evento;
 import org.gennisilv.smartplanner.data.EventoDAO;
+import org.gennisilv.smartplanner.logic.CalendarioLogic;
+import org.gennisilv.smartplanner.logic.EventoLogic;
 import org.gennisilv.smartplanner.utils.UserHolder;
 
 import java.io.IOException;
@@ -47,7 +49,7 @@ public class inserimentoEventoController extends barraController implements Init
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ArrayList<Calendario> lista = CalendarioDAO.doRetrieveByUtente(UserHolder.getIstanza().getUtente().getEmail());
+        ArrayList<Calendario> lista = CalendarioLogic.returnCalendari();
         ArrayList<String> nomi = new ArrayList<>();
 
         for(Calendario calendario : lista)
@@ -59,28 +61,29 @@ public class inserimentoEventoController extends barraController implements Init
 
 
     public void inserisciEvento(ActionEvent e) throws IOException {
-        Evento evento = new Evento();
-        evento.setNomeEvento(nomeEvento.getText());
-        evento.setDescrizione(descrizioneEvento.getText());
-        evento.setDataEvento(new GregorianCalendar(dataEvento.getValue().getYear(),dataEvento.getValue().getMonthValue()-1,dataEvento.getValue().getDayOfMonth()));
-        evento.setOrarioInizio(oraInizio.getText());
-        evento.setOrarioFine(oraFine.getText());
-        evento.setColoreEvento(toHexString(colore.getValue()));
-        evento.setNotifiche(notifiche.isSelected());
+        String nome = nomeEvento.getText();
+        String descrizione = descrizioneEvento.getText();
+        GregorianCalendar date = new GregorianCalendar(dataEvento.getValue().getYear(),dataEvento.getValue().getMonthValue()-1,dataEvento.getValue().getDayOfMonth());
+        String oraI = oraInizio.getText();
+        String oraF = oraFine.getText();
+        Color color = colore.getValue();
+        boolean n = notifiche.isSelected();
+
+        int periodicita = -1;
         switch (periodicitaID.getValue()){
             case "0 - solo 1 volta;":
-                evento.setPeriodicita(0);
+                periodicita = 0;
             case "1 - 1 volta al giorno;":
-                evento.setPeriodicita(1);
+                periodicita = 1;
             case "2 - 1 volta a settimana;":
-                evento.setPeriodicita(2);
+                periodicita = 2;
             case "3 - 1 volta al mese;":
-                evento.setPeriodicita(3);
+                periodicita = 3;
         }
+        int codiceEvento = EventoLogic.aggiungiEvento(nome,descrizione,date,oraI,oraF,color,n,periodicita);
 
-        EventoDAO.doSaveEvento(evento);
-        Calendario calendario = CalendarioDAO.doRetrieveByNome((String) calendari.getValue(),UserHolder.getIstanza().getUtente().getEmail());
-        CalendarioDAO.doAddEvento(evento.getCodiceEvento(), calendario.getCodiceCalendario());
+        Calendario calendario = CalendarioLogic.cercaCalendario((String) calendari.getValue());
+        CalendarioLogic.aggiungiEvento(codiceEvento, calendario.getCodiceCalendario());
 
         switchTosettimanale(e);
     }
@@ -112,17 +115,5 @@ public class inserimentoEventoController extends barraController implements Init
     public void switchToAggiuntaEvento (ActionEvent e) throws IOException
     {
         super.switchToAggiuntaEvento(e);
-    }
-
-    //due metodi per la conversione dell'oggetto Color in una stringa esadecimale.
-    //NON funzionano per TUTTI i colori possibili, ma sono abbastanza affidabili
-    private String format(double val) {
-        String in = Integer.toHexString((int) Math.round(val * 255));
-        return in.length() == 1 ? "0" + in : in;
-    }
-
-    public String toHexString(Color value) {
-        return "#" + (format(value.getRed()) + format(value.getGreen()) + format(value.getBlue()) + format(value.getOpacity()))
-                .toUpperCase();
     }
 }

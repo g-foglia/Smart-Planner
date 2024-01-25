@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class CalendarioDAO {
 
     //salva un nuovo calendario nel db
-    public static void doSaveCalendario(Calendario calendario, String emailC) {
+    public static int doSaveCalendario(Calendario calendario, String emailC) {
         try (Connection con = ConPool.getConnection()) {
 
             //aggiungo il calendario alla tabella calendario
@@ -27,12 +27,14 @@ public class CalendarioDAO {
 
             //aggiungo l'associaizone tra il codice del nuovo calendario e l'utente che lo ha creato
             if(rs.next()) {
+                int codiceCalendario = rs.getInt(1);
                 ps = con.prepareStatement("INSERT INTO creazione (emailC, codiceCalendarioC) VALUES(?,?)");
                 ps.setString(1, emailC);
-                ps.setInt(2, rs.getInt(1));
+                ps.setInt(2, codiceCalendario);
                 if (ps.executeUpdate() != 1) {
                     throw new RuntimeException("INSERT error.");
                 }
+                return codiceCalendario;
             }
             else{
                 throw new RuntimeException("INSERT error.");

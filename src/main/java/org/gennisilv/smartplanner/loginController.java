@@ -15,6 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.gennisilv.smartplanner.data.Utente;
 import org.gennisilv.smartplanner.data.UtenteDAO;
+import org.gennisilv.smartplanner.logic.UtenteLogic;
 import org.gennisilv.smartplanner.utils.UserHolder;
 
 import java.io.IOException;
@@ -33,13 +34,12 @@ public class loginController extends barraController {
 
     //metodo che effettua il login (controllo di email e password per mezzo di UtenteDAO)
     public void login (ActionEvent e) throws IOException {
-        Utente utente = UtenteDAO.login(emailLogin.getText(), passwordLogin.getText());
+        int login = UtenteLogic.login(emailLogin.getText(), passwordLogin.getText());
 
-        if(utente == null){
+        if(login == -1){
             Alert alert = new Alert(Alert.AlertType.INFORMATION,"La combinazione di email e password è sbagliata");
             alert.showAndWait();
         }else{
-            UserHolder.getIstanza().setUtente(utente);
             switchToHome(e);
         }
     }

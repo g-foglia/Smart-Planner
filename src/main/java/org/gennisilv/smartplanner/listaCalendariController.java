@@ -18,6 +18,7 @@ import org.gennisilv.smartplanner.data.Calendario;
 import org.gennisilv.smartplanner.data.CalendarioDAO;
 import org.gennisilv.smartplanner.data.Evento;
 import org.gennisilv.smartplanner.data.Utente;
+import org.gennisilv.smartplanner.logic.CalendarioLogic;
 import org.gennisilv.smartplanner.utils.DataHolder;
 import org.gennisilv.smartplanner.utils.UserHolder;
 
@@ -35,7 +36,7 @@ public class listaCalendariController extends barraController implements Initial
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ArrayList<Calendario> calendari = CalendarioDAO.doRetrieveByUtente(UserHolder.getIstanza().getUtente().getEmail());
+        ArrayList<Calendario> calendari = CalendarioLogic.returnCalendari();
 
         if(!calendari.isEmpty()){
             //creo la lista di bottoni che sarà visualizzata
@@ -92,6 +93,4 @@ public class listaCalendariController extends barraController implements Initial
     {
         super.switchToRicerca(e);
     }
-
-
 }

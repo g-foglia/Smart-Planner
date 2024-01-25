@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.gennisilv.smartplanner.data.Utente;
 import org.gennisilv.smartplanner.data.UtenteDAO;
+import org.gennisilv.smartplanner.logic.UtenteLogic;
 import org.gennisilv.smartplanner.utils.DateConverter;
 import org.gennisilv.smartplanner.utils.UserHolder;
 
@@ -38,18 +39,14 @@ public class areaUtenteController extends barraController implements Initializab
 
     //cancella un utente ed effettua il logout
     public void cancellaUtente(ActionEvent event) throws IOException{
-        UtenteDAO.doCancUtente(UserHolder.getIstanza().getUtente().getEmail());
-        UserHolder userHolder = UserHolder.getIstanza();
-        userHolder.setUtente(null);
+        UtenteLogic.cancellaUtente();
 
         switchToHelloView(event);
     }
 
     //logout
     public void logout(ActionEvent event) throws IOException{
-
-        UserHolder userHolder = UserHolder.getIstanza();
-        userHolder.setUtente(null);
+        UtenteLogic.logout();
 
         switchToHelloView(event);
     }
@@ -57,7 +54,7 @@ public class areaUtenteController extends barraController implements Initializab
     //inizializza le label per mostrare i dati dell'utente
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Utente utente = UtenteDAO.doRetrieveByEmail(UserHolder.getIstanza().getUtente().getEmail());
+        Utente utente = UtenteLogic.returnLoggedInUser();
 
         username.setText(username.getText() + " " + utente.getUsername());
         email.setText(email.getText() + " " + utente.getEmail());
@@ -104,8 +101,4 @@ public class areaUtenteController extends barraController implements Initializab
     {
         super.switchToAggiuntaEvento(e);
     }
-
-
-
-
 }

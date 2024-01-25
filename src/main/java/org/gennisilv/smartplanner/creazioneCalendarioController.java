@@ -13,6 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.gennisilv.smartplanner.data.Calendario;
 import org.gennisilv.smartplanner.data.CalendarioDAO;
+import org.gennisilv.smartplanner.logic.CalendarioLogic;
 import org.gennisilv.smartplanner.utils.UserHolder;
 
 import java.io.IOException;
@@ -27,10 +28,10 @@ public class creazioneCalendarioController extends barraController{
     private ColorPicker colore;
 
     public void creaCalendario(ActionEvent e){
-        String color = toHexString(colore.getValue());
-        Calendario calendario = new Calendario(nomeC.getText(),color);
+        Color color = colore.getValue();
+        String nome = nomeC.getText();
 
-        CalendarioDAO.doSaveCalendario(calendario, UserHolder.getIstanza().getUtente().getEmail());
+        CalendarioLogic.creaCalendario(nome,color);
         //switch alla pagina del calendario
     }
 
@@ -69,18 +70,4 @@ public class creazioneCalendarioController extends barraController{
         stage.setScene(scene);
         stage.show();
     }
-
-
-    //due metodi per la conversione dell'oggetto Color in una stringa esadecimale.
-    //NON funzionano per TUTTI i colori possibili, ma sono abbastanza affidabili
-    private String format(double val) {
-        String in = Integer.toHexString((int) Math.round(val * 255));
-        return in.length() == 1 ? "0" + in : in;
-    }
-
-    public String toHexString(Color value) {
-        return /*"#" + */(format(value.getRed()) + format(value.getGreen()) + format(value.getBlue()))
-                .toUpperCase();
-    }
-
 }

@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import org.gennisilv.smartplanner.data.Calendario;
 import org.gennisilv.smartplanner.data.CalendarioDAO;
 import org.gennisilv.smartplanner.data.Utente;
+import org.gennisilv.smartplanner.logic.CalendarioLogic;
 import org.gennisilv.smartplanner.utils.UserHolder;
 
 import java.io.IOException;
@@ -34,18 +35,10 @@ public class HomeController extends barraController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Utente utente = UserHolder.getIstanza().getUtente();
-        ArrayList<Calendario> calendari = CalendarioDAO.doRetrieveByUtente(utente.getEmail());
+        ArrayList<Calendario> calendari = CalendarioLogic.returnCalendari();
         if(calendari.isEmpty()){
             calendarioHome.setVisible(false);
-            aggCalendario.setText("Crea un calendario");
-            aggCalendario.setOnAction(e -> {
-                try {
-                    switchToCreazioneCalendario(e);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-            });
+            //altre cose
         }
         else{
             //stampa di altre cose

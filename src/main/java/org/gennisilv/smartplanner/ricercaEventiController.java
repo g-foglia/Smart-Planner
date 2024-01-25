@@ -3,26 +3,17 @@ package org.gennisilv.smartplanner;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
-import javafx.stage.Stage;
 import org.gennisilv.smartplanner.data.Evento;
-import org.gennisilv.smartplanner.data.EventoDAO;
 import org.gennisilv.smartplanner.data.Utente;
-import org.gennisilv.smartplanner.data.UtenteDAO;
-import org.gennisilv.smartplanner.utils.UserHolder;
+import org.gennisilv.smartplanner.logic.EventoLogic;
+import org.gennisilv.smartplanner.logic.UtenteLogic;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public final class ricercaEventiController extends barraController{
-    private Stage stage;
-    private Scene scene;
     @FXML
     private TextField evento;
     @FXML
@@ -30,8 +21,8 @@ public final class ricercaEventiController extends barraController{
 
     public void ricerca (ActionEvent e) throws IOException
     {
-        Utente utente = UserHolder.getIstanza().getUtente();
-        ArrayList<Evento> eventi = EventoDAO.doRetrieveEventsByName(evento.getText(), utente.getEmail());
+        Utente utente = UtenteLogic.returnLoggedInUser();
+        ArrayList<Evento> eventi = EventoLogic.ricercaEvento(evento.getText(), utente.getEmail());
 
         if(!eventi.isEmpty()){
             ArrayList<Button> bottoni = new ArrayList<>();

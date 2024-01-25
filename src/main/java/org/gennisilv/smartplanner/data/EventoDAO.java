@@ -10,10 +10,11 @@ import java.util.List;
 public class EventoDAO {
 
     //aggiunge un unovo evento al db
-    public static void doSaveEvento(Evento evento){
+    public static int doSaveEvento(Evento evento){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Evento (null, nomeEvento, descrizione, coloreEvento, periodicita, notifiche, dataEvento, orarioInizio, orarioFine, emailE) VALUES(?,?,?,?,?,?,?,?,?)");
+                    "INSERT INTO Evento (codiceEvento, nomeEvento, descrizione, coloreEvento, periodicita, notifiche, dataEvento, orarioInizio, orarioFine, emailE) VALUES(null,?,?,?,?,?,?,?,?,?)",
+                    Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, evento.getNomeEvento());
             ps.setString(2, evento.getDescrizione());
             ps.setString(3, evento.getColoreEvento());
@@ -27,6 +28,15 @@ public class EventoDAO {
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
+
+            ResultSet rs = ps.getGeneratedKeys();
+            if(rs.next()){
+                return rs.getInt(1);
+            }
+            else{
+                throw new RuntimeException("INSERT error.");
+            }
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
