@@ -10,7 +10,7 @@ public class ConPool {
     public static Connection getConnection() throws SQLException {
         String url = "jdbc:mysql://127.0.0.1:3306/smartplannerdb";
         String username = "root";
-        String password = "1836..1836Ab";
+        String password = "basididati2022";
         connection = DriverManager.getConnection(url,username,password);
 
         return connection;
