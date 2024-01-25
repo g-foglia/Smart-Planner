@@ -53,7 +53,7 @@ CREATE TABLE Inserimento(
 	codiceCalendarioI int not null,
     codiceEventoI int not null,
     PRIMARY KEY(codiceCalendarioI, codiceEventoI),
-    FOREIGN KEY (codiceCalendarioI) REFERENCES Calendario(codiceCalendario),
+    FOREIGN KEY (codiceCalendarioI) REFERENCES Calendario(codiceCalendario) on delete cascade,
     FOREIGN KEY (codiceEventoI) REFERENCES Evento(codiceEvento)
     ON DELETE CASCADE
 );
@@ -61,7 +61,7 @@ CREATE TABLE Creazione(
 	emailC varchar(30) not null,
     codiceCalendarioC int not null,
     PRIMARY KEY(emailC, codiceCalendarioC),
-    FOREIGN KEY (emailC) REFERENCES Utente(email),
+    FOREIGN KEY (emailC) REFERENCES Utente(email) on delete cascade,
     FOREIGN KEY (codiceCalendarioC) REFERENCES Calendario(codiceCalendario)    
     ON DELETE CASCADE
 );
