@@ -94,13 +94,17 @@
             <TextArea fx:id="descrizioneEvento" layoutX="24.0" layoutY="101.0" prefHeight="34.0" prefWidth="200.0" promptText="Inserisci la descrizione dell'evento" />
             <DatePicker fx:id="dataEvento" layoutX="24.0" layoutY="155.0" prefHeight="25.0" prefWidth="185.0" promptText="Inserisci la data dell'evento" />
             <ColorPicker fx:id="colore" editable="true" layoutX="160.0" layoutY="274.0" prefHeight="25.0" prefWidth="109.0" promptText="Scegli colore" />
-            <TextField fx:id="oraInizio" layoutX="24.0" layoutY="207.0" prefHeight="25.0" prefWidth="110.0" promptText="Ora Inizio" />
             <RadioButton fx:id="notifiche" layoutX="20.0" layoutY="308.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="261.0" text="Vuoi ricevere notifiche per quest'evento?" />
             <ChoiceBox fx:id="periodicitaID" layoutX="23.0" layoutY="274.0" prefHeight="25.0" prefWidth="128.0" />
-            <TextField fx:id="oraFine" layoutX="159.0" layoutY="207.0" prefHeight="25.0" prefWidth="110.0" promptText="Ora Fine" />
             <Button layoutX="102.0" layoutY="394.0" mnemonicParsing="false" onAction="#inserisciEvento" text="Inserisci Evento" />
             <ComboBox fx:id="calendari" layoutX="75.0" layoutY="357.0" prefWidth="150.0" promptText="Calendari" />
             <Label fx:id="periodicitaLabelID" layoutX="24.0" layoutY="254.0" prefHeight="17.0" prefWidth="121.0" text="Inserisci la periodicità:" />
+            <ComboBox fx:id="oreInizio" layoutX="19.0" layoutY="216.0" prefHeight="25.0" prefWidth="61.0" />
+            <ComboBox fx:id="minutiInizio" layoutX="81.0" layoutY="216.0" prefHeight="25.0" prefWidth="61.0" />
+            <ComboBox fx:id="oreFine" layoutX="155.0" layoutY="216.0" prefHeight="25.0" prefWidth="61.0" />
+            <ComboBox fx:id="minutiFine" layoutX="217.0" layoutY="216.0" prefHeight="25.0" prefWidth="61.0" />
+            <Label layoutX="19.0" layoutY="188.0" text="Da" />
+            <Label layoutX="151.0" layoutY="188.0" text="A" />
          </children></Pane>
    </center>
 
