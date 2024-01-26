@@ -4,7 +4,6 @@ import org.gennisilv.smartplanner.utils.DateConverter;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 //si occupa delle operazioni che riguardano gli eventi(creazione, cancellazione, modifica)
 public class EventoDAO {

@@ -7,14 +7,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import org.gennisilv.smartplanner.data.Calendario;
-import org.gennisilv.smartplanner.data.CalendarioDAO;
 import org.gennisilv.smartplanner.logic.CalendarioLogic;
-import org.gennisilv.smartplanner.utils.UserHolder;
 
 import java.io.IOException;
 

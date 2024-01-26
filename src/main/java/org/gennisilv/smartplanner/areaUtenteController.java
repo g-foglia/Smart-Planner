@@ -10,10 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.gennisilv.smartplanner.data.Utente;
-import org.gennisilv.smartplanner.data.UtenteDAO;
 import org.gennisilv.smartplanner.logic.UtenteLogic;
 import org.gennisilv.smartplanner.utils.DateConverter;
-import org.gennisilv.smartplanner.utils.UserHolder;
 
 import java.io.IOException;
 import java.net.URL;

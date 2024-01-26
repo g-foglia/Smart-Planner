@@ -1,7 +1,5 @@
 package org.gennisilv.smartplanner.data;
 
-import org.gennisilv.smartplanner.utils.DateConverter;
-
 import java.sql.*;
 import java.util.ArrayList;
 

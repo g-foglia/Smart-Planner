@@ -5,13 +5,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.gennisilv.smartplanner.data.Impegno;
-import org.gennisilv.smartplanner.data.ListaDAO;
 
 import java.io.IOException;
 import java.net.URL;

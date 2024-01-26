@@ -1,6 +1,5 @@
 package org.gennisilv.smartplanner.logic;
 
-import javafx.scene.control.Alert;
 import org.gennisilv.smartplanner.data.Utente;
 import org.gennisilv.smartplanner.data.UtenteDAO;
 import org.gennisilv.smartplanner.utils.UserHolder;

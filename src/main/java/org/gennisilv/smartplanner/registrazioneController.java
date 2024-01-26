@@ -11,13 +11,9 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.gennisilv.smartplanner.data.Utente;
-import org.gennisilv.smartplanner.data.UtenteDAO;
 import org.gennisilv.smartplanner.logic.UtenteLogic;
-import org.gennisilv.smartplanner.utils.UserHolder;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.regex.Matcher;

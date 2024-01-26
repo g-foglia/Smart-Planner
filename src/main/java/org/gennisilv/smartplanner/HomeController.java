@@ -1,4 +1,5 @@
 package org.gennisilv.smartplanner;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,15 +8,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import org.gennisilv.smartplanner.data.Calendario;
-import org.gennisilv.smartplanner.data.CalendarioDAO;
-import org.gennisilv.smartplanner.data.Utente;
 import org.gennisilv.smartplanner.logic.CalendarioLogic;
-import org.gennisilv.smartplanner.utils.UserHolder;
 
 import java.io.IOException;
 import java.net.URL;
