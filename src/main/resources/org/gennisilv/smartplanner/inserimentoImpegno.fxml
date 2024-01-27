@@ -82,7 +82,7 @@
                   <Font name="SansSerif Regular" size="14.0" />
                </font>
             </Label>
-            <TextArea layoutX="26.0" layoutY="192.0" prefHeight="97.0" prefWidth="214.0" text="1 - Altissima&#10;2 - Alta &#10;3 - Media &#10;4 - Bassa &#10;5 - Bassissima" />
+            <TextArea editable="false" layoutX="23.0" layoutY="193.0" prefHeight="96.0" prefWidth="91.0" text="1 - Altissima&#10;2 - Alta &#10;3 - Media &#10;4 - Bassa &#10;5 - Bassissima" />
             </children></Pane>
     </center>
 

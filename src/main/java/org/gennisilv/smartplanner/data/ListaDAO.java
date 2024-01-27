@@ -1,9 +1,7 @@
 package org.gennisilv.smartplanner.data;
 
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 //si occupa delle operazioni che riguardano la lista (aggiunta e rimozione di impegni, creazione e modifica del colore della lista)
 public class ListaDAO {
@@ -26,10 +24,11 @@ public class ListaDAO {
     }
 
     //aggiunge un impegno a una lista
-    public static void doAddImpegno(Impegno impegno){
+    public static int doAddImpegno(Impegno impegno){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO impegno (null, nomeImpegno, durataImpegno, prioritaImpegno, emailUI) VALUES(?,?,?,?,?)");
+                    "INSERT INTO impegno (impegno.codiceImpegno, nomeImpegno, durataImpegno, prioritaImpegno, emailUI) VALUES(null,?,?,?,?)",
+                    Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, impegno.getNomeImpegno());
             ps.setInt(2,impegno.getDurataImpegno());
             ps.setInt(3,impegno.getPrioritaImpegno());
@@ -39,6 +38,13 @@ public class ListaDAO {
                 throw new RuntimeException("INSERT error.");
             }
 
+            ResultSet rs = ps.getGeneratedKeys();
+            if(rs.next()){
+                return rs.getInt(1);
+            }
+            else{
+                throw new RuntimeException("INSERT error.");
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -61,7 +67,7 @@ public class ListaDAO {
     }
 
     //svuota la lista
-    public void doClearLista(String email){
+    public static void doClearLista(String email){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "DELETE FROM impegno WHERE emailUI=?");

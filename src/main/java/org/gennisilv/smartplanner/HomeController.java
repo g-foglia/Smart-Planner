@@ -42,14 +42,14 @@ public class HomeController extends barraController implements Initializable {
 
     }
 
-    /*public void switchToinserimentoImpegno (ActionEvent e) throws IOException
+    public void switchToinserimentoImpegno (ActionEvent e) throws IOException
     {
         Parent root = FXMLLoader.load(getClass().getResource("inserimentoImpegno.fxml"));
         stage= (Stage) ((Node)e.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
-    }*/
+    }
 
     public void switchToCreazioneCalendario(ActionEvent e) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("creazioneCalendario.fxml"));

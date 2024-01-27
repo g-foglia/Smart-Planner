@@ -49,8 +49,4 @@ public class UtenteLogic {
     public static Utente returnLoggedInUser(){
         return UserHolder.getIstanza().getUtente();
     }
-
-    public static void setLoggedInUser(Utente utente){
-        UserHolder.getIstanza().setUtente(utente);
-    }
 }
