@@ -42,7 +42,7 @@ public class inserimentoImpegnoController extends barraController implements Ini
 
     public void inserisciImpegno(ActionEvent e) throws IOException {
         String nomeI = nomeImpegno.getText();
-        String durataI = durataImpegno.getText();
+        int durataI = Integer.parseInt(durataImpegno.getText());
 
 
         int priorita = -1;
@@ -64,18 +64,12 @@ public class inserimentoImpegnoController extends barraController implements Ini
          */
 
         if(!checkName(nomeI))
-            if(lunghezza(durataI))
                {
-                        String codiceImpegno = ListaLogic.aggiungiImpegno(nomeI,durataI,priorita);
-                        Lista lista = ListaLogic.aggiungiImpegno(codiceImpegno,durataI,priorita);
+                        int codiceImpegno = ListaLogic.aggiungiImpegno(nomeI,durataI,priorita);
                         switchTosettimanale(e);
                     }
 
-            else{
-                //descrizione troppo lunga
-                Alert alert = new Alert(Alert.AlertType.INFORMATION,"La descrizione dell'evento non può superare i 200 caratteri");
-                alert.showAndWait();
-            }
+
         else{
             //nome che contiene caratteri speciali
             Alert alert = new Alert(Alert.AlertType.INFORMATION,"Il nome non può contenere caratteri speciali");
@@ -114,10 +108,6 @@ public class inserimentoImpegnoController extends barraController implements Ini
     private boolean checkName(String nome){
         return Pattern.compile("[^a-zA-Z0-9]").matcher(nome).find();
     }
-    private boolean lunghezza(String descrizione){
-        if(descrizione.length() > 200)
-            return false;
-        return true;
-    }
+
 
 }
