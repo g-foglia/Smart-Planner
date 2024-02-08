@@ -110,32 +110,4 @@ public class registrazioneController extends barraController{
         stage.setScene(scene);
         stage.show();
     }
-
-    private boolean checkName(String nome){
-        return Pattern.compile("[^a-zA-Z]").matcher(nome).find();
-    }
-
-    private boolean date(GregorianCalendar nascita){
-        GregorianCalendar dataAttuale = new GregorianCalendar();
-        dataAttuale.add(Calendar.YEAR, -16);
-
-        return nascita.before(dataAttuale);
-    }
-
-    private boolean checkEmail(String email){
-        String regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
-    }
-
-    private boolean formato(String username){
-        return Pattern.compile("[^a-zA-Z0-9]").matcher(username).find();
-    }
-
-    private boolean lunghezza(String password){
-        if(password.length()<8 || password.length()>30)
-            return false;
-        return true;
-    }
 }

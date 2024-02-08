@@ -28,11 +28,19 @@ public class loginController extends barraController {
     public void login (ActionEvent e) throws IOException {
         int login = UtenteLogic.login(emailLogin.getText(), passwordLogin.getText());
 
-        if(login == -1){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION,"La combinazione di email e password è sbagliata");
-            alert.showAndWait();
-        }else{
-            switchToHome(e);
+        Alert alert;
+        switch(login){
+            case 0:
+                switchToHome(e);
+                break;
+            case 1:
+                alert = new Alert(Alert.AlertType.INFORMATION,"La combinazione di email e password è sbagliata");
+                alert.showAndWait();
+                break;
+            case 2:
+                alert = new Alert(Alert.AlertType.INFORMATION,"Il formato della mail non è corretto.");
+                alert.showAndWait();
+                break;
         }
     }
 

@@ -86,40 +86,34 @@ public class inserimentoEventoController extends barraController implements Init
             case "1 volta al mese":
                 periodicita = 3;
         }
-
-        /*
-            CONTROLLI SUI CAMPI
-         */
-
-        if(!checkName(nome))
-            if(lunghezza(descrizione))
-                    if(!date(dataEvento))
-                        if(checkTimeE(oraI,oraF)){
-                            int codiceEvento = EventoLogic.aggiungiEvento(nome,descrizione,dataEvento,oraI,oraF,color,n,periodicita);
-                            Calendario calendario = CalendarioLogic.cercaCalendario((String) calendari.getValue());
-                            CalendarioLogic.aggiungiEvento(codiceEvento, calendario.getCodiceCalendario());
-
-                            switchTosettimanale(e);
-                        }
-                        else{
-                                //orario di fine antecedente alla orario di inizio
-                                Alert alert = new Alert(Alert.AlertType.INFORMATION,"Gli orari di inizio e fine dell'evento non possono essere incrociati");
-                                alert.showAndWait();
-                        }
-                    else{
-                        //data dell'evento appartenente al passato
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION,"Non puoi creare eventi in giorni passati");
-                        alert.showAndWait();
-                    }
-            else{
-                    //descrizione troppo lunga
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION,"La descrizione dell'evento non può superare i 200 caratteri");
-                    alert.showAndWait();
-            }
-        else{
-            //nome che contiene caratteri speciali
-            Alert alert = new Alert(Alert.AlertType.INFORMATION,"Il nome non può contenere caratteri speciali");
-            alert.showAndWait();
+        int codiceEvento = EventoLogic.aggiungiEvento(nome,descrizione,dataEvento,oraI,oraF,color,n,periodicita);
+        Alert alert;
+        switch(codiceEvento){
+            case 1:
+                //orario di fine antecedente alla orario di inizio
+                alert = new Alert(Alert.AlertType.INFORMATION,"Gli orari di inizio e fine dell'evento non possono essere incrociati");
+                alert.showAndWait();
+                break;
+            case 2:
+                //data dell'evento appartenente al passato
+                alert = new Alert(Alert.AlertType.INFORMATION,"Non puoi creare eventi in giorni passati");
+                alert.showAndWait();
+                break;
+            case 3:
+                //descrizione troppo lunga
+                alert = new Alert(Alert.AlertType.INFORMATION,"La descrizione dell'evento non può superare i 200 caratteri");
+                alert.showAndWait();
+                break;
+            case 4:
+                //nome che contiene caratteri speciali
+                alert = new Alert(Alert.AlertType.INFORMATION,"Il nome non può contenere caratteri speciali");
+                alert.showAndWait();
+                break;
+            default:
+                Calendario calendario = CalendarioLogic.cercaCalendario((String) calendari.getValue());
+                CalendarioLogic.aggiungiEvento(codiceEvento, calendario.getCodiceCalendario());
+                switchTosettimanale(e);
+                break;
         }
     }
 
@@ -152,36 +146,5 @@ public class inserimentoEventoController extends barraController implements Init
         super.switchToAggiuntaEvento(e);
     }
 
-    private boolean checkName(String nome){
-        return Pattern.compile("[^a-zA-Z0-9]").matcher(nome).find();
-    }
 
-    private boolean lunghezza(String descrizione){
-        if(descrizione.length() > 200)
-            return false;
-        return true;
-    }
-
-    //non funziona
-    private boolean date(GregorianCalendar data){
-        GregorianCalendar dataAttuale = new GregorianCalendar();
-
-        return data.before(dataAttuale);
-    }
-
-    private boolean checkTimeE(String oraI, String oraF){
-        int oraInizio = Integer.parseInt(oraI.substring(0,2));
-        int oraFine = Integer.parseInt(oraF.substring(0,2));
-
-        if(oraFine < oraInizio)
-            return false;
-        else if(oraFine == oraInizio){
-            int minutiInizio = Integer.parseInt(oraI.substring(3));
-            int minutiFine = Integer.parseInt(oraF.substring(3));
-
-            if(minutiFine < minutiInizio)
-                return false;
-        }
-        return true;
-    }
 }

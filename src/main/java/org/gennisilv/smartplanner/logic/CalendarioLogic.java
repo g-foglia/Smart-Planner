@@ -9,6 +9,7 @@ import org.gennisilv.smartplanner.utils.UserHolder;
 import java.util.ArrayList;
 
 public class CalendarioLogic {
+
     public static void creaCalendario(String nome, Color color){
         CalendarioDAO.doSaveCalendario(new Calendario(nome, ColorConverter.toHexString(color)), UserHolder.getIstanza().getUtente().getEmail());
     }

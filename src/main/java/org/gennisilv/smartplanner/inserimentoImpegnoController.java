@@ -43,8 +43,6 @@ public class inserimentoImpegnoController extends barraController implements Ini
     public void inserisciImpegno(ActionEvent e) throws IOException {
         String nomeI = nomeImpegno.getText();
         int durataI = Integer.parseInt(durataImpegno.getText());
-
-
         int priorita = -1;
         switch (prioritaID.getValue()){
             case "Altissima":
@@ -58,22 +56,13 @@ public class inserimentoImpegnoController extends barraController implements Ini
             case "Bassissima":
                 priorita = 4;
         }
+        int codiceImpegno = ListaLogic.aggiungiImpegno(nomeI, durataI, priorita);
 
-        /*
-            CONTROLLI SUI CAMPI
-         */
-
-        if(!checkName(nomeI))
-               {
-                        int codiceImpegno = ListaLogic.aggiungiImpegno(nomeI,durataI,priorita);
-                        switchTosettimanale(e);
-                    }
-
-
-        else{
-            //nome che contiene caratteri speciali
+        if(codiceImpegno == -1){
             Alert alert = new Alert(Alert.AlertType.INFORMATION,"Il nome non può contenere caratteri speciali");
             alert.showAndWait();
+        }else{
+            switchTosettimanale(e);
         }
     }
 
@@ -104,9 +93,6 @@ public class inserimentoImpegnoController extends barraController implements Ini
     public void switchToRicerca (ActionEvent e) throws IOException
     {
         super.switchToRicerca(e);
-    }
-    private boolean checkName(String nome){
-        return Pattern.compile("[^a-zA-Z0-9]").matcher(nome).find();
     }
 
 

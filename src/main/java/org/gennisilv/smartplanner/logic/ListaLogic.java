@@ -7,6 +7,7 @@ import org.gennisilv.smartplanner.data.ListaDAO;
 import org.gennisilv.smartplanner.utils.ColorConverter;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class ListaLogic {
     public static void creaLista(Color colore, ArrayList<Impegno> impegni){
@@ -23,10 +24,17 @@ public class ListaLogic {
     }
 
     public static int aggiungiImpegno(String nomeImpegno, int durataImpegno, int prioritaImpegno){
-        Impegno impegno = new Impegno(nomeImpegno,durataImpegno,prioritaImpegno,
-                UtenteLogic.returnLoggedInUser().getEmail());
+        Impegno impegno;
+        /*
+            CONTROLLI SUI CAMPI
+         */
+        if(checkName(nomeImpegno)){
+            impegno = new Impegno(nomeImpegno,durataImpegno,prioritaImpegno, UtenteLogic.returnLoggedInUser().getEmail());
+            return ListaDAO.doAddImpegno(impegno);
+        }else{
+            return -1;
+        }
 
-        return ListaDAO.doAddImpegno(impegno);
     }
 
     public static void svuotaLista(){
@@ -36,4 +44,9 @@ public class ListaLogic {
     public static void cancellaImpegno(int codiceImpegno){
         ListaDAO.doCancImpegno(codiceImpegno);
     }
+
+    private static boolean checkName(String nome){
+        return Pattern.compile("[^a-zA-Z0-9]").matcher(nome).find();
+    }
+
 }

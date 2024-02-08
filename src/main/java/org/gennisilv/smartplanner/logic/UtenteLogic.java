@@ -70,14 +70,18 @@ public class UtenteLogic {
     }
 
     public static int login(String email, String passowrd){
-        Utente utente = UtenteDAO.login(email,passowrd);
-
-        if(utente == null){
-            return -1;
-        }else{
-            UserHolder.getIstanza().setUtente(utente);
-            return 0;
+        Utente utente;
+        if(checkEmail(email)) {
+            utente = UtenteDAO.login(email, passowrd);
+            if (utente == null) {
+                return 1;
+            } else {
+                return 0;
+            }
         }
+        else{
+                return 2;
+            }
     }
 
     public static void cancellaUtente(){

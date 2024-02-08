@@ -38,14 +38,12 @@ public class areaUtenteController extends barraController implements Initializab
     //cancella un utente ed effettua il logout
     public void cancellaUtente(ActionEvent event) throws IOException{
         UtenteLogic.cancellaUtente();
-
         switchToHelloView(event);
     }
 
     //logout
     public void logout(ActionEvent event) throws IOException{
         UtenteLogic.logout();
-
         switchToHelloView(event);
     }
 
