@@ -52,48 +52,45 @@ public class registrazioneController extends barraController{
         String cognome = cognomeReg.getText();
         GregorianCalendar nascita = new GregorianCalendar(dataReg.getValue().getYear(),dataReg.getValue().getMonthValue()-1,dataReg.getValue().getDayOfMonth());
         String username = usernameReg.getText();
+        int esito = UtenteLogic.registrazione(email, password, nome, cognome, nascita, username) ;
 
-        /*
-        CONTROLLI SUI CAMPI
-         */
-        if(!checkName(nome))
-            if(!checkName(cognome))
-                if(date(nascita))
-                    if(checkEmail(email))
-                        if(!formato(username))
-                            if(lunghezza(password)){
-                                UtenteLogic.registrazione(email,password,nome,cognome,nascita,username);
-                                switchToHome(e);
-                            }
-                            else{
-                                //passowrd troppo corta o troppo lunga
-                                Alert alert = new Alert(Alert.AlertType.INFORMATION,"La passqord deve avere una lunghezza compresa tra gli 8 e i 30 caratteri");
-                                alert.showAndWait();
-                            }
-                        else{
-                            //formato username illegale
-                            Alert alert = new Alert(Alert.AlertType.INFORMATION,"L'username non può contenere caratteri speciali");
-                            alert.showAndWait();
-                        }
-                    else{
-                        //email in formato errato
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION,"Inserisci una mail valida");
-                        alert.showAndWait();
-                    }
-                else{
-                    //utente troppo giovane
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION,"Per utilizzare l'applicazione devi avere almeno 16 anni");
-                    alert.showAndWait();
-                }
-            else{
-                //cognome che contiene numeri o caratteri speciali
-                Alert alert = new Alert(Alert.AlertType.INFORMATION,"Il cognome non può contenere numeri o caratteri speciali");
+        Alert alert;
+
+        switch(esito){
+            case 0:
+                //tutto okay
+                switchToHome(e);
+                break;
+            case 1:
+                //passowrd troppo corta o troppo lunga
+                alert = new Alert(Alert.AlertType.INFORMATION,"La password deve avere una lunghezza compresa tra gli 8 e i 30 caratteri");
                 alert.showAndWait();
-            }
-        else{
-            //nome che contiene numeri o caratteri speciali
-            Alert alert = new Alert(Alert.AlertType.INFORMATION,"Il nome non può contenere numeri o caratteri speciali");
-            alert.showAndWait();
+                break;
+            case 2:
+                //formato username illegale
+                alert = new Alert(Alert.AlertType.INFORMATION,"L'username non può contenere caratteri speciali");
+                alert.showAndWait();
+                break;
+            case 3:
+                //email in formato errato
+                alert = new Alert(Alert.AlertType.INFORMATION,"Inserisci una mail valida");
+                alert.showAndWait();
+                break;
+            case 4:
+                //utente troppo giovane
+                alert = new Alert(Alert.AlertType.INFORMATION,"Per utilizzare l'applicazione devi avere almeno 16 anni");
+                alert.showAndWait();
+                break;
+            case 5:
+                //cognome che contiene numeri o caratteri speciali
+                alert = new Alert(Alert.AlertType.INFORMATION,"Il cognome non può contenere numeri o caratteri speciali");
+                alert.showAndWait();
+                break;
+            case 6:
+                //nome che contiene numeri o caratteri speciali
+                alert = new Alert(Alert.AlertType.INFORMATION,"Il nome non può contenere numeri o caratteri speciali");
+                alert.showAndWait();
+                break;
         }
     }
 
