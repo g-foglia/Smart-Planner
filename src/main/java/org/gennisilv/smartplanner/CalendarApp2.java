@@ -7,11 +7,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class CalendarApp extends Application {
+public class CalendarApp2 extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("calendar.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("calendar2.fxml"));
         primaryStage.setScene(new Scene(root, 400, 500));
         primaryStage.setTitle("Calendario");
         primaryStage.show();

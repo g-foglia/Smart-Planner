@@ -1,5 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <VBox xmlns="http://javafx.com/javafx"
@@ -8,7 +6,9 @@
       alignment="TOP_CENTER" spacing="10">
     <DatePicker fx:id="datePicker"/>
     <GridPane fx:id="calendarGrid"/>
-    <VBox fx:id="eventLayout"/>
     <TextField fx:id="eventTextField" promptText="Inserisci il nome dell'evento"/>
-    <Button text="Aggiungi Evento" onAction="#handleAddEvent"/>
+    <ComboBox fx:id="startHourComboBox" promptText="Ora inizio"/>
+    <ComboBox fx:id="endHourComboBox" promptText="Ora fine"/>
+    <Button text="Aggiungi Evento" onAction="#addEvent"/>
+    <VBox fx:id="eventLayout"/>
 </VBox>

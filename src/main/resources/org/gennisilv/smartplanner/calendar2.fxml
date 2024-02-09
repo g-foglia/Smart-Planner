@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.gennisilv.smartplanner.CalendarController2"
+      alignment="TOP_CENTER" spacing="10">
+    <DatePicker fx:id="datePicker"/>
+    <GridPane fx:id="calendarGrid"/>
+    <VBox fx:id="eventLayout"/>
+    <TextField fx:id="eventTextField" promptText="Inserisci il nome dell'evento"/>
+    <Button text="Aggiungi Evento" onAction="#handleAddEvent"/>
+</VBox>
