@@ -1,5 +1,7 @@
 package org.gennisilv.smartplanner;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -62,7 +64,26 @@ public class CalendarController {
             LocalDate currentDay = selectedDate.with(firstDayOfTheWeek).plusDays(i);
             Button dayButton = new Button(currentDay.getDayOfWeek().getDisplayName(TextStyle.SHORT, Locale.getDefault()));
             final int dayIndex = i; // Utilizziamo una variabile finale per l'indice del giorno
-            dayButton.setOnAction(event->handleDaySelection(datePicker.getValue().with(DayOfWeek.MONDAY).plusDays(dayIndex)));
+           // dayButton.setOnAction(event->handleDaySelection(datePicker.getValue().with(DayOfWeek.MONDAY).plusDays(dayIndex)));
+            dayButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    calendarGrid.getChildren().clear();
+                    initialize();
+                    Map<LocalTime, List<String>> eventsForDate = eventMap.get(datePicker.getValue().with(DayOfWeek.MONDAY).plusDays(dayIndex));
+                   if(eventsForDate!=null){
+                    for (LocalTime startTime : eventsForDate.keySet()) {
+                        List<String> events = eventsForDate.get(startTime);
+                        for (String event : events) {
+                            // Aggiungi un label per ogni evento
+                            Label eventLabel = new Label(event);
+                            int row = startTime.getHour() + 1;
+                            calendarGrid.add(eventLabel, eventsForDate.size() + 1, row);
+                        }
+                    }}
+
+                }
+            });
         calendarGrid.add(dayButton,i,0);
         }
 
@@ -70,29 +91,33 @@ public class CalendarController {
 
     // Metodo per gestire la selezione di un giorno
     private void handleDaySelection(LocalDate selectedDate) {
-       List <String> events= (List<String>) eventMap.get(selectedDate);
-       updateEventLayout(events);
-
+        calendarGrid.getChildren().clear(); // Pulisci il layout degli eventi
+        initialize();
+        Map <LocalTime,List <String>> eventMaps= eventMap.get(selectedDate);
+       updateEventLayout(eventMaps);
     }
-private void updateEventLayout(List<String> events)
+private void updateEventLayout(Map <LocalTime,List <String>> eventMap)
 {
-    LocalDate selectedDate=datePicker.getValue();
-    eventLayout.getChildren().clear(); // Pulisci il layout degli eventi
-    // Verifica se la data selezionata è presente nella mappa degli eventi
-    /*if (eventMap.containsKey(selectedDate)) {
-        // Ottieni la mappa degli eventi per la data selezionata
-        Map<LocalTime, List<String>> eventsForDate = eventMap.get(selectedDate);
-        for (LocalTime startTime : eventsForDate.keySet()) {
-             events = eventsForDate.get(startTime);
-            for (String event : events) {
-                // Aggiungi un label per ogni evento
-                Label eventLabel = new Label(event);
-                int row = startTime.getHour() + 1;
-                calendarGrid.add(eventLabel, eventsForDate.size() + 1, row);
+    if (eventMap!=null) {
+        LocalDate selectedDate = datePicker.getValue();
+       // eventLayout.getChildren().clear(); // Pulisci il layout degli eventi
+        // Verifica se la data selezionata è presente nella mappa degli eventi
+        if (eventMap.containsKey(selectedDate)) {
+            // Ottieni la mappa degli eventi per la data selezionata
+            Map<LocalTime, List<String>> eventsForDate = (Map<LocalTime, List<String>>) eventMap.get(selectedDate);
+            for (LocalTime startTime : eventsForDate.keySet()) {
+                List<String> events = eventsForDate.get(startTime);
+                for (String event : events) {
+                    // Aggiungi un label per ogni evento
+                    Label eventLabel = new Label(event);
+                    int row = startTime.getHour() + 1;
+                    calendarGrid.add(eventLabel, eventsForDate.size() + 1, row);
+                }
             }
         }
-    }*/
-    if (events!=null)
+    }
+
+    /*if (events!=null)
     {
         Map<LocalTime, List<String>> eventsForDate = eventMap.get(selectedDate);
         for (LocalTime startTime : eventsForDate.keySet()) {
@@ -104,7 +129,7 @@ private void updateEventLayout(List<String> events)
                 eventLayout.getChildren().add(eventLabel);
             }
         }
-    }
+    }*/
 }
 
 
@@ -117,8 +142,8 @@ private void updateEventLayout(List<String> events)
         String eventName = eventTextField.getText();
         Integer startHour = startHourComboBox.getValue();
         Integer endHour = endHourComboBox.getValue();
-        List<String> events= (List<String>) eventMap.get(selectedDate);
-       /* if (selectedDate != null && eventName != null && startHour != null && endHour != null) {
+       // List<String> events= (List<String>) eventMap.get(selectedDate);
+       if (selectedDate != null && eventName != null && startHour != null && endHour != null) {
             LocalTime startTime = LocalTime.of(startHour, 0);
             LocalTime endTime = LocalTime.of(endHour, 0);
 
@@ -129,33 +154,18 @@ private void updateEventLayout(List<String> events)
             for (LocalTime time = startTime; time.isBefore(endTime); time = time.plusHours(1)) {
                 eventsForDate.computeIfAbsent(time, k -> new ArrayList<>()).add(eventName);
             }
-
+            eventMap.put(selectedDate,eventsForDate);
+           handleDaySelection(selectedDate);
             // Aggiorna la visualizzazione degli eventi solo se la data selezionata è quella corrente
-            if (selectedDate.equals(datePicker.getValue())) {
+           /* if (selectedDate.equals(datePicker.getValue())) {
                 handleDaySelection(selectedDate);
-            }
-        }*/
+            }*/
+        }
 
-        if (selectedDate != null && eventName != null && startHour != null && endHour != null) {
-            LocalTime startTime = LocalTime.of(startHour, 0);
-            LocalTime endTime = LocalTime.of(endHour, 0);
-
-            // Ottieni la mappa degli eventi per la data selezionata
-            Map<LocalTime, List<String>> eventsForDate = eventMap.computeIfAbsent(selectedDate, k -> new HashMap<>());
-
-            // Aggiungi l'evento per ogni ora tra l'ora di inizio e l'ora di fine
-            for (LocalTime time = startTime; time.isBefore(endTime); time = time.plusHours(1)) {
-                eventsForDate.computeIfAbsent(time, k -> new ArrayList<>()).add(eventName);
-            }
-
-            // Aggiorna la visualizzazione degli eventi solo se la data selezionata è quella corrente
-            if (selectedDate.equals(datePicker.getValue())) {
-                handleDaySelection(selectedDate);
-            }
-            events.add(eventName);
-            updateEventLayout(events);
+           // events.add(eventName);
+            // updateEventLayout(events);
             System.out.println("Evento aggiunto " + selectedDate + ":" + eventName);
 
 
     }
-}}
+}
