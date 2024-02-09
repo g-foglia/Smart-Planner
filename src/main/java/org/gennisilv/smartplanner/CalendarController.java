@@ -81,7 +81,6 @@ public class CalendarController {
                             calendarGrid.add(eventLabel, eventsForDate.size() + 1, row);
                         }
                     }}
-
                 }
             });
         calendarGrid.add(dayButton,i,0);
@@ -117,19 +116,6 @@ private void updateEventLayout(Map <LocalTime,List <String>> eventMap)
         }
     }
 
-    /*if (events!=null)
-    {
-        Map<LocalTime, List<String>> eventsForDate = eventMap.get(selectedDate);
-        for (LocalTime startTime : eventsForDate.keySet()) {
-            events = eventsForDate.get(startTime);
-            for (String event : events) {
-                // Aggiungi un label per ogni evento
-                Label eventLabel = new Label(event);
-                int row = startTime.getHour() + 1;
-                eventLayout.getChildren().add(eventLabel);
-            }
-        }
-    }*/
 }
 
 

@@ -3,17 +3,28 @@ package org.gennisilv.smartplanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import java.io.IOException;
+import com.calendarfx.view.AgendaView;
 
 public final class settimanaleController extends barraController{
     private Stage stage;
     private Scene scene;
-
+    @FXML
+    private GridPane calendarGrid;
     @FXML
     private Polygon giorni;
 
+    public void initialize()
+    {
+        for (int i = 0; i < 24; i++) {
+            Label timeLabel = new Label(String.format("%02d:00", i));
+            calendarGrid.add(timeLabel, 0, i + 1);
+        }
+    }
     @Override
     public void switchTosettimanale(ActionEvent event) throws IOException {
         super.switchTosettimanale(event);
