@@ -9,7 +9,6 @@ module org.gennisilv.smartplanner {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.sql;
-    requires com.calendarfx.view;
     requires java.desktop;
 
     opens org.gennisilv.smartplanner to javafx.fxml;

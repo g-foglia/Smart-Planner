@@ -28,6 +28,7 @@ public class loginController extends barraController {
     public void login (ActionEvent e) throws IOException {
         int login = UtenteLogic.login(emailLogin.getText(), passwordLogin.getText());
 
+
         Alert alert;
         switch(login){
             case 0:

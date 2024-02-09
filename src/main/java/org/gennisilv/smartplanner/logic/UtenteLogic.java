@@ -76,6 +76,7 @@ public class UtenteLogic {
             if (utente == null) {
                 return 1;
             } else {
+                UserHolder.getIstanza().setUtente(utente);
                 return 0;
             }
         }
