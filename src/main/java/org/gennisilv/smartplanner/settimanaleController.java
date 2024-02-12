@@ -8,7 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import java.io.IOException;
-import com.calendarfx.view.AgendaView;
+
 
 public final class settimanaleController extends barraController{
     private Stage stage;
