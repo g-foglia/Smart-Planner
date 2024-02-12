@@ -23,7 +23,7 @@ public class ListaLogic {
         ListaDAO.doSaveLista(lista);
     }
 
-    public  int aggiungiImpegno(String nomeImpegno, int durataImpegno, int prioritaImpegno){
+    public static int aggiungiImpegno(String nomeImpegno, int durataImpegno, int prioritaImpegno){
         Impegno impegno;
         /*
             CONTROLLI SUI CAMPI

@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 
 public class UtenteLogic {
 
-    public int registrazione(String email, String password, String nome, String cognome, GregorianCalendar nascita, String username){
+    public static int registrazione(String email, String password, String nome, String cognome, GregorianCalendar nascita, String username){
         /*
         CONTROLLI SUI CAMPI
          */

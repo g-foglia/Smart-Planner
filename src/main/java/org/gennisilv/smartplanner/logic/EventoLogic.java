@@ -12,7 +12,7 @@ import java.util.GregorianCalendar;
 import java.util.regex.Pattern;
 
 public class EventoLogic {
-    public  int aggiungiEvento(String nome, String descrizione, GregorianCalendar data, String oraInizio, String oraFine, Color colore, boolean notifiche, int periodicita){
+    public static int aggiungiEvento(String nome, String descrizione, GregorianCalendar data, String oraInizio, String oraFine, Color colore, boolean notifiche, int periodicita){
         if(!checkName(nome))
             if(lunghezza(descrizione))
                 if(!date(data))
