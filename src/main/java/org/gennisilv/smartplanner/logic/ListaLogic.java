@@ -28,7 +28,7 @@ public class ListaLogic {
         /*
             CONTROLLI SUI CAMPI
          */
-        if(checkName(nomeImpegno)){
+        if(!checkName(nomeImpegno)){
             impegno = new Impegno(nomeImpegno,durataImpegno,prioritaImpegno, UtenteLogic.returnLoggedInUser().getEmail());
             return ListaDAO.doAddImpegno(impegno);
         }else{

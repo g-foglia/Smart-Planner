@@ -1,17 +1,19 @@
 package org.gennisilv.smartplanner.test;
 import javafx.scene.paint.Color;
 import org.gennisilv.smartplanner.data.Evento;
-import org.gennisilv.smartplanner.data.EventoDAO;
 import org.gennisilv.smartplanner.logic.EventoLogic;
+import org.gennisilv.smartplanner.logic.UtenteLogic;
 import org.gennisilv.smartplanner.utils.DateConverter;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 public class InserimentoEventoTest {
-    EventoLogic evento=new EventoLogic();
-    EventoDAO eventoDAO=new EventoDAO();
+
 @Test
     public void testInserimentoEventoNomeInvalido(){
+        UtenteLogic.login("silvanacafaro256@gmail.com","Zzilv1234!");
         Evento e1 = new Evento();
         //check registrazione senza nome
         e1.setNomeEvento("Nome_Evento");
@@ -22,10 +24,11 @@ public class InserimentoEventoTest {
         e1.setColoreEvento("#e0f0ff");
         e1.setNotifiche(true);
         e1.setPeriodicita(0);
-        assertEquals(1,evento.aggiungiEvento(e1.getNomeEvento(),e1.getDescrizione(),e1.getDataEvento(),e1.getOrarioInizio(),e1.getOrarioFine(), Color.valueOf(e1.getColoreEvento()),e1.isNotifiche(),e1.getPeriodicita()));
+        assertEquals(1,EventoLogic.aggiungiEvento(e1.getNomeEvento(),e1.getDescrizione(),e1.getDataEvento(),e1.getOrarioInizio(),e1.getOrarioFine(), Color.valueOf(e1.getColoreEvento()),e1.isNotifiche(),e1.getPeriodicita()));
     }
     @Test
     public void testInserimentoEventoDescrizioneInvalida(){
+        UtenteLogic.login("silvanacafaro256@gmail.com","Zzilv1234!");
         Evento e2 = new Evento();
         //check registrazione senza nome
         e2.setNomeEvento("NomeEvento2");
@@ -36,10 +39,11 @@ public class InserimentoEventoTest {
         e2.setColoreEvento("#e0f0ff");
         e2.setNotifiche(true);
         e2.setPeriodicita(0);
-        assertEquals(1,evento.aggiungiEvento(e2.getNomeEvento(), e2.getDescrizione(), e2.getDataEvento(), e2.getOrarioInizio(), e2.getOrarioFine(), Color.valueOf(e2.getColoreEvento()), e2.isNotifiche(), e2.getPeriodicita()));
+        assertEquals(1,EventoLogic.aggiungiEvento(e2.getNomeEvento(), e2.getDescrizione(), e2.getDataEvento(), e2.getOrarioInizio(), e2.getOrarioFine(), Color.valueOf(e2.getColoreEvento()), e2.isNotifiche(), e2.getPeriodicita()));
     }
     @Test
     public void testInserimentoEventoDataAntecedente(){
+        UtenteLogic.login("silvanacafaro256@gmail.com","Zzilv1234!");
         Evento e3 = new Evento();
         //check registrazione senza nome
         e3.setNomeEvento("NomeEvento3");
@@ -50,7 +54,7 @@ public class InserimentoEventoTest {
         e3.setColoreEvento("#e0f0ff");
         e3.setNotifiche(true);
         e3.setPeriodicita(0);
-        assertEquals(1,evento.aggiungiEvento(e3.getNomeEvento(), e3.getDescrizione(), e3.getDataEvento(), e3.getOrarioInizio(), e3.getOrarioFine(), Color.valueOf(e3.getColoreEvento()), e3.isNotifiche(), e3.getPeriodicita()));
+        assertEquals(1,EventoLogic.aggiungiEvento(e3.getNomeEvento(), e3.getDescrizione(), e3.getDataEvento(), e3.getOrarioInizio(), e3.getOrarioFine(), Color.valueOf(e3.getColoreEvento()), e3.isNotifiche(), e3.getPeriodicita()));
     }
     @Test
     public void testInserimentoEventoOrarioAntecedente(){
@@ -64,10 +68,11 @@ public class InserimentoEventoTest {
         e4.setColoreEvento("#e0f0ff");
         e4.setNotifiche(true);
         e4.setPeriodicita(0);
-        assertEquals(1,evento.aggiungiEvento(e4.getNomeEvento(), e4.getDescrizione(), e4.getDataEvento(), e4.getOrarioInizio(), e4.getOrarioFine(), Color.valueOf(e4.getColoreEvento()), e4.isNotifiche(), e4.getPeriodicita()));
+        assertEquals(1,EventoLogic.aggiungiEvento(e4.getNomeEvento(), e4.getDescrizione(), e4.getDataEvento(), e4.getOrarioInizio(), e4.getOrarioFine(), Color.valueOf(e4.getColoreEvento()), e4.isNotifiche(), e4.getPeriodicita()));
     }
     @Test
     public void testInserimentoEventoEffettuato(){
+        UtenteLogic.login("silvanacafaro256@gmail.com","Zzilv1234!");
         Evento e4 = new Evento();
         //check registrazione senza nome
         e4.setNomeEvento("NomeEvento5");
@@ -78,7 +83,7 @@ public class InserimentoEventoTest {
         e4.setColoreEvento("#e0f0ff");
         e4.setNotifiche(true);
         e4.setPeriodicita(0);
-        assertEquals(1,evento.aggiungiEvento(e4.getNomeEvento(), e4.getDescrizione(), e4.getDataEvento(), e4.getOrarioInizio(), e4.getOrarioFine(), Color.valueOf(e4.getColoreEvento()), e4.isNotifiche(), e4.getPeriodicita()));
+        assertEquals(1, EventoLogic.aggiungiEvento(e4.getNomeEvento(), e4.getDescrizione(), e4.getDataEvento(), e4.getOrarioInizio(), e4.getOrarioFine(), Color.valueOf(e4.getColoreEvento()), e4.isNotifiche(), e4.getPeriodicita()));
     }
 
 }

@@ -1,40 +1,35 @@
 package org.gennisilv.smartplanner.test;
 import org.gennisilv.smartplanner.data.Utente;
-import org.gennisilv.smartplanner.data.UtenteDAO;
 import org.gennisilv.smartplanner.logic.UtenteLogic;
 import org.gennisilv.smartplanner.utils.DateConverter;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Date;
-
 import static org.junit.Assert.*;
 
 public class RegistrazioneUtenteTest {
-    UtenteLogic registrazione= new UtenteLogic();
-    UtenteDAO utenteDAO= new UtenteDAO();
-@Test
-        public void testRegistrazioneUsernameCaratteriSpeciali()
-        {
-            Utente u2= new Utente();
-            u2.setNome("NomeTest2");
-            u2.setCognome("CognomeTest2");
-            u2.setEmail("nome2@test.com");
-            u2.setPassword("Password");
-            u2.setUsername("UserTest");
-            u2.setDataDiNascita(DateConverter.toGregorianCalendar("29/09/1994"));
-           Assert.assertEquals(1,UtenteLogic.registrazione(u2.getEmail(),u2.getPassword(),u2.getNome(),u2.getCognome(),u2.getDataDiNascita(),u2.getUsername()));
-        }
-      /*  public void testRegistrazioneUsernameCaratteriSpeciali1(){
-        Utente u2 = new Utente();
+    @Test
+    public void testRegistrazioneUsernameCaratteriSpeciali()
+    {
+        Utente u2= new Utente();
         u2.setNome("NomeTest2");
         u2.setCognome("CognomeTest2");
         u2.setEmail("nome2@test.com");
-        u2.setPassword("PasswordTest");
-        u2.setUsername("UserTest%");
+        u2.setPassword("Password");
+        u2.setUsername("UserTest");
         u2.setDataDiNascita(DateConverter.toGregorianCalendar("29/09/1994"));
+        Assert.assertEquals(1,UtenteLogic.registrazione(u2.getEmail(),u2.getPassword(),u2.getNome(),u2.getCognome(),u2.getDataDiNascita(),u2.getUsername()));
+    }
+    /*  public void testRegistrazioneUsernameCaratteriSpeciali1(){
+       Utente u2 = new Utente();
+       u2.setNome("NomeTest2");
+       u2.setCognome("CognomeTest2");
+       u2.setEmail("nome2@test.com");
+       u2.setPassword("PasswordTest");
+       u2.setUsername("UserTest%");
+       u2.setDataDiNascita(DateConverter.toGregorianCalendar("29/09/1994"));
 
-        Assert.assertEquals(1,registrazione.registrazione(u2.getEmail(), u2.getPassword(), u2.getNome(), u2.getCognome(), u2.getDataDiNascita(), u2.getUsername()));
+       Assert.assertEquals(1,registrazione.registrazione(u2.getEmail(), u2.getPassword(), u2.getNome(), u2.getCognome(), u2.getDataDiNascita(), u2.getUsername()));
     }*/
 
     @Test
@@ -59,7 +54,7 @@ public class RegistrazioneUtenteTest {
         u6.setPassword("PasswordTest");
         u6.setUsername("UserTest6");
         u6.setDataDiNascita(DateConverter.toGregorianCalendar("29/09/1994"));
-        assertEquals(1,registrazione.registrazione(u6.getEmail(), u6.getPassword(), u6.getNome(), u6.getCognome(), u6.getDataDiNascita(), u6.getUsername()));
+        assertEquals(1,UtenteLogic.registrazione(u6.getEmail(), u6.getPassword(), u6.getNome(), u6.getCognome(), u6.getDataDiNascita(), u6.getUsername()));
     }
 
 
@@ -72,7 +67,7 @@ public class RegistrazioneUtenteTest {
         u8.setPassword("pass");
         u8.setUsername("UserTest8");
         u8.setDataDiNascita(DateConverter.toGregorianCalendar("29/09/1994"));
-        assertEquals(1,registrazione.registrazione(u8.getEmail(), u8.getPassword(), u8.getNome(), u8.getCognome(), u8.getDataDiNascita(), u8.getUsername()));
+        assertEquals(1,UtenteLogic.registrazione(u8.getEmail(), u8.getPassword(), u8.getNome(), u8.getCognome(), u8.getDataDiNascita(), u8.getUsername()));
     }
 
     @Test
@@ -84,7 +79,7 @@ public class RegistrazioneUtenteTest {
         u10.setPassword("PasswordTest");
         u10.setUsername("UserTest10");
         u10.setDataDiNascita(DateConverter.toGregorianCalendar("29/09/1994"));
-        assertEquals(1,registrazione.registrazione(u10.getEmail(), u10.getPassword(), u10.getNome(), u10.getCognome(), u10.getDataDiNascita(), u10.getUsername()));
+        assertEquals(1,UtenteLogic.registrazione(u10.getEmail(), u10.getPassword(), u10.getNome(), u10.getCognome(), u10.getDataDiNascita(), u10.getUsername()));
     }
     @Test
     public void testDataDiNascitaMinorenne()
@@ -96,7 +91,7 @@ public class RegistrazioneUtenteTest {
         u11.setPassword("PasswordTest");
         u11.setUsername("UserTest11");
         u11.setDataDiNascita(DateConverter.toGregorianCalendar("16/10/2010"));
-        assertEquals(1,registrazione.registrazione(u11.getEmail(), u11.getPassword(), u11.getNome(), u11.getCognome(), u11.getDataDiNascita(), u11.getUsername()));
+        assertEquals(1,UtenteLogic.registrazione(u11.getEmail(), u11.getPassword(), u11.getNome(), u11.getCognome(), u11.getDataDiNascita(), u11.getUsername()));
     }
     @Test
     public void testRegistrazioneEffettuata()
@@ -110,7 +105,4 @@ public class RegistrazioneUtenteTest {
         u12.setDataDiNascita(DateConverter.toGregorianCalendar("29/09/1994"));
         assertEquals(1,UtenteLogic.registrazione(u12.getEmail(), u12.getPassword(), u12.getNome(), u12.getCognome(), u12.getDataDiNascita(), u12.getUsername()));
     }
-
-
-
 }
