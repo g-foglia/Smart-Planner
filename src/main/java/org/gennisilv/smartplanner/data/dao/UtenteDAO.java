@@ -1,5 +1,7 @@
-package org.gennisilv.smartplanner.data;
+package org.gennisilv.smartplanner.data.dao;
 
+import org.gennisilv.smartplanner.data.ConPool;
+import org.gennisilv.smartplanner.data.entity.Utente;
 import org.gennisilv.smartplanner.utils.DateConverter;
 
 import java.sql.Connection;

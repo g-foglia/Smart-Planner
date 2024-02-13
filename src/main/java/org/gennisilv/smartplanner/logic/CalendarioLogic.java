@@ -1,8 +1,8 @@
 package org.gennisilv.smartplanner.logic;
 
 import javafx.scene.paint.Color;
-import org.gennisilv.smartplanner.data.Calendario;
-import org.gennisilv.smartplanner.data.CalendarioDAO;
+import org.gennisilv.smartplanner.data.entity.Calendario;
+import org.gennisilv.smartplanner.data.dao.CalendarioDAO;
 import org.gennisilv.smartplanner.utils.ColorConverter;
 import org.gennisilv.smartplanner.utils.UserHolder;
 

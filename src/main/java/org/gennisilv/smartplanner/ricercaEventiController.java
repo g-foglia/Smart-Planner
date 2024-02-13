@@ -5,8 +5,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
-import org.gennisilv.smartplanner.data.Evento;
-import org.gennisilv.smartplanner.data.Utente;
+import org.gennisilv.smartplanner.data.entity.Evento;
+import org.gennisilv.smartplanner.data.entity.Utente;
 import org.gennisilv.smartplanner.logic.EventoLogic;
 import org.gennisilv.smartplanner.logic.UtenteLogic;
 

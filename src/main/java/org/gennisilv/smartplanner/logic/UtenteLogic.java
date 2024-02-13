@@ -1,17 +1,9 @@
 package org.gennisilv.smartplanner.logic;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.stage.Stage;
-import org.gennisilv.smartplanner.data.Utente;
-import org.gennisilv.smartplanner.data.UtenteDAO;
+import org.gennisilv.smartplanner.data.entity.Utente;
+import org.gennisilv.smartplanner.data.dao.UtenteDAO;
 import org.gennisilv.smartplanner.utils.UserHolder;
 
-import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.regex.Matcher;

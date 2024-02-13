@@ -1,4 +1,7 @@
-package org.gennisilv.smartplanner.data;
+package org.gennisilv.smartplanner.data.dao;
+
+import org.gennisilv.smartplanner.data.ConPool;
+import org.gennisilv.smartplanner.data.entity.Calendario;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import org.gennisilv.smartplanner.data.Calendario;
+import org.gennisilv.smartplanner.data.entity.Calendario;
 import org.gennisilv.smartplanner.logic.CalendarioLogic;
 import org.gennisilv.smartplanner.logic.EventoLogic;
 
@@ -16,7 +16,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
 public class inserimentoEventoController extends barraController implements Initializable {
     private Stage stage;

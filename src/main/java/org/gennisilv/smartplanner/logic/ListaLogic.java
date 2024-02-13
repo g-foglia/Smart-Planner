@@ -1,9 +1,9 @@
 package org.gennisilv.smartplanner.logic;
 
 import javafx.scene.paint.Color;
-import org.gennisilv.smartplanner.data.Impegno;
-import org.gennisilv.smartplanner.data.Lista;
-import org.gennisilv.smartplanner.data.ListaDAO;
+import org.gennisilv.smartplanner.data.entity.Impegno;
+import org.gennisilv.smartplanner.data.entity.Lista;
+import org.gennisilv.smartplanner.data.dao.ListaDAO;
 import org.gennisilv.smartplanner.utils.ColorConverter;
 
 import java.util.ArrayList;

@@ -1,10 +1,8 @@
 package org.gennisilv.smartplanner.logic;
 
-import javafx.scene.control.Alert;
 import javafx.scene.paint.Color;
-import org.gennisilv.smartplanner.data.Calendario;
-import org.gennisilv.smartplanner.data.Evento;
-import org.gennisilv.smartplanner.data.EventoDAO;
+import org.gennisilv.smartplanner.data.entity.Evento;
+import org.gennisilv.smartplanner.data.dao.EventoDAO;
 import org.gennisilv.smartplanner.utils.ColorConverter;
 
 import java.util.ArrayList;

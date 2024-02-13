@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import org.gennisilv.smartplanner.data.Calendario;
+import org.gennisilv.smartplanner.data.entity.Calendario;
 import org.gennisilv.smartplanner.logic.CalendarioLogic;
 
 import java.io.IOException;

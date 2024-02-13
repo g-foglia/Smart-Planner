@@ -9,7 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import org.gennisilv.smartplanner.data.Utente;
+import org.gennisilv.smartplanner.data.entity.Utente;
 import org.gennisilv.smartplanner.logic.UtenteLogic;
 import org.gennisilv.smartplanner.utils.DateConverter;
 

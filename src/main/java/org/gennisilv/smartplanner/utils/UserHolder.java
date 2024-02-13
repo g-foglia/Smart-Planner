@@ -1,6 +1,6 @@
 package org.gennisilv.smartplanner.utils;
 
-import org.gennisilv.smartplanner.data.Utente;
+import org.gennisilv.smartplanner.data.entity.Utente;
 
 public class UserHolder {
     private Utente utente;

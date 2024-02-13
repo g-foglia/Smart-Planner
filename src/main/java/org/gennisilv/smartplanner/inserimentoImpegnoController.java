@@ -9,19 +9,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import org.gennisilv.smartplanner.data.Calendario;
-import org.gennisilv.smartplanner.data.Lista;
-import org.gennisilv.smartplanner.logic.CalendarioLogic;
-import org.gennisilv.smartplanner.logic.EventoLogic;
 import org.gennisilv.smartplanner.logic.ListaLogic;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
 public class inserimentoImpegnoController extends barraController implements Initializable {
 

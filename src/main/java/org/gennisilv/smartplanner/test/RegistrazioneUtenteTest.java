@@ -1,5 +1,5 @@
 package org.gennisilv.smartplanner.test;
-import org.gennisilv.smartplanner.data.Utente;
+import org.gennisilv.smartplanner.data.entity.Utente;
 import org.gennisilv.smartplanner.logic.UtenteLogic;
 import org.gennisilv.smartplanner.utils.DateConverter;
 import org.junit.Assert;

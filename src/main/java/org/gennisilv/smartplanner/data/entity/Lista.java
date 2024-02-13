@@ -1,4 +1,4 @@
-package org.gennisilv.smartplanner.data;
+package org.gennisilv.smartplanner.data.entity;
 
 public class Lista {
     private String emailUL;

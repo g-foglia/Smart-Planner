@@ -1,6 +1,6 @@
 package org.gennisilv.smartplanner.test;
-import org.gennisilv.smartplanner.data.Impegno;
-import org.gennisilv.smartplanner.data.ListaDAO;
+import org.gennisilv.smartplanner.data.entity.Impegno;
+import org.gennisilv.smartplanner.data.dao.ListaDAO;
 import org.gennisilv.smartplanner.logic.ListaLogic;
 import org.gennisilv.smartplanner.logic.UtenteLogic;
 import org.junit.Test;
