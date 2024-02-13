@@ -18,4 +18,5 @@ module org.gennisilv.smartplanner {
     opens org.gennisilv.smartplanner.data to javafx.fxml;
     exports org.gennisilv.smartplanner.utils;
     opens org.gennisilv.smartplanner.utils to javafx.fxml;
+    exports org.gennisilv.smartplanner.test;
 }
