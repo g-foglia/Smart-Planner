@@ -15,7 +15,7 @@ public class InserimentoImpegnoTest {
         i1.setNomeImpegno("NomeImpegno&");
         i1.setDurataImpegno(60);
         i1.setPrioritaImpegno(2);
-        assertEquals(1,ListaLogic.aggiungiImpegno(i1.getNomeImpegno(),i1.getDurataImpegno(),i1.getPrioritaImpegno()));
+        assertEquals(2,ListaLogic.aggiungiImpegno(i1.getNomeImpegno(),i1.getDurataImpegno(),i1.getPrioritaImpegno()));
     }
     @Test
     public void testInserimentoImpegnoDurataMinore()
@@ -25,7 +25,7 @@ public class InserimentoImpegnoTest {
         i2.setNomeImpegno("NomeImpegno2");
         i2.setDurataImpegno(20);
         i2.setPrioritaImpegno(2);
-        assertEquals(1,ListaLogic.aggiungiImpegno(i2.getNomeImpegno(),i2.getDurataImpegno(),i2.getPrioritaImpegno()));
+        assertEquals(-1,ListaLogic.aggiungiImpegno(i2.getNomeImpegno(),i2.getDurataImpegno(),i2.getPrioritaImpegno()));
     }
     @Test
     public void testInserimentoImpegnoInserito()

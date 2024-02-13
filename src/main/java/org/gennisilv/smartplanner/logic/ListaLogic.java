@@ -23,19 +23,21 @@ public class ListaLogic {
         ListaDAO.doSaveLista(lista);
     }
 
-    public static int aggiungiImpegno(String nomeImpegno, int durataImpegno, int prioritaImpegno){
+    public static int aggiungiImpegno(String nomeImpegno, int durataImpegno, int prioritaImpegno) {
         Impegno impegno;
         /*
             CONTROLLI SUI CAMPI
          */
-        if(!checkName(nomeImpegno)){
-            impegno = new Impegno(nomeImpegno,durataImpegno,prioritaImpegno, UtenteLogic.returnLoggedInUser().getEmail());
-            return ListaDAO.doAddImpegno(impegno);
-        }else{
-            return -1;
-        }
-
+        if (!checkName(nomeImpegno))
+            if (checkDurata(durataImpegno)) {
+                impegno = new Impegno(nomeImpegno, durataImpegno, prioritaImpegno, UtenteLogic.returnLoggedInUser().getEmail());
+                return ListaDAO.doAddImpegno(impegno);
+            } else {
+                return -1;
+            }
+        else return 2;
     }
+
 
     public static void svuotaLista(){
         ListaDAO.doClearLista(UtenteLogic.returnLoggedInUser().getEmail());
@@ -48,5 +50,12 @@ public class ListaLogic {
     private static boolean checkName(String nome){
         return Pattern.compile("[^a-zA-Z0-9]").matcher(nome).find();
     }
+        private static boolean checkDurata(int durataImpegno) {
+            if (durataImpegno < 30)
+            return false;
+            else
+                return true;
+        }
+    }
 
-}
+

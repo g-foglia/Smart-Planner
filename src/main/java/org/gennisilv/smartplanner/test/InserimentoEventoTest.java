@@ -24,7 +24,7 @@ public class InserimentoEventoTest {
         e1.setColoreEvento("#e0f0ff");
         e1.setNotifiche(true);
         e1.setPeriodicita(0);
-        assertEquals(1,EventoLogic.aggiungiEvento(e1.getNomeEvento(),e1.getDescrizione(),e1.getDataEvento(),e1.getOrarioInizio(),e1.getOrarioFine(), Color.valueOf(e1.getColoreEvento()),e1.isNotifiche(),e1.getPeriodicita()));
+        assertEquals(4,EventoLogic.aggiungiEvento(e1.getNomeEvento(),e1.getDescrizione(),e1.getDataEvento(),e1.getOrarioInizio(),e1.getOrarioFine(), Color.valueOf(e1.getColoreEvento()),e1.isNotifiche(),e1.getPeriodicita()));
     }
     @Test
     public void testInserimentoEventoDescrizioneInvalida(){
@@ -39,7 +39,7 @@ public class InserimentoEventoTest {
         e2.setColoreEvento("#e0f0ff");
         e2.setNotifiche(true);
         e2.setPeriodicita(0);
-        assertEquals(1,EventoLogic.aggiungiEvento(e2.getNomeEvento(), e2.getDescrizione(), e2.getDataEvento(), e2.getOrarioInizio(), e2.getOrarioFine(), Color.valueOf(e2.getColoreEvento()), e2.isNotifiche(), e2.getPeriodicita()));
+        assertEquals(3,EventoLogic.aggiungiEvento(e2.getNomeEvento(), e2.getDescrizione(), e2.getDataEvento(), e2.getOrarioInizio(), e2.getOrarioFine(), Color.valueOf(e2.getColoreEvento()), e2.isNotifiche(), e2.getPeriodicita()));
     }
     @Test
     public void testInserimentoEventoDataAntecedente(){
@@ -54,7 +54,7 @@ public class InserimentoEventoTest {
         e3.setColoreEvento("#e0f0ff");
         e3.setNotifiche(true);
         e3.setPeriodicita(0);
-        assertEquals(1,EventoLogic.aggiungiEvento(e3.getNomeEvento(), e3.getDescrizione(), e3.getDataEvento(), e3.getOrarioInizio(), e3.getOrarioFine(), Color.valueOf(e3.getColoreEvento()), e3.isNotifiche(), e3.getPeriodicita()));
+        assertEquals(2,EventoLogic.aggiungiEvento(e3.getNomeEvento(), e3.getDescrizione(), e3.getDataEvento(), e3.getOrarioInizio(), e3.getOrarioFine(), Color.valueOf(e3.getColoreEvento()), e3.isNotifiche(), e3.getPeriodicita()));
     }
     @Test
     public void testInserimentoEventoOrarioAntecedente(){
