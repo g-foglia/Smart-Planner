@@ -31,19 +31,19 @@ public class EventoLogic {
                     }
                     else{
                         //orario di fine antecedente alla orario di inizio
-                        return 1;
+                        return -1;
                     }
                 else{
                     //data dell'evento appartenente al passato
-                    return 2;
+                    return -2;
                 }
             else{
                 //descrizione troppo lunga
-                return 3;
+                return -3;
             }
         else{
             //nome che contiene caratteri speciali
-            return 4;
+            return -4;
         }
 
     }
