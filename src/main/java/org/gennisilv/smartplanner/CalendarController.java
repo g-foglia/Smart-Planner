@@ -20,22 +20,16 @@ import java.util.Locale;
 import java.util.Map;
 
 public class CalendarController {
-
     @FXML
     private DatePicker datePicker;
-
     @FXML
     private GridPane calendarGrid;
-
     @FXML
     private TextField eventTextField;
-
     @FXML
     private ComboBox<Integer> startHourComboBox;
-
     @FXML
     private ComboBox<Integer> endHourComboBox;
-
     @FXML
     private VBox eventLayout;
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -74,13 +75,13 @@
                </effect>
             </Rectangle>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444444" height="45.0" layoutX="16.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 100; -fx-arc-width: 30;" width="267.0" />
-            <Button layoutX="25.0" layoutY="44.0" mnemonicParsing="false" onAction="#lunedi" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="L" />
-            <Button layoutX="63.0" layoutY="44.0" mnemonicParsing="false" onAction="#martedi" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="M" />
-            <Button layoutX="99.0" layoutY="44.0" mnemonicParsing="false" onAction="#mercoledi" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="M" />
-            <Button layoutX="135.0" layoutY="44.0" mnemonicParsing="false" onAction="#giovedi" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="G" />
-            <Button layoutX="170.0" layoutY="44.0" mnemonicParsing="false" onAction="#venerdi" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="V" />
-            <Button layoutX="205.0" layoutY="44.0" mnemonicParsing="false" onAction="#sabato" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: rgb(224,240,255);" text="S" />
-            <Button layoutX="240.0" layoutY="44.0" mnemonicParsing="false" onAction="#domenica" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="D" />
+            <Button fx:id="lunedi" layoutX="25.0" layoutY="44.0" mnemonicParsing="false" onAction="#lunedi" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="L" />
+            <Button fx:id="martedi" layoutX="63.0" layoutY="44.0" mnemonicParsing="false" onAction="#martedi" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="M" />
+            <Button fx:id="mercoledi" layoutX="99.0" layoutY="44.0" mnemonicParsing="false" onAction="#mercoledi" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="M" />
+            <Button fx:id="giovedi" layoutX="135.0" layoutY="44.0" mnemonicParsing="false" onAction="#giovedi" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="G" />
+            <Button fx:id="venerdi" layoutX="170.0" layoutY="44.0" mnemonicParsing="false" onAction="#venerdi" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="V" />
+            <Button fx:id="sabato" layoutX="205.0" layoutY="44.0" mnemonicParsing="false" onAction="#sabato" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: rgb(224,240,255);" text="S" />
+            <Button fx:id="domenica" layoutX="240.0" layoutY="44.0" mnemonicParsing="false" onAction="#domenica" prefHeight="28.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #e0f0ff;" text="D" />
             <Polygon fx:id="giorni" fill="#e0f0ff" layoutX="77.0" layoutY="158.0" points="-53.00000762939453, -43.99998474121094, -21.666667938232422, -43.99998474121094, -36.33335494995117, -73.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
                <effect>
                   <BoxBlur />
@@ -88,6 +89,7 @@
             </Polygon>
             <GridPane fx:id="calendarGrid" layoutX="27.0" layoutY="112.0" prefHeight="412.0" prefWidth="245.0">
             </GridPane>
+            <DatePicker fx:id="data" layoutX="63.0" layoutY="10.0" />
          </children>
       </Pane>
    </center>

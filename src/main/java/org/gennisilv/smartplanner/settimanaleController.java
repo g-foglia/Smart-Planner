@@ -3,20 +3,28 @@ package org.gennisilv.smartplanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
+import org.gennisilv.smartplanner.data.entity.Evento;
+
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public final class settimanaleController extends barraController{
-    private Stage stage;
-    private Scene scene;
     @FXML
     private GridPane calendarGrid;
     @FXML
     private Polygon giorni;
+    @FXML
+    private DatePicker data;
+    private Map<Evento> eventi = new HashMap<>();
+
 
     public void initialize()
     {
@@ -24,6 +32,7 @@ public final class settimanaleController extends barraController{
             Label timeLabel = new Label(String.format("%02d:00", i));
             calendarGrid.add(timeLabel, 0, i + 1);
         }
+
     }
     @Override
     public void switchTosettimanale(ActionEvent event) throws IOException {
@@ -54,7 +63,10 @@ public final class settimanaleController extends barraController{
         super.switchToAggiuntaEvento(e);
     }
     public void lunedi(ActionEvent e) throws IOException{
-    giorni.setTranslateX(0);
+        giorni.setTranslateX(0);
+
+
+
     }
     public void martedi(ActionEvent e) throws IOException{
         giorni.setTranslateX(35);
@@ -74,6 +86,14 @@ public final class settimanaleController extends barraController{
     public void domenica(ActionEvent e) throws IOException{
         giorni.setTranslateX(214);
     }
+
+    private void updateLayout(){
+
     }
+
+    private void handleDaySelection(LocalDate selectedDate){
+
+    }
+}
 
 
