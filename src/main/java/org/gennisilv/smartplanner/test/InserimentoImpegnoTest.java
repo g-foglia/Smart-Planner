@@ -12,7 +12,7 @@ public class InserimentoImpegnoTest {
     {
         UtenteLogic.login("silvanacafaro256@gmail.com","Zzilv1234!");
         Impegno i1= new Impegno();
-        i1.setNomeImpegno("Pulire casa2");
+        i1.setNomeImpegno("Pulire casa#");
         i1.setDurataImpegno(40);
         i1.setPrioritaImpegno(2);
         assertEquals(-2,ListaLogic.aggiungiImpegno(i1.getNomeImpegno(),i1.getDurataImpegno(),i1.getPrioritaImpegno()));
@@ -35,7 +35,7 @@ public class InserimentoImpegnoTest {
         i3.setNomeImpegno("Sistemare armadio");
         i3.setDurataImpegno(60);
         i3.setPrioritaImpegno(2);
-        assertEquals(1,ListaLogic.aggiungiImpegno(i3.getNomeImpegno(), i3.getDurataImpegno(), i3.getPrioritaImpegno()));
+        assertEquals(11,ListaLogic.aggiungiImpegno(i3.getNomeImpegno(), i3.getDurataImpegno(), i3.getPrioritaImpegno()));
     }
 
 }

@@ -27,7 +27,7 @@ public class ListaLogic {
         Impegno impegno;
         /*
             CONTROLLI SUI CAMPI
-         */
+        */
         if (!checkName(nomeImpegno))
             if (checkDurata(durataImpegno)) {
                 impegno = new Impegno(nomeImpegno, durataImpegno, prioritaImpegno, UtenteLogic.returnLoggedInUser().getEmail());
@@ -50,7 +50,7 @@ public class ListaLogic {
     }
 
     private static boolean checkName(String nome){
-        return Pattern.compile("[^a-zA-Z0-9]").matcher(nome).find();
+        return Pattern.compile("[^a-zA-Z0-9\\s]").matcher(nome).find();
     }
         private static boolean checkDurata(int durataImpegno) {
             if (durataImpegno < 30)

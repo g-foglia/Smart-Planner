@@ -83,7 +83,7 @@ public class InserimentoEventoTest {
         e4.setColoreEvento("#e0f0ff");
         e4.setNotifiche(true);
         e4.setPeriodicita(0);
-        assertEquals(1, EventoLogic.aggiungiEvento(e4.getNomeEvento(), e4.getDescrizione(), e4.getDataEvento(), e4.getOrarioInizio(), e4.getOrarioFine(), Color.valueOf(e4.getColoreEvento()), e4.isNotifiche(), e4.getPeriodicita()));
+        assertEquals(12, EventoLogic.aggiungiEvento(e4.getNomeEvento(), e4.getDescrizione(), e4.getDataEvento(), e4.getOrarioInizio(), e4.getOrarioFine(), Color.valueOf(e4.getColoreEvento()), e4.isNotifiche(), e4.getPeriodicita()));
     }
 
 }

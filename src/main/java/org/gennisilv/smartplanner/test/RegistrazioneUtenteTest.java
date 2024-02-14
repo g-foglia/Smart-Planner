@@ -20,17 +20,6 @@ public class RegistrazioneUtenteTest {
         u2.setDataDiNascita(DateConverter.toGregorianCalendar("11/10/2002"));
         Assert.assertEquals(2,UtenteLogic.registrazione(u2.getEmail(),u2.getPassword(),u2.getNome(),u2.getCognome(),u2.getDataDiNascita(),u2.getUsername()));
     }
-    /*  public void testRegistrazioneUsernameCaratteriSpeciali1(){
-       Utente u2 = new Utente();
-       u2.setNome("NomeTest2");
-       u2.setCognome("CognomeTest2");
-       u2.setEmail("nome2@test.com");
-       u2.setPassword("PasswordTest");
-       u2.setUsername("UserTest%");
-       u2.setDataDiNascita(DateConverter.toGregorianCalendar("29/09/1994"));
-
-       Assert.assertEquals(1,registrazione.registrazione(u2.getEmail(), u2.getPassword(), u2.getNome(), u2.getCognome(), u2.getDataDiNascita(), u2.getUsername()));
-    }*/
 
     @Test
     public void testRegistrazioneNomeCaratteriSpeciali(){
