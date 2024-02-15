@@ -14,13 +14,13 @@ Progetto realizzato per il corso di Ingegneria del Software presso la facoltà d
 
 ## Struttura dei file
 La cartella che ci interessa è quella "src". Al suo interno sono presenti le classi Java e i file .fxml che compongono l'applicazione. La struttura del progetto è la seguente:
--**"src/main/java/org/gennisilv/smartplanner/data"** contiene le classi che si interfacciano con il database (classi DAO) e quelle che modellano le entità dell'applicazione;
--**"src/main/java/org/gennisilv/smartplanner/logic"** contiene le classi che fanno da tramite tra le classi DAO e le altre classi dell'applicazione, andando a realizzare le operaizoni che coinvolgono il database;
--**"src/main/java/org/gennisilv/smartplanner/test"** contiene le classi di test che sono state implementate;
--**"src/main/java/org/gennisilv/smartplanner/utils"** contiene classi che compiono operazioni utili al corretto funzionamento dell'applicazione, richiamabili dalle altre;
--**"src/main/java/org/gennisilv/smartplanner"** contiene, oltre alle directory già citate, i controller dell'applicazione;
--**"src/main/resources/images"** contiene gli assets dell'applicazione;
--**"src/main/resources/org/gennisilv/smartplanner"** contiene i file .fxml che formano le interfacce grafiche dell'applicazione.
+- **"src/main/java/org/gennisilv/smartplanner/data"** contiene le classi che si interfacciano con il database (classi DAO) e quelle che modellano le entità dell'applicazione;
+- **"src/main/java/org/gennisilv/smartplanner/logic"** contiene le classi che fanno da tramite tra le classi DAO e le altre classi dell'applicazione, andando a realizzare le operaizoni che coinvolgono il database;
+- **"src/main/java/org/gennisilv/smartplanner/test"** contiene le classi di test che sono state implementate;
+- **"src/main/java/org/gennisilv/smartplanner/utils"** contiene classi che compiono operazioni utili al corretto funzionamento dell'applicazione, richiamabili dalle altre;
+- **"src/main/java/org/gennisilv/smartplanner"** contiene, oltre alle directory già citate, i controller dell'applicazione;
+- **"src/main/resources/images"** contiene gli assets dell'applicazione;
+- **"src/main/resources/org/gennisilv/smartplanner"** contiene i file .fxml che formano le interfacce grafiche dell'applicazione.
 
 Infine nella directory **"Documents"** è presente la documentazione integrale del progetto, insieme ad un manuale d'uso per l'app. 
 ## Come replicare il progetto
