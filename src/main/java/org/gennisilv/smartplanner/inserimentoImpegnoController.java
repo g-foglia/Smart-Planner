@@ -2,7 +2,9 @@ package org.gennisilv.smartplanner;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -55,7 +57,7 @@ public class inserimentoImpegnoController extends barraController implements Ini
             Alert alert = new Alert(Alert.AlertType.INFORMATION,"Il nome non può contenere caratteri speciali");
             alert.showAndWait();
         }else{
-            switchTosettimanale(e);
+            switchToLista(e);
         }
     }
 
@@ -88,5 +90,12 @@ public class inserimentoImpegnoController extends barraController implements Ini
         super.switchToRicerca(e);
     }
 
+    public void switchToLista(ActionEvent e) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("lista.fxml"));
+        stage= (Stage) ((Node)e.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
 }

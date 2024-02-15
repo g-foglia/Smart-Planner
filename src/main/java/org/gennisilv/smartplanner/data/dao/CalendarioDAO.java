@@ -19,6 +19,7 @@ public class CalendarioDAO {
                     "INSERT INTO Calendario (codiceCalendario, nomeCalendario, coloreCalendario) VALUES(null,?,?)",Statement.RETURN_GENERATED_KEYS);
             ps.setString(1,calendario.getNomeCalendario());
             ps.setString(2, calendario.getColoreCalendario());
+
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }

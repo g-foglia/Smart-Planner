@@ -5,6 +5,7 @@ import org.gennisilv.smartplanner.data.entity.Impegno;
 import org.gennisilv.smartplanner.data.entity.Lista;
 import org.gennisilv.smartplanner.data.dao.ListaDAO;
 import org.gennisilv.smartplanner.utils.ColorConverter;
+import org.gennisilv.smartplanner.utils.UserHolder;
 
 import java.util.ArrayList;
 import java.util.regex.Pattern;
@@ -40,6 +41,9 @@ public class ListaLogic {
         }
     }
 
+    public static ArrayList<Impegno> getLista(){
+        return ListaDAO.doGetLista(UtenteLogic.returnLoggedInUser().getEmail());
+    }
 
     public static void svuotaLista(){
         ListaDAO.doClearLista(UtenteLogic.returnLoggedInUser().getEmail());
@@ -49,15 +53,19 @@ public class ListaLogic {
         ListaDAO.doCancImpegno(codiceImpegno);
     }
 
+    public static Impegno getImpegno(int codiceImpegno){
+        return ListaDAO.doRetrieveImpegno(codiceImpegno);
+    }
+
     private static boolean checkName(String nome){
         return Pattern.compile("[^a-zA-Z0-9\\s]").matcher(nome).find();
     }
-        private static boolean checkDurata(int durataImpegno) {
-            if (durataImpegno < 30)
-            return false;
-            else
-                return true;
-        }
+    private static boolean checkDurata(int durataImpegno) {
+        if (durataImpegno < 30) return false;
+        else
+            return true;
     }
+}
+
 
 

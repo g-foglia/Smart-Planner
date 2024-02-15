@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 public class CalendarioLogic {
 
-    public static void creaCalendario(String nome, Color color){
-        CalendarioDAO.doSaveCalendario(new Calendario(nome, ColorConverter.toHexString(color)), UserHolder.getIstanza().getUtente().getEmail());
+    public static int creaCalendario(String nome, Color color){
+        return CalendarioDAO.doSaveCalendario(new Calendario(nome, ColorConverter.toHexString(color)), UserHolder.getIstanza().getUtente().getEmail());
     }
 
     public static Calendario cercaCalendario(String nome){

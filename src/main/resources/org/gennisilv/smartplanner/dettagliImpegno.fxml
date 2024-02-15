@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.gennisilv.smartplanner.listaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.gennisilv.smartplanner.dettagliImpegnoController">
     <top>
         <Pane prefHeight="68.0" prefWidth="300.0" BorderPane.alignment="CENTER">
             <children>
@@ -28,9 +27,9 @@
             <children>
                 <Pane layoutY="22.0" prefHeight="58.0" prefWidth="300.0" style="-fx-background-color: #aaaaaa;">
                     <children>
-                        <Button fx:id="btnHome" blendMode="HARD_LIGHT" layoutX="124.0" layoutY="13.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="53.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #888888; -fx-background-radius: 90;">
+                        <Button blendMode="HARD_LIGHT" layoutX="124.0" layoutY="13.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="8.0" minWidth="53.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #888888; -fx-background-radius: 90;">
                             <graphic>
-                                <ImageView fitHeight="36.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView accessibleRole="BUTTON" fitHeight="36.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../../../images/icons8-home-page-64.png" />
                                     </image>
@@ -77,52 +76,45 @@
             </children>
         </Pane>
     </bottom>
-   <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="aggiungi" layoutX="27.0" layoutY="422.0" mnemonicParsing="false" onAction="#switchToInserimentoImpegno" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #e0f0ff;" text="Aggiungi">
-               <effect>
-                  <DropShadow>
-                     <input>
-                        <Glow level="0.0" />
-                     </input>
-                     <color>
-                        <Color red="0.7368420958518982" green="0.898245632648468" blue="0.9473684430122375" />
-                     </color>
-                  </DropShadow>
-               </effect>
-            </Button>
-            <Button fx:id="modifica" layoutX="105.0" layoutY="422.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #e0f0ff;" text="Modifica">
-               <effect>
-                  <DropShadow>
-                     <input>
-                        <Glow level="0.0" />
-                     </input>
-                     <color>
-                        <Color red="0.7368420958518982" green="0.898245632648468" blue="0.9473684430122375" />
-                     </color>
-                  </DropShadow>
-               </effect>
-            </Button>
-            <Button fx:id="organizza" layoutX="182.0" layoutY="422.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #e0f0ff;" text="Organizza">
-               <effect>
-                  <DropShadow>
-                     <input>
-                        <Glow level="0.0" />
-                     </input>
-                     <color>
-                        <Color red="0.7368420958518982" green="0.898245632648468" blue="0.9473684430122375" />
-                     </color>
-                  </DropShadow>
-               </effect>
-            </Button>
-            <ScrollPane fitToHeight="true" fitToWidth="true" layoutY="44.0" prefHeight="360.0" prefWidth="300.0">
-               <content>
-                  <FlowPane fx:id="lista" prefHeight="397.0" prefWidth="291.0" />
-               </content>
-            </ScrollPane>
-         </children>
-      </Pane>
-   </center>
-
+    <center>
+        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0f0ff" height="339.0" layoutX="34.0" layoutY="46.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="232.0">
+                    <effect>
+                        <GaussianBlur />
+                    </effect>
+                </Rectangle>
+                <Label layoutX="48.0" layoutY="65.0" prefHeight="15.0" prefWidth="121.0" text="Dettagli impegno">
+                    <font>
+                        <Font name="Century Gothic" size="12.0" />
+                    </font>
+                </Label>
+                <Label fx:id="nome" layoutX="48.0" layoutY="95.0" text="nome:" />
+                <Label fx:id="durata" layoutX="48.0" layoutY="125.0" text="durata:">
+                    <font>
+                        <Font name="Century Gothic" size="12.0" />
+                    </font>
+                </Label>
+                <Label fx:id="priorita" layoutX="48.0" layoutY="154.0" text="priorità:">
+                    <font>
+                        <Font name="Century Gothic" size="12.0" />
+                    </font>
+                </Label>
+                <Button fx:id="indietro" layoutX="131.0" layoutY="396.0" mnemonicParsing="false" onAction="#switchToListaCalendari" prefHeight="27.0" prefWidth="38.0">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../images/icons8-indietro-64.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <ImageView fitHeight="23.0" fitWidth="25.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../images/icons8-indietro-64.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+    </center>
 </BorderPane>

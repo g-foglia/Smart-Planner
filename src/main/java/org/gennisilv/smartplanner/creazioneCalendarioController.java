@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.gennisilv.smartplanner.logic.CalendarioLogic;
+import org.gennisilv.smartplanner.utils.DataHolder;
 
 import java.io.IOException;
 
@@ -23,12 +24,13 @@ public class creazioneCalendarioController extends barraController{
     @FXML
     private ColorPicker colore;
 
-    public void creaCalendario(ActionEvent e){
+    public void creaCalendario(ActionEvent e) throws IOException {
         Color color = colore.getValue();
         String nome = nomeC.getText();
 
-        CalendarioLogic.creaCalendario(nome,color);
-        //switch alla pagina del calendario
+        int codicecCalendario = CalendarioLogic.creaCalendario(nome,color);
+        DataHolder.getIstanza().setInteger(codicecCalendario);
+        switchTosettimanale(e);
     }
 
     @Override

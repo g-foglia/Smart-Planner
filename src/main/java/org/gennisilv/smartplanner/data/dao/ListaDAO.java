@@ -6,6 +6,7 @@ import org.gennisilv.smartplanner.data.entity.Impegno;
 import org.gennisilv.smartplanner.data.entity.Lista;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 //si occupa delle operazioni che riguardano la lista (aggiunta e rimozione di impegni, creazione e modifica del colore della lista)
 public class ListaDAO {
@@ -79,6 +80,53 @@ public class ListaDAO {
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static ArrayList<Impegno> doGetLista(String email){
+        try(Connection con = ConPool.getConnection()){
+            PreparedStatement ps = con.prepareStatement("SELECT * from impegno WHERE emailUI=?");
+            ps.setString(1,email);
+            ResultSet rs = ps.executeQuery();
+
+            ArrayList<Impegno> impegni = new ArrayList<>();
+            while(rs.next()){
+                Impegno impegno = new Impegno();
+                impegno.setCodiceImpegno(rs.getInt(1));
+                impegno.setNomeImpegno(rs.getString(2));
+                impegno.setDurataImpegno(rs.getInt(3));
+                impegno.setPrioritaImpegno(rs.getInt(4));
+                impegno.setEmailUI(rs.getString(5));
+
+                impegni.add(impegno);
+            }
+
+            return impegni;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static Impegno doRetrieveImpegno(int codiceImpegno){
+        try(Connection con = ConPool.getConnection()){
+            PreparedStatement ps = con.prepareStatement("SELECT * from impegno WHERE codiceImpegno=?");
+            ps.setInt(1,codiceImpegno);
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()){
+                Impegno impegno = new Impegno();
+                impegno.setCodiceImpegno(rs.getInt(1));
+                impegno.setNomeImpegno(rs.getString(2));
+                impegno.setDurataImpegno(rs.getInt(3));
+                impegno.setPrioritaImpegno(rs.getInt(4));
+                impegno.setEmailUI(rs.getString(5));
+
+                return impegno;
+            }
+
+            return null;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
