@@ -25,7 +25,7 @@ public class HomeController extends barraController implements Initializable {
     private Scene scene;
 
     @FXML
-    private GridPane calendarioHome;
+    private Button listaCalendari;
     @FXML
     private Button aggCalendario;
 
@@ -33,7 +33,7 @@ public class HomeController extends barraController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ArrayList<Calendario> calendari = CalendarioLogic.returnCalendari();
         if(calendari.isEmpty()){
-            calendarioHome.setVisible(false);
+            listaCalendari.setVisible(false);
             //altre cose
         }
         else{
@@ -44,7 +44,7 @@ public class HomeController extends barraController implements Initializable {
 
     public void switchToinserimentoImpegno (ActionEvent e) throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("inserimentoImpegno.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Lista.fxml"));
         stage= (Stage) ((Node)e.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
