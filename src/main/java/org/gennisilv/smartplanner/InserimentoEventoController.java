@@ -14,6 +14,7 @@ import org.gennisilv.smartplanner.utils.DataHolder;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
@@ -69,44 +70,49 @@ public class InserimentoEventoController extends BarraController implements Init
     public void inserisciEvento(ActionEvent e) throws IOException {
         String nome = nomeEvento.getText();
         String descrizione = descrizioneEvento.getText();
-        GregorianCalendar dataEvento = new GregorianCalendar(this.dataEvento.getValue().getYear(), this.dataEvento.getValue().getMonthValue()-1, this.dataEvento.getValue().getDayOfMonth());
+        LocalDate data = this.dataEvento.getValue();
+        GregorianCalendar dataEvento = null;
+        if(data != null)
+            dataEvento = new GregorianCalendar(data.getYear(),data.getMonthValue()-1,data.getDayOfMonth());
         String oraI = oreInizio.getValue() + ":" + minutiInizio.getValue();
         String oraF = oreFine.getValue() + ":" + minutiFine.getValue();
         Color color = colore.getValue();
         boolean n = notifiche.isSelected();
 
         int periodicita = 0;
-        switch (periodicitaID.getValue()){
-            case "solo 1 volta":
-                periodicita = 0;
-            case "1 volta al giorno":
-                periodicita = 1;
-            case "1 volta a settimana":
-                periodicita = 2;
-            case "1 volta al mese":
-                periodicita = 3;
+        if(periodicitaID.getValue() != null) {
+            switch (periodicitaID.getValue()) {
+                case "solo 1 volta":
+                    periodicita = 0;
+                case "1 volta al giorno":
+                    periodicita = 1;
+                case "1 volta a settimana":
+                    periodicita = 2;
+                case "1 volta al mese":
+                    periodicita = 3;
+            }
         }
         int codiceEvento = EventoLogic.aggiungiEvento(nome,descrizione,dataEvento,oraI,oraF,color,n,periodicita);
         Alert alert;
         switch(codiceEvento){
-            case 1:
-                //orario di fine antecedente alla orario di inizio
-                alert = new Alert(Alert.AlertType.INFORMATION,"Gli orari di inizio e fine dell'evento non possono essere incrociati");
+            case -1:
+                //orario di fine antecedente alla orario di inizio oppure orari vuoti
+                alert = new Alert(Alert.AlertType.INFORMATION,"Gli orari di inizio e fine dell'evento non possono essere incrociati o vuoti");
                 alert.showAndWait();
                 break;
-            case 2:
+            case -2:
                 //data dell'evento appartenente al passato
-                alert = new Alert(Alert.AlertType.INFORMATION,"Non puoi creare eventi in giorni passati");
+                alert = new Alert(Alert.AlertType.INFORMATION,"La data è obbligatoria e non può essere antecedente a oggi");
                 alert.showAndWait();
                 break;
-            case 3:
+            case -3:
                 //descrizione troppo lunga
                 alert = new Alert(Alert.AlertType.INFORMATION,"La descrizione dell'evento non può superare i 200 caratteri");
                 alert.showAndWait();
                 break;
-            case 4:
+            case -4:
                 //nome che contiene caratteri speciali
-                alert = new Alert(Alert.AlertType.INFORMATION,"Il nome non può contenere caratteri speciali");
+                alert = new Alert(Alert.AlertType.INFORMATION,"Il nome non può contenere caratteri speciali o essere vuoto");
                 alert.showAndWait();
                 break;
             default:

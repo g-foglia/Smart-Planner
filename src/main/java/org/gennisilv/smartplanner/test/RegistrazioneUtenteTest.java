@@ -22,9 +22,34 @@ public class RegistrazioneUtenteTest {
     }
 
     @Test
+    public void testRegistrazioneUsernameVuoto()
+    {
+        Utente u2= new Utente();
+        u2.setNome("Silvana");
+        u2.setCognome("Cognome");
+        u2.setEmail("silvanacafaro13@gmail.com");
+        u2.setPassword("12345678");
+        u2.setUsername("");
+        u2.setDataDiNascita(DateConverter.toGregorianCalendar("11/10/2002"));
+        Assert.assertEquals(2,UtenteLogic.registrazione(u2.getEmail(),u2.getPassword(),u2.getNome(),u2.getCognome(),u2.getDataDiNascita(),u2.getUsername()));
+    }
+
+    @Test
     public void testRegistrazioneNomeCaratteriSpeciali(){
         Utente u4 = new Utente();
         u4.setNome("Silvana2002");
+        u4.setCognome("Cafaro");
+        u4.setEmail("silvanacafaro13@gmail.com");
+        u4.setPassword("12345678");
+        u4.setUsername("Zzilv");
+        u4.setDataDiNascita(DateConverter.toGregorianCalendar("11/10/2002"));
+        assertEquals(6,UtenteLogic.registrazione(u4.getEmail(), u4.getPassword(), u4.getNome(), u4.getCognome(), u4.getDataDiNascita(), u4.getUsername()));
+    }
+
+    @Test
+    public void testRegistrazioneNomeVuoto(){
+        Utente u4 = new Utente();
+        u4.setNome("");
         u4.setCognome("Cafaro");
         u4.setEmail("silvanacafaro13@gmail.com");
         u4.setPassword("12345678");
@@ -46,6 +71,17 @@ public class RegistrazioneUtenteTest {
         assertEquals(5,UtenteLogic.registrazione(u6.getEmail(), u6.getPassword(), u6.getNome(), u6.getCognome(), u6.getDataDiNascita(), u6.getUsername()));
     }
 
+    @Test
+    public void testRegistrazioneCognomeVuoto(){
+        Utente u6 = new Utente();
+        u6.setNome("Silvana");
+        u6.setCognome("");
+        u6.setEmail("silvanacafaro13@gmail.com");
+        u6.setPassword("12345678");
+        u6.setUsername("Zzilv");
+        u6.setDataDiNascita(DateConverter.toGregorianCalendar("11/10/2002"));
+        assertEquals(5,UtenteLogic.registrazione(u6.getEmail(), u6.getPassword(), u6.getNome(), u6.getCognome(), u6.getDataDiNascita(), u6.getUsername()));
+    }
 
     @Test
     public void testRegistrazionePasswordNonConforme(){
@@ -54,6 +90,18 @@ public class RegistrazioneUtenteTest {
         u8.setCognome("Cafaro");
         u8.setEmail("silvanacafaro13@gmail.com");
         u8.setPassword("1234");
+        u8.setUsername("Zzilv");
+        u8.setDataDiNascita(DateConverter.toGregorianCalendar("11/10/2002"));
+        assertEquals(1,UtenteLogic.registrazione(u8.getEmail(), u8.getPassword(), u8.getNome(), u8.getCognome(), u8.getDataDiNascita(), u8.getUsername()));
+    }
+
+    @Test
+    public void testRegistrazionePasswordVuota(){
+        Utente u8 = new Utente();
+        u8.setNome("Silvana");
+        u8.setCognome("Cafaro");
+        u8.setEmail("silvanacafaro13@gmail.com");
+        u8.setPassword("");
         u8.setUsername("Zzilv");
         u8.setDataDiNascita(DateConverter.toGregorianCalendar("11/10/2002"));
         assertEquals(1,UtenteLogic.registrazione(u8.getEmail(), u8.getPassword(), u8.getNome(), u8.getCognome(), u8.getDataDiNascita(), u8.getUsername()));
@@ -70,6 +118,19 @@ public class RegistrazioneUtenteTest {
         u10.setDataDiNascita(DateConverter.toGregorianCalendar("11/10/2002"));
         assertEquals(3,UtenteLogic.registrazione(u10.getEmail(), u10.getPassword(), u10.getNome(), u10.getCognome(), u10.getDataDiNascita(), u10.getUsername()));
     }
+
+    @Test
+    public void testRegistrazioneEmailVuota(){
+        Utente u10 = new Utente();
+        u10.setNome("Silvana");
+        u10.setCognome("Cafaro");
+        u10.setEmail("");
+        u10.setPassword("12345678");
+        u10.setUsername("Zzilv");
+        u10.setDataDiNascita(DateConverter.toGregorianCalendar("11/10/2002"));
+        assertEquals(3,UtenteLogic.registrazione(u10.getEmail(), u10.getPassword(), u10.getNome(), u10.getCognome(), u10.getDataDiNascita(), u10.getUsername()));
+    }
+
     @Test
     public void testDataDiNascitaMinorenne()
     {
@@ -82,6 +143,20 @@ public class RegistrazioneUtenteTest {
         u11.setDataDiNascita(DateConverter.toGregorianCalendar("11/10/2011"));
         assertEquals(4,UtenteLogic.registrazione(u11.getEmail(), u11.getPassword(), u11.getNome(), u11.getCognome(), u11.getDataDiNascita(), u11.getUsername()));
     }
+
+    @Test
+    public void testDataDiNascitaVuota()
+    {
+        Utente u11 = new Utente();
+        u11.setNome("Silvana");
+        u11.setCognome("Cafaro");
+        u11.setEmail("Silvanacafaro13@gmail.com");
+        u11.setPassword("12345678");
+        u11.setUsername("Zzilv");
+        u11.setDataDiNascita(null);
+        assertEquals(4,UtenteLogic.registrazione(u11.getEmail(), u11.getPassword(), u11.getNome(), u11.getCognome(), u11.getDataDiNascita(), u11.getUsername()));
+    }
+
     @Test
     public void testRegistrazioneEffettuata()
     {

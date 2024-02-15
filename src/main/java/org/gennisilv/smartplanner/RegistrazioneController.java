@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import org.gennisilv.smartplanner.logic.UtenteLogic;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.GregorianCalendar;
 
 public class RegistrazioneController extends BarraController {
@@ -47,7 +48,11 @@ public class RegistrazioneController extends BarraController {
         String password = passwordReg.getText();
         String nome = nomeReg.getText();
         String cognome = cognomeReg.getText();
-        GregorianCalendar nascita = new GregorianCalendar(dataReg.getValue().getYear(),dataReg.getValue().getMonthValue()-1,dataReg.getValue().getDayOfMonth());
+        LocalDate data = dataReg.getValue();
+        GregorianCalendar nascita = null;
+        if(data != null) {
+            nascita = new GregorianCalendar(data.getYear(),data.getMonthValue()-1,data.getDayOfMonth());
+        }
         String username = usernameReg.getText();
         int esito = UtenteLogic.registrazione(email, password, nome, cognome, nascita, username) ;
 
@@ -59,17 +64,17 @@ public class RegistrazioneController extends BarraController {
                 switchToHome(e);
                 break;
             case 1:
-                //passowrd troppo corta o troppo lunga
+                //passowrd troppo corta, troppo lunga o vuota
                 alert = new Alert(Alert.AlertType.INFORMATION,"La password deve avere una lunghezza compresa tra gli 8 e i 30 caratteri");
                 alert.showAndWait();
                 break;
             case 2:
-                //formato username illegale
-                alert = new Alert(Alert.AlertType.INFORMATION,"L'username non può contenere caratteri speciali");
+                //formato username illegale o vuoto
+                alert = new Alert(Alert.AlertType.INFORMATION,"L'username è obbligatorio e non può contenere caratteri speciali");
                 alert.showAndWait();
                 break;
             case 3:
-                //email in formato errato
+                //email in formato errato o vuota
                 alert = new Alert(Alert.AlertType.INFORMATION,"Inserisci una mail valida");
                 alert.showAndWait();
                 break;
@@ -79,12 +84,12 @@ public class RegistrazioneController extends BarraController {
                 alert.showAndWait();
                 break;
             case 5:
-                //cognome che contiene numeri o caratteri speciali
+                //cognome che contiene numeri, caratteri speciali, o è vuoto
                 alert = new Alert(Alert.AlertType.INFORMATION,"Il cognome non può contenere numeri o caratteri speciali");
                 alert.showAndWait();
                 break;
             case 6:
-                //nome che contiene numeri o caratteri speciali
+                //nome che contiene numeri, caratteri speciali o è vuoto
                 alert = new Alert(Alert.AlertType.INFORMATION,"Il nome non può contenere numeri o caratteri speciali");
                 alert.showAndWait();
                 break;

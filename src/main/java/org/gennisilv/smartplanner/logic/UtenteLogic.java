@@ -15,12 +15,12 @@ public class UtenteLogic {
         /*
         CONTROLLI SUI CAMPI
          */
-        if(!checkName(nome))
-            if(!checkName(cognome))
-                if(date(nascita))
-                    if(checkEmail(email))
-                        if(!formato(username))
-                            if(lunghezza(password)){
+        if(!nome.isEmpty() && !checkName(nome))
+            if(!cognome.isEmpty() && !checkName(cognome))
+                if(nascita != null && date(nascita))
+                    if(!email.isEmpty() && checkEmail(email))
+                        if(!username.isEmpty() && !formato(username))
+                            if(!password.isEmpty() && lunghezza(password)){
                                 Utente utente= new Utente();
                                 utente.setEmail(email);
                                 utente.setPassword(password);
@@ -35,27 +35,27 @@ public class UtenteLogic {
                                 return 0;
                             }
                             else{
-                                //passowrd troppo corta o troppo lunga
+                                //passowrd troppo corta, troppo lunga o vuota
                                return 1;
                             }
                         else{
-                            //formato username illegale
+                            //formato username illegale o vuoto
                             return 2;
                         }
                     else{
-                        //email in formato errato
+                        //email in formato errato o vuota
                         return 3;
                     }
                 else{
-                    //utente troppo giovane
+                    //utente troppo giovane o nessuna data
                     return 4;
                 }
             else{
-                //cognome che contiene numeri o caratteri speciali
+                //cognome che contiene numeri, caratteri speciali o è vuoto
                 return 5;
             }
         else{
-            //nome che contiene numeri o caratteri speciali
+            //nome che contiene numeri, caratteri speciali o è vuoto
             return 6;
         }
 

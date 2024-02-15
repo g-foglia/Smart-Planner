@@ -37,26 +37,36 @@ public class InserimentoImpegnoController extends BarraController implements Ini
 
     public void inserisciImpegno(ActionEvent e) throws IOException {
         String nomeI = nomeImpegno.getText();
-        int durataI = Integer.parseInt(durataImpegno.getText());
-        int priorita = -1;
-        switch (prioritaID.getValue()){
-            case "Altissima":
-                priorita = 0;
-            case "Alta":
-                priorita = 1;
-            case "Media":
-                priorita = 2;
-            case "Bassa":
-                priorita = 3;
-            case "Bassissima":
-                priorita = 4;
+        String durata = durataImpegno.getText();
+        int durataI = 0;
+        if(!durata.isEmpty()){
+            durataI = Integer.parseInt(durata);
+        }
+        int priorita = 2;
+        if(prioritaID.getValue() != null) {
+            switch (prioritaID.getValue()) {
+                case "Altissima":
+                    priorita = 0;
+                case "Alta":
+                    priorita = 1;
+                case "Media":
+                    priorita = 2;
+                case "Bassa":
+                    priorita = 3;
+                case "Bassissima":
+                    priorita = 4;
+            }
         }
         int codiceImpegno = ListaLogic.aggiungiImpegno(nomeI, durataI, priorita);
 
         if(codiceImpegno == -1){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION,"Il nome non può contenere caratteri speciali");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,"La durata è obbligatoria e deve essere di almeno 30 minuti");
             alert.showAndWait();
-        }else{
+        }else if(codiceImpegno == -2){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,"Il nome non può contenere caratteri speciali o essere vuoto");
+            alert.showAndWait();
+        }
+        else{
             switchToLista(e);
         }
     }

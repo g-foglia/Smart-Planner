@@ -11,10 +11,10 @@ import java.util.regex.Pattern;
 
 public class EventoLogic {
     public static int aggiungiEvento(String nome, String descrizione, GregorianCalendar data, String oraInizio, String oraFine, Color colore, boolean notifiche, int periodicita){
-        if(!checkName(nome))
+        if(!nome.isEmpty() && !checkName(nome))
             if(lunghezza(descrizione))
-                if(!date(data))
-                    if(checkTimeE(oraInizio,oraFine)){
+                if(data != null && !date(data))
+                    if(!oraInizio.equals("null:null") && !oraFine.equals("null:null") && checkTimeE(oraInizio,oraFine)){
                         Evento evento = new Evento();
                         evento.setNomeEvento(nome);
                         evento.setDescrizione(descrizione);
@@ -27,14 +27,13 @@ public class EventoLogic {
                         evento.setPeriodicita(periodicita);
                         evento.setEmailE(UtenteLogic.returnLoggedInUser().getEmail());
                         return EventoDAO.doSaveEvento(evento);
-
                     }
                     else{
-                        //orario di fine antecedente alla orario di inizio
+                        //orario di fine antecedente alla orario di inizio oppure orari vuoti
                         return -1;
                     }
                 else{
-                    //data dell'evento appartenente al passato
+                    //data dell'evento appartenente al passato oppure vuota
                     return -2;
                 }
             else{
@@ -42,7 +41,7 @@ public class EventoLogic {
                 return -3;
             }
         else{
-            //nome che contiene caratteri speciali
+            //nome che contiene caratteri speciali oppure è vuoto
             return -4;
         }
 

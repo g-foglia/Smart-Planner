@@ -17,6 +17,18 @@ public class InserimentoImpegnoTest {
         i1.setPrioritaImpegno(2);
         assertEquals(-2,ListaLogic.aggiungiImpegno(i1.getNomeImpegno(),i1.getDurataImpegno(),i1.getPrioritaImpegno()));
     }
+
+    @Test
+    public void testInserimentoImpegnoNomeVuoto()
+    {
+        UtenteLogic.login("silvanacafaro256@gmail.com","Zzilv1234!");
+        Impegno i1= new Impegno();
+        i1.setNomeImpegno("");
+        i1.setDurataImpegno(40);
+        i1.setPrioritaImpegno(2);
+        assertEquals(-2,ListaLogic.aggiungiImpegno(i1.getNomeImpegno(),i1.getDurataImpegno(),i1.getPrioritaImpegno()));
+    }
+
     @Test
     public void testInserimentoImpegnoDurataMinore()
     {
@@ -27,6 +39,18 @@ public class InserimentoImpegnoTest {
         i2.setPrioritaImpegno(2);
         assertEquals(-1,ListaLogic.aggiungiImpegno(i2.getNomeImpegno(),i2.getDurataImpegno(),i2.getPrioritaImpegno()));
     }
+
+    @Test
+    public void testInserimentoImpegnoDurataVuota()
+    {
+        UtenteLogic.login("silvanacafaro256@gmail.com","Zzilv1234!");
+        Impegno i2 = new Impegno();
+        i2.setNomeImpegno("Studiare");
+        i2.setDurataImpegno(0);
+        i2.setPrioritaImpegno(2);
+        assertEquals(-1,ListaLogic.aggiungiImpegno(i2.getNomeImpegno(),i2.getDurataImpegno(),i2.getPrioritaImpegno()));
+    }
+
     @Test
     public void testInserimentoImpegnoInserito()
     {
