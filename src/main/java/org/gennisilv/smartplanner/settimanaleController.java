@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,14 +21,14 @@ import org.gennisilv.smartplanner.utils.DataHolder;
 import org.gennisilv.smartplanner.utils.DateConverter;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
+import java.net.URL;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 
 
-public final class settimanaleController extends barraController{
+public final class settimanaleController extends barraController implements Initializable {
     private Stage stage;
     private Scene scene;
     @FXML
@@ -36,10 +37,246 @@ public final class settimanaleController extends barraController{
     private Polygon giorni;
     @FXML
     private DatePicker data;
+
+    @FXML
+    private Button lunedi;
+    @FXML
+    private Button martedi;
+    @FXML
+    private Button mercoledi;
+    @FXML
+    private Button giovedi;
+    @FXML
+    private Button venerdi;
+    @FXML
+    private Button sabato;
+    @FXML
+    private Button domenica;
+
     private Map<LocalDate, Map<LocalTime, Evento>> eventi = new HashMap<>();
     private boolean check = true;
 
-    public void initialize() {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        initialize();
+        lunedi.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                giorni.setTranslateX(0);
+                calendarGrid.getChildren().clear();
+                initialize();
+                LocalDate dataOdierna = data.getValue().with(DayOfWeek.MONDAY);
+                Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
+                if(eventiGiorno != null){
+                    for(LocalTime inizio : eventiGiorno.keySet()){
+                        Evento evento = eventiGiorno.get(inizio);
+                        Button button = new Button(evento.getNomeEvento());
+                        button.setOnAction(new EventHandler<ActionEvent>() {
+                            @Override
+                            public void handle(ActionEvent actionEvent) {
+                                DataHolder.getIstanza().setInteger(evento.getCodiceEvento());
+                                try {
+                                    switchToDettagliEvento(actionEvent);
+                                } catch (IOException ex) {
+                                    throw new RuntimeException(ex);
+                                }
+                            }
+                        });
+                        int riga = inizio.getHour() + 1;
+                        calendarGrid.add(button,1,riga);
+                    }
+                }
+                data.setValue(dataOdierna);
+            }
+        });
+
+        martedi.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                giorni.setTranslateX(35);
+                calendarGrid.getChildren().clear();
+                initialize();
+                LocalDate dataOdierna = data.getValue().with(DayOfWeek.TUESDAY);
+                Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
+                if(eventiGiorno != null){
+                    for(LocalTime inizio : eventiGiorno.keySet()){
+                        Evento evento = eventiGiorno.get(inizio);
+                        Button button = new Button(evento.getNomeEvento());
+                        button.setOnAction(new EventHandler<ActionEvent>() {
+                            @Override
+                            public void handle(ActionEvent actionEvent) {
+                                DataHolder.getIstanza().setInteger(evento.getCodiceEvento());
+                                try {
+                                    switchToDettagliEvento(actionEvent);
+                                } catch (IOException ex) {
+                                    throw new RuntimeException(ex);
+                                }
+                            }
+                        });
+                        int riga = inizio.getHour() + 1;
+                        calendarGrid.add(button,2,riga);
+                    }
+                }
+                data.setValue(dataOdierna);
+            }
+        });
+
+        mercoledi.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                giorni.setTranslateX(73);
+                calendarGrid.getChildren().clear();
+                initialize();
+                LocalDate dataOdierna = data.getValue().with(DayOfWeek.WEDNESDAY);
+                Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
+                if(eventiGiorno != null){
+                    for(LocalTime inizio : eventiGiorno.keySet()){
+                        Evento evento = eventiGiorno.get(inizio);
+                        Button button = new Button(evento.getNomeEvento());
+                        button.setOnAction(new EventHandler<ActionEvent>() {
+                            @Override
+                            public void handle(ActionEvent actionEvent) {
+                                DataHolder.getIstanza().setInteger(evento.getCodiceEvento());
+                                try {
+                                    switchToDettagliEvento(actionEvent);
+                                } catch (IOException ex) {
+                                    throw new RuntimeException(ex);
+                                }
+                            }
+                        });
+                        int riga = inizio.getHour() + 1;
+                        calendarGrid.add(button,3,riga);
+                    }
+                }
+                data.setValue(dataOdierna);
+            }
+        });
+
+        giovedi.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                giorni.setTranslateX(108);
+                calendarGrid.getChildren().clear();
+                initialize();
+                LocalDate dataOdierna = data.getValue().with(DayOfWeek.THURSDAY);
+                Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
+                if(eventiGiorno != null){
+                    for(LocalTime inizio : eventiGiorno.keySet()){
+                        Evento evento = eventiGiorno.get(inizio);
+                        Button button = new Button(evento.getNomeEvento());
+                        button.setOnAction(new EventHandler<ActionEvent>() {
+                            @Override
+                            public void handle(ActionEvent actionEvent) {
+                                DataHolder.getIstanza().setInteger(evento.getCodiceEvento());
+                                try {
+                                    switchToDettagliEvento(actionEvent);
+                                } catch (IOException ex) {
+                                    throw new RuntimeException(ex);
+                                }
+                            }
+                        });
+                        int riga = inizio.getHour() + 1;
+                        calendarGrid.add(button,4,riga);
+                    }
+                }
+                data.setValue(dataOdierna);
+            }
+        });
+
+        venerdi.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                giorni.setTranslateX(143);
+                calendarGrid.getChildren().clear();
+                initialize();
+                LocalDate dataOdierna = data.getValue().with(DayOfWeek.FRIDAY);
+                Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
+                if(eventiGiorno != null){
+                    for(LocalTime inizio : eventiGiorno.keySet()){
+                        Evento evento = eventiGiorno.get(inizio);
+                        Button button = new Button(evento.getNomeEvento());
+                        button.setOnAction(new EventHandler<ActionEvent>() {
+                            @Override
+                            public void handle(ActionEvent actionEvent) {
+                                DataHolder.getIstanza().setInteger(evento.getCodiceEvento());
+                                try {
+                                    switchToDettagliEvento(actionEvent);
+                                } catch (IOException ex) {
+                                    throw new RuntimeException(ex);
+                                }
+                            }
+                        });
+                        int riga = inizio.getHour() + 1;
+                        calendarGrid.add(button,5,riga);
+                    }
+                }
+                data.setValue(dataOdierna);
+            }
+        });
+
+        sabato.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                giorni.setTranslateX(178);
+                calendarGrid.getChildren().clear();
+                initialize();
+                LocalDate dataOdierna = data.getValue().with(DayOfWeek.SATURDAY);
+                Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
+                if(eventiGiorno != null){
+                    for(LocalTime inizio : eventiGiorno.keySet()){
+                        Evento evento = eventiGiorno.get(inizio);
+                        Button button = new Button(evento.getNomeEvento());
+                        button.setOnAction(new EventHandler<ActionEvent>() {
+                            @Override
+                            public void handle(ActionEvent actionEvent) {
+                                DataHolder.getIstanza().setInteger(evento.getCodiceEvento());
+                                try {
+                                    switchToDettagliEvento(actionEvent);
+                                } catch (IOException ex) {
+                                    throw new RuntimeException(ex);
+                                }
+                            }
+                        });
+                        int riga = inizio.getHour() + 1;
+                        calendarGrid.add(button,6,riga);
+                    }
+                }
+                data.setValue(dataOdierna);
+            }
+        });
+
+        domenica.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                giorni.setTranslateX(214);
+                calendarGrid.getChildren().clear();
+                initialize();
+                LocalDate dataOdierna = data.getValue().with(DayOfWeek.SUNDAY);
+                Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
+                if(eventiGiorno != null){
+                    for(LocalTime inizio : eventiGiorno.keySet()){
+                        Evento evento = eventiGiorno.get(inizio);
+                        Button button = new Button(evento.getNomeEvento());
+                        button.setOnAction(new EventHandler<ActionEvent>() {
+                            @Override
+                            public void handle(ActionEvent actionEvent) {
+                                DataHolder.getIstanza().setInteger(evento.getCodiceEvento());
+                                try {
+                                    switchToDettagliEvento(actionEvent);
+                                } catch (IOException ex) {
+                                    throw new RuntimeException(ex);
+                                }
+                            }
+                        });
+                        int riga = inizio.getHour() + 1;
+                        calendarGrid.add(button,7,riga);
+                    }
+                }
+                data.setValue(dataOdierna);
+            }
+        });
+    }
+    public void initialize(){
         ArrayList<Evento> eventiCalendario = CalendarioLogic.getEventi(DataHolder.getIstanza().getInteger());
         //creo la mappa contenente tutti gli eventi del calendario, la loro data e gli orari che occupano nella giornata
         if(!eventiCalendario.isEmpty()) {
@@ -118,195 +355,6 @@ public final class settimanaleController extends barraController{
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
-    }
-    public void lunedi(ActionEvent e) throws IOException{
-        giorni.setTranslateX(0);
-        calendarGrid.getChildren().clear();
-        initialize();
-        LocalDate dataOdierna = data.getValue().with(DayOfWeek.MONDAY);
-        Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
-        if(eventiGiorno != null){
-            for(LocalTime inizio : eventiGiorno.keySet()){
-                Evento evento = eventiGiorno.get(inizio);
-                Button button = new Button(evento.getNomeEvento());
-                button.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent actionEvent) {
-                        DataHolder.getIstanza().setInteger(evento.getCodiceEvento());
-                        try {
-                            switchToDettagliEvento(actionEvent);
-                        } catch (IOException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                    }
-                });
-                int riga = inizio.getHour() + 1;
-                calendarGrid.add(button,1,riga);
-            }
-        }
-        data.setValue(dataOdierna);
-    }
-    public void martedi(ActionEvent e) throws IOException{
-        giorni.setTranslateX(35);
-        calendarGrid.getChildren().clear();
-        initialize();
-        LocalDate dataOdierna = data.getValue().with(DayOfWeek.TUESDAY);
-        Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
-        if(eventiGiorno != null){
-            for(LocalTime inizio : eventiGiorno.keySet()){
-                Evento evento = eventiGiorno.get(inizio);
-                Button button = new Button(evento.getNomeEvento());
-                button.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent actionEvent) {
-                        DataHolder.getIstanza().setInteger(evento.getCodiceEvento());
-                        try {
-                            switchToDettagliEvento(actionEvent);
-                        } catch (IOException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                    }
-                });
-                int riga = inizio.getHour() + 1;
-                calendarGrid.add(button,2,riga);
-            }
-        }
-        data.setValue(dataOdierna);
-    }
-    public void mercoledi(ActionEvent e) throws IOException{
-        giorni.setTranslateX(73);
-        calendarGrid.getChildren().clear();
-        initialize();
-        LocalDate dataOdierna = data.getValue().with(DayOfWeek.WEDNESDAY);
-        Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
-        if(eventiGiorno != null){
-            for(LocalTime inizio : eventiGiorno.keySet()){
-                Evento evento = eventiGiorno.get(inizio);
-                Button button = new Button(evento.getNomeEvento());
-                button.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent actionEvent) {
-                        DataHolder.getIstanza().setInteger(evento.getCodiceEvento());
-                        try {
-                            switchToDettagliEvento(actionEvent);
-                        } catch (IOException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                    }
-                });
-                int riga = inizio.getHour() + 1;
-                calendarGrid.add(button,3,riga);
-            }
-        }
-        data.setValue(dataOdierna);
-    }
-    public void giovedi(ActionEvent e) throws IOException{
-        giorni.setTranslateX(108);
-        calendarGrid.getChildren().clear();
-        initialize();
-        LocalDate dataOdierna = data.getValue().with(DayOfWeek.THURSDAY);
-        Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
-        if(eventiGiorno != null){
-            for(LocalTime inizio : eventiGiorno.keySet()){
-                Evento evento = eventiGiorno.get(inizio);
-                Button button = new Button(evento.getNomeEvento());
-                button.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent actionEvent) {
-                        DataHolder.getIstanza().setInteger(evento.getCodiceEvento());
-                        try {
-                            switchToDettagliEvento(actionEvent);
-                        } catch (IOException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                    }
-                });
-                int riga = inizio.getHour() + 1;
-                calendarGrid.add(button,4,riga);
-            }
-        }
-        data.setValue(dataOdierna);
-    }
-    public void venerdi(ActionEvent e) throws IOException{
-        giorni.setTranslateX(143);
-        calendarGrid.getChildren().clear();
-        initialize();
-        LocalDate dataOdierna = data.getValue().with(DayOfWeek.FRIDAY);
-        Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
-        if(eventiGiorno != null){
-            for(LocalTime inizio : eventiGiorno.keySet()){
-                Evento evento = eventiGiorno.get(inizio);
-                Button button = new Button(evento.getNomeEvento());
-                button.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent actionEvent) {
-                        DataHolder.getIstanza().setInteger(evento.getCodiceEvento());
-                        try {
-                            switchToDettagliEvento(actionEvent);
-                        } catch (IOException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                    }
-                });
-                int riga = inizio.getHour() + 1;
-                calendarGrid.add(button,5,riga);
-            }
-        }
-        data.setValue(dataOdierna);
-    }
-    public void sabato(ActionEvent e) throws IOException{
-        giorni.setTranslateX(178);
-        calendarGrid.getChildren().clear();
-        initialize();
-        LocalDate dataOdierna = data.getValue().with(DayOfWeek.SATURDAY);
-        Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
-        if(eventiGiorno != null){
-            for(LocalTime inizio : eventiGiorno.keySet()){
-                Evento evento = eventiGiorno.get(inizio);
-                Button button = new Button(evento.getNomeEvento());
-                button.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent actionEvent) {
-                        DataHolder.getIstanza().setInteger(evento.getCodiceEvento());
-                        try {
-                            switchToDettagliEvento(actionEvent);
-                        } catch (IOException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                    }
-                });
-                int riga = inizio.getHour() + 1;
-                calendarGrid.add(button,6,riga);
-            }
-        }
-        data.setValue(dataOdierna);
-    }
-    public void domenica(ActionEvent e) throws IOException{
-        giorni.setTranslateX(214);
-        calendarGrid.getChildren().clear();
-        initialize();
-        LocalDate dataOdierna = data.getValue().with(DayOfWeek.SUNDAY);
-        Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
-        if(eventiGiorno != null){
-            for(LocalTime inizio : eventiGiorno.keySet()){
-                Evento evento = eventiGiorno.get(inizio);
-                Button button = new Button(evento.getNomeEvento());
-                button.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent actionEvent) {
-                        DataHolder.getIstanza().setInteger(evento.getCodiceEvento());
-                        try {
-                            switchToDettagliEvento(actionEvent);
-                        } catch (IOException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                    }
-                });
-                int riga = inizio.getHour() + 1;
-                calendarGrid.add(button,7,riga);
-            }
-        }
-        data.setValue(dataOdierna);
     }
 
     public void handleDaySelection(ActionEvent e){
