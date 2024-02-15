@@ -3,61 +3,52 @@ package org.gennisilv.smartplanner;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
-import javafx.stage.Stage;
-import org.gennisilv.smartplanner.data.entity.Evento;
-import org.gennisilv.smartplanner.data.entity.Utente;
-import org.gennisilv.smartplanner.logic.EventoLogic;
-import org.gennisilv.smartplanner.logic.UtenteLogic;
+import org.gennisilv.smartplanner.data.entity.Calendario;
+import org.gennisilv.smartplanner.logic.CalendarioLogic;
 import org.gennisilv.smartplanner.utils.DataHolder;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public final class ricercaEventiController extends barraController{
-    private Stage stage;
-    private Scene scene;
+public class ListaCalendariController extends barraController implements Initializable {
     @FXML
-    private TextField evento;
-    @FXML
-    private FlowPane risultati;
+    private FlowPane calendari;
 
-    public void ricerca (ActionEvent e) throws IOException
-    {
-        Utente utente = UtenteLogic.returnLoggedInUser();
-        ArrayList<Evento> eventi = EventoLogic.ricercaEvento(evento.getText(), utente.getEmail());
 
-        if(!eventi.isEmpty()){
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ArrayList<Calendario> calendariUtente = CalendarioLogic.returnCalendari();
+
+        if(!calendariUtente.isEmpty()){
             ArrayList<Button> bottoni = new ArrayList<>();
-            for(Evento evento : eventi) {
-                Button button = new Button(evento.getNomeEvento());
+            for(Calendario calendario : calendariUtente) {
+                Button button = new Button(calendario.getNomeCalendario());
                 button.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
-                        DataHolder.getIstanza().setInteger(evento.getCodiceEvento());
+                        DataHolder.getIstanza().setInteger(calendario.getCodiceCalendario());
                         try {
-                            switchToDettagliEvento(e);
+                            switchTosettimanale(actionEvent);
                         } catch (IOException ex) {
                             throw new RuntimeException(ex);
                         }
                     }
                 });
-
                 bottoni.add(button);
             }
-            boolean util = risultati.getChildren().addAll(bottoni);
+            boolean util = calendari.getChildren().addAll(bottoni);
         }
         else{
-            Alert alert = new Alert(Alert.AlertType.INFORMATION,"Nessun evento trovato");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,"Nessun calendario");
             alert.showAndWait();
         }
     }
-
     @Override
     public void switchTosettimanale(ActionEvent event) throws IOException {
         super.switchTosettimanale(event);
@@ -87,12 +78,5 @@ public final class ricercaEventiController extends barraController{
     public void switchToAggiuntaEvento (ActionEvent e) throws IOException
     {
         super.switchToAggiuntaEvento(e);
-    }
-    public void switchToDettagliEvento(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("dettagliEvento.fxml"));
-        stage= (Stage) ((Node)e.getSource()).getScene().getWindow();
-        scene=new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 }

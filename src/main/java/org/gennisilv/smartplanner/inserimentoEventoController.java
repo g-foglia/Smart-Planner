@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import org.gennisilv.smartplanner.data.entity.Calendario;
 import org.gennisilv.smartplanner.logic.CalendarioLogic;
 import org.gennisilv.smartplanner.logic.EventoLogic;
+import org.gennisilv.smartplanner.utils.DataHolder;
 
 import java.io.IOException;
 import java.net.URL;
@@ -74,7 +75,7 @@ public class inserimentoEventoController extends barraController implements Init
         Color color = colore.getValue();
         boolean n = notifiche.isSelected();
 
-        int periodicita = -1;
+        int periodicita = 0;
         switch (periodicitaID.getValue()){
             case "solo 1 volta":
                 periodicita = 0;
@@ -111,6 +112,7 @@ public class inserimentoEventoController extends barraController implements Init
             default:
                 Calendario calendario = CalendarioLogic.cercaCalendario((String) calendari.getValue());
                 CalendarioLogic.aggiungiEvento(codiceEvento, calendario.getCodiceCalendario());
+                DataHolder.getIstanza().setInteger(calendario.getCodiceCalendario());
                 switchTosettimanale(e);
                 break;
         }

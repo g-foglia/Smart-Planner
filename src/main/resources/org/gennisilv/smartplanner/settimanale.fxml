@@ -89,7 +89,7 @@
             </Polygon>
             <GridPane fx:id="calendarGrid" layoutX="27.0" layoutY="112.0" prefHeight="412.0" prefWidth="245.0">
             </GridPane>
-            <DatePicker fx:id="data" layoutX="63.0" layoutY="10.0" />
+            <DatePicker fx:id="data" layoutX="63.0" layoutY="10.0" onAction="#handleDaySelection" />
          </children>
       </Pane>
    </center>

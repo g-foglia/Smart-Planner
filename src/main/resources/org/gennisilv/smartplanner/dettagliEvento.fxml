@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.gennisilv.smartplanner.ListaCalendariController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.gennisilv.smartplanner.dettagliEventoController">
+    <top>
+        <Pane prefHeight="68.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="101.0" fitWidth="144.0" layoutX="79.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../images/LogoSenzaSfondo.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+    </top>
     <bottom>
         <Pane prefHeight="80.0" prefWidth="300.0" BorderPane.alignment="CENTER">
             <children>
@@ -63,23 +76,55 @@
             </children>
         </Pane>
     </bottom>
-   <top>
-      <Pane prefHeight="122.0" prefWidth="300.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="102.0" fitWidth="142.0" layoutX="79.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+    <center>
+        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e0f0ff" height="339.0" layoutX="34.0" layoutY="46.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="232.0">
+                    <effect>
+                        <GaussianBlur />
+                    </effect>
+                </Rectangle>
+                <Label layoutX="48.0" layoutY="65.0" prefHeight="15.0" prefWidth="121.0" text="Informazioni evento">
+                    <font>
+                        <Font name="Century Gothic" size="12.0" />
+                    </font>
+                </Label>
+                <Label fx:id="nome" layoutX="48.0" layoutY="95.0" text="nome:" />
+                <Label fx:id="descrizione" layoutX="48.0" layoutY="125.0" text="descrizione:">
+                    <font>
+                        <Font name="Century Gothic" size="12.0" />
+                    </font>
+                </Label>
+                <Label fx:id="data" layoutX="48.0" layoutY="154.0" text="data:">
+                    <font>
+                        <Font name="Century Gothic" size="12.0" />
+                    </font>
+                </Label>
+                <Label fx:id="inizio" layoutX="48.0" layoutY="183.0" text="ora inizio:">
+                    <font>
+                        <Font name="Century Gothic" size="12.0" />
+                    </font>
+                </Label>
+                <Label fx:id="fine" layoutX="48.0" layoutY="212.0" text="ora fine:">
+                    <font>
+                        <Font name="Century Gothic" size="12.0" />
+                    </font>
+                </Label>
+            <Button fx:id="indietro" layoutX="131.0" layoutY="396.0" mnemonicParsing="false" onAction="#switchToListaCalendari" prefHeight="27.0" prefWidth="38.0">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/icons8-indietro-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <ImageView fitHeight="23.0" fitWidth="25.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/LogoSenzaSfondo.png" />
+                  <Image url="@../../../images/icons8-indietro-64.png" />
                </image>
             </ImageView>
-         </children>
-      </Pane>
-   </top>
-   <center>
-      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <content>
-            <FlowPane fx:id="calendari" prefHeight="200.0" prefWidth="200.0" />
-         </content>
-      </ScrollPane>
-   </center>
-
+            </children>
+        </Pane>
+    </center>
 </BorderPane>

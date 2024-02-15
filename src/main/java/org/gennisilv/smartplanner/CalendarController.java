@@ -112,9 +112,6 @@ private void updateEventLayout(Map <LocalTime,List <String>> eventMap)
 
 }
 
-
-
-
     // Metodo per aggiungere un evento
     @FXML
     private void addEvent() {

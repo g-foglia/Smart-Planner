@@ -52,6 +52,10 @@ public class EventoLogic {
         return EventoDAO.doRetrieveEventsByName(nome, email);
     }
 
+    public static Evento getEvento(int codiceEvento){
+        return EventoDAO.doRetrieveEventByCode(codiceEvento);
+    }
+
     private static boolean checkName(String nome){
         return Pattern.compile("[^a-zA-Z0-9\\s]").matcher(nome).find();
     }
@@ -69,17 +73,17 @@ public class EventoLogic {
         return data.before(dataAttuale);
     }
 
-    private static boolean checkTimeE(String oraI, String oraF){
-        int oraInizio = Integer.parseInt(oraI.substring(0,2));
-        int oraFine = Integer.parseInt(oraF.substring(0,2));
+    private static boolean checkTimeE(String oraI, String oraF) {
+        int oraInizio = Integer.parseInt(oraI.substring(0, 2));
+        int oraFine = Integer.parseInt(oraF.substring(0, 2));
 
-        if(oraFine < oraInizio)
+        if (oraFine < oraInizio)
             return false;
-        else if(oraFine == oraInizio){
+        else if (oraFine == oraInizio) {
             int minutiInizio = Integer.parseInt(oraI.substring(3));
             int minutiFine = Integer.parseInt(oraF.substring(3));
 
-            if(minutiFine < minutiInizio)
+            if (minutiFine < minutiInizio)
                 return false;
         }
         return true;

@@ -142,4 +142,33 @@ public class EventoDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public static ArrayList<Evento> doRetrieveEventsByCalendar(int codiceCalendario){
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps =
+                    con.prepareStatement("SELECT * FROM evento WHERE codiceEvento IN (SELECT codiceEventoI from inserimento WHERE codiceCalendarioI=?)");
+            ps.setInt(1,codiceCalendario);
+            ResultSet rs = ps.executeQuery();
+
+            ArrayList<Evento> eventi = new ArrayList<>();
+            while(rs.next()) {
+                Evento evento = new Evento();
+                evento.setCodiceEvento(rs.getInt(1));
+                evento.setNomeEvento(rs.getString(2));
+                evento.setDescrizione(rs.getString(3));
+                evento.setColoreEvento(rs.getString(4));
+                evento.setPeriodicita(rs.getInt(5));
+                evento.setNotifiche(rs.getBoolean(6));
+                evento.setDataEvento(DateConverter.toGregorianCalendar(rs.getString(7)));
+                evento.setOrarioInizio(rs.getString(8));
+                evento.setOrarioFine(rs.getString(9));
+                evento.setEmailE(rs.getString(10));
+
+                eventi.add(evento);
+            }
+            return eventi;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
