@@ -100,7 +100,7 @@
                         <Font name="Century Gothic" size="12.0" />
                     </font>
                 </Label>
-                <Button fx:id="indietro" layoutX="131.0" layoutY="396.0" mnemonicParsing="false" onAction="#switchToListaCalendari" prefHeight="27.0" prefWidth="38.0">
+                <Button fx:id="indietro" layoutX="131.0" layoutY="396.0" mnemonicParsing="false" onAction="#switchToLista" prefHeight="27.0" prefWidth="38.0">
                     <graphic>
                         <ImageView fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
