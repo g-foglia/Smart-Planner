@@ -17,14 +17,14 @@ import javafx.stage.Stage;
 import org.gennisilv.smartplanner.data.entity.Evento;
 import org.gennisilv.smartplanner.logic.CalendarioLogic;
 import org.gennisilv.smartplanner.utils.DataHolder;
+import org.gennisilv.smartplanner.utils.DateConverter;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 
 public final class settimanaleController extends barraController{
@@ -37,14 +37,14 @@ public final class settimanaleController extends barraController{
     @FXML
     private DatePicker data;
     private Map<LocalDate, Map<LocalTime, Evento>> eventi = new HashMap<>();
-
+    private boolean check = true;
 
     public void initialize() {
         ArrayList<Evento> eventiCalendario = CalendarioLogic.getEventi(DataHolder.getIstanza().getInteger());
         //creo la mappa contenente tutti gli eventi del calendario, la loro data e gli orari che occupano nella giornata
         if(!eventiCalendario.isEmpty()) {
             for (Evento evento : eventiCalendario) {
-                LocalDate dataEvento = evento.getDataEvento().toZonedDateTime().toLocalDate();
+                LocalDate dataEvento = DateConverter.toLocalDate(evento.getDataEvento());
                 String oraInizio = evento.getOrarioInizio();
                 String oraFine = evento.getOrarioFine();
                 LocalTime inizio = LocalTime.of(Integer.parseInt(oraInizio.substring(0, 2)), Integer.parseInt(oraInizio.substring(3)));
@@ -65,7 +65,22 @@ public final class settimanaleController extends barraController{
         else{
             Alert alert = new Alert(Alert.AlertType.INFORMATION,"Calendario vuoto");
             alert.showAndWait();
+        }
+        if(check) {
+            LocalDate oggi = LocalDate.now();
+            data.setValue(oggi);
+            DayOfWeek giorno = oggi.getDayOfWeek();
 
+            switch (giorno){
+                case MONDAY -> giorni.setTranslateX(0);
+                case TUESDAY -> giorni.setTranslateX(35);
+                case WEDNESDAY -> giorni.setTranslateX(73);
+                case THURSDAY -> giorni.setTranslateX(108);
+                case FRIDAY -> giorni.setTranslateX(143);
+                case SATURDAY -> giorni.setTranslateX(178);
+                case SUNDAY -> giorni.setTranslateX(214);
+            }
+            check = false;
         }
     }
     @Override
@@ -108,7 +123,8 @@ public final class settimanaleController extends barraController{
         giorni.setTranslateX(0);
         calendarGrid.getChildren().clear();
         initialize();
-        Map<LocalTime, Evento> eventiGiorno = eventi.get(data.getValue().with(DayOfWeek.MONDAY));
+        LocalDate dataOdierna = data.getValue().with(DayOfWeek.MONDAY);
+        Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
         if(eventiGiorno != null){
             for(LocalTime inizio : eventiGiorno.keySet()){
                 Evento evento = eventiGiorno.get(inizio);
@@ -128,12 +144,14 @@ public final class settimanaleController extends barraController{
                 calendarGrid.add(button,1,riga);
             }
         }
+        data.setValue(dataOdierna);
     }
     public void martedi(ActionEvent e) throws IOException{
         giorni.setTranslateX(35);
         calendarGrid.getChildren().clear();
         initialize();
-        Map<LocalTime, Evento> eventiGiorno = eventi.get(data.getValue().with(DayOfWeek.TUESDAY));
+        LocalDate dataOdierna = data.getValue().with(DayOfWeek.TUESDAY);
+        Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
         if(eventiGiorno != null){
             for(LocalTime inizio : eventiGiorno.keySet()){
                 Evento evento = eventiGiorno.get(inizio);
@@ -153,12 +171,14 @@ public final class settimanaleController extends barraController{
                 calendarGrid.add(button,2,riga);
             }
         }
+        data.setValue(dataOdierna);
     }
     public void mercoledi(ActionEvent e) throws IOException{
         giorni.setTranslateX(73);
         calendarGrid.getChildren().clear();
         initialize();
-        Map<LocalTime, Evento> eventiGiorno = eventi.get(data.getValue().with(DayOfWeek.WEDNESDAY));
+        LocalDate dataOdierna = data.getValue().with(DayOfWeek.WEDNESDAY);
+        Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
         if(eventiGiorno != null){
             for(LocalTime inizio : eventiGiorno.keySet()){
                 Evento evento = eventiGiorno.get(inizio);
@@ -178,12 +198,14 @@ public final class settimanaleController extends barraController{
                 calendarGrid.add(button,3,riga);
             }
         }
+        data.setValue(dataOdierna);
     }
     public void giovedi(ActionEvent e) throws IOException{
         giorni.setTranslateX(108);
         calendarGrid.getChildren().clear();
         initialize();
-        Map<LocalTime, Evento> eventiGiorno = eventi.get(data.getValue().with(DayOfWeek.THURSDAY));
+        LocalDate dataOdierna = data.getValue().with(DayOfWeek.THURSDAY);
+        Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
         if(eventiGiorno != null){
             for(LocalTime inizio : eventiGiorno.keySet()){
                 Evento evento = eventiGiorno.get(inizio);
@@ -203,12 +225,14 @@ public final class settimanaleController extends barraController{
                 calendarGrid.add(button,4,riga);
             }
         }
+        data.setValue(dataOdierna);
     }
     public void venerdi(ActionEvent e) throws IOException{
         giorni.setTranslateX(143);
         calendarGrid.getChildren().clear();
         initialize();
-        Map<LocalTime, Evento> eventiGiorno = eventi.get(data.getValue().with(DayOfWeek.FRIDAY));
+        LocalDate dataOdierna = data.getValue().with(DayOfWeek.FRIDAY);
+        Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
         if(eventiGiorno != null){
             for(LocalTime inizio : eventiGiorno.keySet()){
                 Evento evento = eventiGiorno.get(inizio);
@@ -228,12 +252,14 @@ public final class settimanaleController extends barraController{
                 calendarGrid.add(button,5,riga);
             }
         }
+        data.setValue(dataOdierna);
     }
     public void sabato(ActionEvent e) throws IOException{
         giorni.setTranslateX(178);
         calendarGrid.getChildren().clear();
         initialize();
-        Map<LocalTime, Evento> eventiGiorno = eventi.get(data.getValue().with(DayOfWeek.SATURDAY));
+        LocalDate dataOdierna = data.getValue().with(DayOfWeek.SATURDAY);
+        Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
         if(eventiGiorno != null){
             for(LocalTime inizio : eventiGiorno.keySet()){
                 Evento evento = eventiGiorno.get(inizio);
@@ -253,12 +279,14 @@ public final class settimanaleController extends barraController{
                 calendarGrid.add(button,6,riga);
             }
         }
+        data.setValue(dataOdierna);
     }
     public void domenica(ActionEvent e) throws IOException{
         giorni.setTranslateX(214);
         calendarGrid.getChildren().clear();
         initialize();
-        Map<LocalTime, Evento> eventiGiorno = eventi.get(data.getValue().with(DayOfWeek.SUNDAY));
+        LocalDate dataOdierna = data.getValue().with(DayOfWeek.SUNDAY);
+        Map<LocalTime, Evento> eventiGiorno = eventi.get(dataOdierna);
         if(eventiGiorno != null){
             for(LocalTime inizio : eventiGiorno.keySet()){
                 Evento evento = eventiGiorno.get(inizio);
@@ -278,6 +306,7 @@ public final class settimanaleController extends barraController{
                 calendarGrid.add(button,7,riga);
             }
         }
+        data.setValue(dataOdierna);
     }
 
     public void handleDaySelection(ActionEvent e){
@@ -289,18 +318,17 @@ public final class settimanaleController extends barraController{
     }
 
     private void updateLayout(Map<LocalTime, Evento> mappaEventi, DayOfWeek day){
+        int i = 1;
+        switch (day){
+            case MONDAY -> {giorni.setTranslateX(0); i = 1;}
+            case TUESDAY -> {giorni.setTranslateX(35); i = 2;}
+            case WEDNESDAY -> {giorni.setTranslateX(73); i = 3;}
+            case THURSDAY -> {giorni.setTranslateX(108); i = 4;}
+            case FRIDAY -> {giorni.setTranslateX(143); i = 5;}
+            case SATURDAY -> {giorni.setTranslateX(178); i = 6;}
+            case SUNDAY -> {giorni.setTranslateX(214); i = 7;}
+        }
         if(mappaEventi != null){
-            int i = 1;
-            switch (day){
-                case MONDAY -> {giorni.setTranslateX(0); i = 1;}
-                case TUESDAY -> {giorni.setTranslateX(35); i = 2;}
-                case WEDNESDAY -> {giorni.setTranslateX(73); i = 3;}
-                case THURSDAY -> {giorni.setTranslateX(108); i = 4;}
-                case FRIDAY -> {giorni.setTranslateX(143); i = 5;}
-                case SATURDAY -> {giorni.setTranslateX(178); i = 6;}
-                case SUNDAY -> {giorni.setTranslateX(214); i = 7;}
-            }
-
             for(LocalTime inizio : mappaEventi.keySet()){
                 Evento evento = mappaEventi.get(inizio);
                 Button button = new Button(evento.getNomeEvento());
@@ -321,7 +349,7 @@ public final class settimanaleController extends barraController{
         }
         else{
             calendarGrid.getChildren().clear();
-            for (int i = 0; i < 24; i++) {
+            for (i = 0; i < 24; i++) {
                 Label timeLabel = new Label(String.format("%02d:00", i));
                 calendarGrid.add(timeLabel, 0, i + 1);
             }

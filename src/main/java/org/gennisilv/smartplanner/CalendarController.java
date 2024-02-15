@@ -87,7 +87,7 @@ public class CalendarController {
         calendarGrid.getChildren().clear(); // Pulisci il layout degli eventi
         initialize();
         Map <LocalTime,List <String>> eventMaps= eventMap.get(selectedDate);
-       updateEventLayout(eventMaps);
+        updateEventLayout(eventMaps);
     }
 private void updateEventLayout(Map <LocalTime,List <String>> eventMap)
 {

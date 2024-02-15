@@ -29,11 +29,11 @@ public class dettagliEventoController extends barraController implements Initial
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Evento evento = EventoLogic.getEvento(DataHolder.getIstanza().getInteger());
 
-        nome.setText(evento.getNomeEvento());
-        descrizione.setText(evento.getDescrizione());
-        inizio.setText(evento.getOrarioInizio());
-        fine.setText(evento.getOrarioFine());
-        data.setText(DateConverter.toString(evento.getDataEvento()));
+        nome.setText(nome.getText() + " " + evento.getNomeEvento());
+        descrizione.setText(descrizione.getText() + " " + evento.getDescrizione());
+        inizio.setText(inizio.getText() + " " + evento.getOrarioInizio());
+        fine.setText(fine.getText() + " " + evento.getOrarioFine());
+        data.setText(data.getText() + " " + DateConverter.toString(evento.getDataEvento()));
     }
 
     @Override
