@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
 
-public class inserimentoEventoController extends barraController implements Initializable {
+public class InserimentoEventoController extends BarraController implements Initializable {
     private Stage stage;
     private Scene scene;
 

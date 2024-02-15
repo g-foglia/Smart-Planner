@@ -1,4 +1,4 @@
 package org.gennisilv.smartplanner;
 
-public class impegnoController {
+public class ImpegnoController {
 }

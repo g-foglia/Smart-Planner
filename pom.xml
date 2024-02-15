@@ -120,7 +120,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>org.gennisilv.smartplanner/org.gennisilv.smartplanner.HelloApplication
+                            <mainClass>org.gennisilv.smartplanner/org.gennisilv.smartplanner.SmartPlannerApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

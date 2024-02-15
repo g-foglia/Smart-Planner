@@ -21,7 +21,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class listaController extends barraController implements Initializable {
+public class ListaController extends BarraController implements Initializable {
 
     private Stage stage;
     private Scene scene;

@@ -3,34 +3,45 @@ package org.gennisilv.smartplanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import org.gennisilv.smartplanner.logic.CalendarioLogic;
+import org.gennisilv.smartplanner.data.entity.Impegno;
+import org.gennisilv.smartplanner.logic.ListaLogic;
 import org.gennisilv.smartplanner.utils.DataHolder;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class creazioneCalendarioController extends barraController{
+public class DettagliImpegnoController extends BarraController implements Initializable {
     private Stage stage;
     private Scene scene;
-
     @FXML
-    private TextField nomeC;
+    private Label nome;
     @FXML
-    private ColorPicker colore;
+    private Label durata;
+    @FXML
+    private Label priorita;
 
-    public void creaCalendario(ActionEvent e) throws IOException {
-        Color color = colore.getValue();
-        String nome = nomeC.getText();
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Impegno impegno = ListaLogic.getImpegno(DataHolder.getIstanza().getInteger());
 
-        int codicecCalendario = CalendarioLogic.creaCalendario(nome,color);
-        DataHolder.getIstanza().setInteger(codicecCalendario);
-        switchTosettimanale(e);
+        nome.setText(nome.getText() + " " + impegno.getNomeImpegno());
+        durata.setText(durata.getText() + " " + impegno.getDurataImpegno());
+        priorita.setText(priorita.getText() + " " + impegno.getPrioritaImpegno());
+    }
+
+    public void switchToLista(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("lista.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @Override
@@ -57,15 +68,10 @@ public class creazioneCalendarioController extends barraController{
     public void switchToRicerca(ActionEvent e) throws IOException {
         super.switchToRicerca(e);
     }
+    @Override
     public void switchToAggiuntaEvento (ActionEvent e) throws IOException
     {
         super.switchToAggiuntaEvento(e);
     }
-    public void switchToCreazioneCalendario(ActionEvent e) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("creazioneCalendario.fxml"));
-        stage= (Stage) ((Node)e.getSource()).getScene().getWindow();
-        scene=new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 }
+

@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class dettagliEventoController extends barraController implements Initializable {
+public class DettagliEventoController extends BarraController implements Initializable {
     @FXML
     private Label nome;
     @FXML

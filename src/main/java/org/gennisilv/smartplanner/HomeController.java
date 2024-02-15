@@ -8,7 +8,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.gennisilv.smartplanner.data.entity.Calendario;
 import org.gennisilv.smartplanner.logic.CalendarioLogic;
@@ -19,7 +18,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
-public class HomeController extends barraController implements Initializable {
+public class HomeController extends BarraController implements Initializable {
 
     private Stage stage;
     private Scene scene;

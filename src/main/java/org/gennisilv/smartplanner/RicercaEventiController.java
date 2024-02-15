@@ -19,7 +19,7 @@ import org.gennisilv.smartplanner.utils.DataHolder;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public final class ricercaEventiController extends barraController{
+public final class RicercaEventiController extends BarraController {
     private Stage stage;
     private Scene scene;
     @FXML

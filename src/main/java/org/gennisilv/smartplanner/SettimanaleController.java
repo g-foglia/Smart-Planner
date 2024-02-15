@@ -28,7 +28,7 @@ import java.time.LocalTime;
 import java.util.*;
 
 
-public final class settimanaleController extends barraController implements Initializable {
+public final class SettimanaleController extends BarraController implements Initializable {
     private Stage stage;
     private Scene scene;
     @FXML

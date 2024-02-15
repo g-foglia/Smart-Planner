@@ -14,7 +14,7 @@ import org.gennisilv.smartplanner.logic.UtenteLogic;
 
 import java.io.IOException;
 
-public class loginController extends barraController {
+public class LoginController extends BarraController {
     private Stage stage;
     private Scene scene;
 

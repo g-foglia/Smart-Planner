@@ -9,35 +9,59 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import org.gennisilv.smartplanner.data.entity.Impegno;
-import org.gennisilv.smartplanner.logic.ListaLogic;
-import org.gennisilv.smartplanner.utils.DataHolder;
+import org.gennisilv.smartplanner.data.entity.Utente;
+import org.gennisilv.smartplanner.logic.UtenteLogic;
+import org.gennisilv.smartplanner.utils.DateConverter;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class dettagliImpegnoController extends barraController implements Initializable {
+public class AreaUtenteController extends BarraController implements Initializable{
     private Stage stage;
     private Scene scene;
+
+    @FXML
+    private  Label username;
+    @FXML
+    private Label email;
+    @FXML
+    private Label password;
     @FXML
     private Label nome;
     @FXML
-    private Label durata;
+    private Label cognome;
     @FXML
-    private Label priorita;
+    private Label dataNascita;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        Impegno impegno = ListaLogic.getImpegno(DataHolder.getIstanza().getInteger());
 
-        nome.setText(nome.getText() + " " + impegno.getNomeImpegno());
-        durata.setText(durata.getText() + " " + impegno.getDurataImpegno());
-        priorita.setText(priorita.getText() + " " + impegno.getPrioritaImpegno());
+    //cancella un utente ed effettua il logout
+    public void cancellaUtente(ActionEvent event) throws IOException{
+        UtenteLogic.cancellaUtente();
+        switchToHelloView(event);
     }
 
-    public void switchToLista(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("lista.fxml"));
+    //logout
+    public void logout(ActionEvent event) throws IOException{
+        UtenteLogic.logout();
+        switchToHelloView(event);
+    }
+
+    //inizializza le label per mostrare i dati dell'utente
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Utente utente = UtenteLogic.returnLoggedInUser();
+
+        username.setText(username.getText() + " " + utente.getUsername());
+        email.setText(email.getText() + " " + utente.getEmail());
+        password.setText(password.getText() + " " + utente.getPassword());
+        nome.setText(nome.getText() + " " + utente.getNome());
+        cognome.setText(cognome.getText() + " " + utente.getCognome());
+        dataNascita.setText(dataNascita.getText() + " " + DateConverter.toString(utente.getDataDiNascita()));
+    }
+
+    public void switchToHelloView(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -74,4 +98,3 @@ public class dettagliImpegnoController extends barraController implements Initia
         super.switchToAggiuntaEvento(e);
     }
 }
-

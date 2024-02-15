@@ -16,7 +16,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ListaCalendariController extends barraController implements Initializable {
+public class ListaCalendariController extends BarraController implements Initializable {
     @FXML
     private FlowPane calendari;
 
