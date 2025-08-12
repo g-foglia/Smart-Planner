@@ -6,7 +6,7 @@
 ## Team
 I membri del team sono: 
 - [Silvana Cafaro](https://github.com/zzzzilv)
-- [Isabella Maria Sessa](https://github.com/isaboutoftown)
+- [Isabella Maria Sessa](https://github.com/isabellasessa)
 - [Gennaro Foglia](https://github.com/g-foglia)
 ## Overview
 Smart Planner è un progetto che prevede la realizzazione di un'agenda digitale in grado di aiutare le persone ad organizzare le loro attività in modo facile e veloce. 
